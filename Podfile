@@ -25,4 +25,3 @@ target 'IMAAdapterExample' do
     pod 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
     #pod 'YouboraAVPlayerAdapter'
 end
-

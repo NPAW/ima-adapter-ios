@@ -10,7 +10,8 @@
 #import <YouboraConfigUtils/YouboraConfigUtils.h>
 #import <YouboraAVPlayerAdapter/YouboraAVPlayerAdapter.h>
 #import <YouboraIMAAdapter/YBIMAAdapter.h>
-#import <YouboraIMAAdapter/LBDelegateMatrioska.h>
+
+#import "LBDelegateMatrioska.h"
 
 @import AVFoundation;
 @import AVKit;
@@ -144,13 +145,12 @@ NSString *const kTestAppAdTagUrl =
     
     
     // NOTE: This line will cause a warning until the next step, "Display Ads".
-    //self.adsManager.delegate = self;
-
     self.adsManager.delegate = self;
     
     YBIMAAdapter* adsAdapter = [[YBIMAAdapter alloc] initWithPlayer:self.adsManager];
-    //[self.multicast addDelegate:adsAdapter.player.delegate];
     self.multicast = [[LBDelegateMatrioska alloc] initWithDelegates:@[self,adsAdapter.player.delegate]];
+    
+    //Don' t mind the warning about incompatible types
     adsAdapter.player.delegate = self.multicast;
     [self.youboraPlugin setAdsAdapter:adsAdapter];
     

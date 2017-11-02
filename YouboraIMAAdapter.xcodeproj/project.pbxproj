@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CDB780F81FA7868500B1F03E /* LBDelegateMatrioska.h in Headers */ = {isa = PBXBuildFile; fileRef = CDB780F61FA7868500B1F03E /* LBDelegateMatrioska.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CDB780F91FA7868500B1F03E /* LBDelegateMatrioska.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB780F71FA7868500B1F03E /* LBDelegateMatrioska.m */; };
 		CDBA8CB41FA311C0004F8B6D /* YouboraIMAAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBA8CB21FA311C0004F8B6D /* YouboraIMAAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDBA8CBD1FA31B5D004F8B6D /* YBIMAAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBA8CBB1FA31B5D004F8B6D /* YBIMAAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDBA8CBE1FA31B5D004F8B6D /* YBIMAAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBA8CBC1FA31B5D004F8B6D /* YBIMAAdapter.m */; };
@@ -18,8 +16,6 @@
 /* Begin PBXFileReference section */
 		39E0175C8492349D321C7CF3 /* Pods-YouboraIMAAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YouboraIMAAdapter/Pods-YouboraIMAAdapter.debug.xcconfig"; sourceTree = "<group>"; };
 		86627496BB4C4BE54D6EAD9F /* Pods_YouboraIMAAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YouboraIMAAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDB780F61FA7868500B1F03E /* LBDelegateMatrioska.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDelegateMatrioska.h; sourceTree = "<group>"; };
-		CDB780F71FA7868500B1F03E /* LBDelegateMatrioska.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDelegateMatrioska.m; sourceTree = "<group>"; };
 		CDBA8CAF1FA311C0004F8B6D /* YouboraIMAAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YouboraIMAAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBA8CB21FA311C0004F8B6D /* YouboraIMAAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouboraIMAAdapter.h; sourceTree = "<group>"; };
 		CDBA8CB31FA311C0004F8B6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,8 +86,6 @@
 			children = (
 				CDBA8CBB1FA31B5D004F8B6D /* YBIMAAdapter.h */,
 				CDBA8CBC1FA31B5D004F8B6D /* YBIMAAdapter.m */,
-				CDB780F61FA7868500B1F03E /* LBDelegateMatrioska.h */,
-				CDB780F71FA7868500B1F03E /* LBDelegateMatrioska.m */,
 			);
 			path = adapter;
 			sourceTree = "<group>";
@@ -105,7 +99,6 @@
 			files = (
 				CDBA8CB41FA311C0004F8B6D /* YouboraIMAAdapter.h in Headers */,
 				CDBA8CBD1FA31B5D004F8B6D /* YBIMAAdapter.h in Headers */,
-				CDB780F81FA7868500B1F03E /* LBDelegateMatrioska.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +209,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDB780F91FA7868500B1F03E /* LBDelegateMatrioska.m in Sources */,
 				CDBA8CBE1FA31B5D004F8B6D /* YBIMAAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
