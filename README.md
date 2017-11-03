@@ -1,3 +1,3 @@
 # README #
 
-AVPlayer ios
+IMA Adapter ios
