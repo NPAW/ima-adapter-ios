@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CD03E22C1FAB185700F56F8A /* LBDelegateMatrioska.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03E22B1FAB185700F56F8A /* LBDelegateMatrioska.m */; };
-		CDB780E51FA352AD00B1F03E /* YouboraAVPlayerAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB780E41FA352AD00B1F03E /* YouboraAVPlayerAdapter.framework */; };
-		CDB780E61FA352AD00B1F03E /* YouboraAVPlayerAdapter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB780E41FA352AD00B1F03E /* YouboraAVPlayerAdapter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDB780E81FA35B8A00B1F03E /* YouboraIMAAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBA8D0A1FA324B3004F8B6D /* YouboraIMAAdapter.framework */; };
 		CDB780E91FA35B8A00B1F03E /* YouboraIMAAdapter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDBA8D0A1FA324B3004F8B6D /* YouboraIMAAdapter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDBA8CF01FA31DC6004F8B6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBA8CEF1FA31DC6004F8B6D /* main.m */; };
@@ -50,7 +48,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				CDB780E91FA35B8A00B1F03E /* YouboraIMAAdapter.framework in Embed Frameworks */,
-				CDB780E61FA352AD00B1F03E /* YouboraAVPlayerAdapter.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,7 +60,6 @@
 		9C8721FF4C5C355CF3D07161 /* Pods-IMAAdapterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMAAdapterExample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-IMAAdapterExample/Pods-IMAAdapterExample.release.xcconfig"; sourceTree = "<group>"; };
 		CD03E22A1FAB185700F56F8A /* LBDelegateMatrioska.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBDelegateMatrioska.h; sourceTree = "<group>"; };
 		CD03E22B1FAB185700F56F8A /* LBDelegateMatrioska.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBDelegateMatrioska.m; sourceTree = "<group>"; };
-		CDB780E41FA352AD00B1F03E /* YouboraAVPlayerAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouboraAVPlayerAdapter.framework; path = ../YouboraAVPlayerAdapter.framework; sourceTree = "<group>"; };
 		CDBA8CEB1FA31DC6004F8B6D /* IMAAdapterExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMAAdapterExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBA8CEF1FA31DC6004F8B6D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CDBA8CF11FA31DC6004F8B6D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -92,7 +88,6 @@
 				CDBA8D111FA32A70004F8B6D /* AVKit.framework in Frameworks */,
 				CDB780E81FA35B8A00B1F03E /* YouboraIMAAdapter.framework in Frameworks */,
 				CDBA8D171FA32B3E004F8B6D /* YouboraConfigUtils.framework in Frameworks */,
-				CDB780E51FA352AD00B1F03E /* YouboraAVPlayerAdapter.framework in Frameworks */,
 				CF9D7ED9B17B803333F9DDF8 /* Pods_IMAAdapterExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,7 +116,6 @@
 		CDBA8CE21FA31DC6004F8B6D = {
 			isa = PBXGroup;
 			children = (
-				CDB780E41FA352AD00B1F03E /* YouboraAVPlayerAdapter.framework */,
 				CDBA8D051FA324B2004F8B6D /* YouboraIMAAdapter.xcodeproj */,
 				CDBA8CED1FA31DC6004F8B6D /* IMAAdapterExample */,
 				CDBA8CEC1FA31DC6004F8B6D /* Products */,
@@ -284,11 +278,13 @@
 				"${SRCROOT}/../Pods/Target Support Files/Pods-IMAAdapterExample/Pods-IMAAdapterExample-frameworks.sh",
 				"${PODS_ROOT}/GoogleAds-IMA-iOS-SDK/GoogleInteractiveMediaAds/GoogleInteractiveMediaAds.framework",
 				"${BUILT_PRODUCTS_DIR}/YouboraLib/YouboraLib.framework",
+				"${BUILT_PRODUCTS_DIR}/YouboraAVPlayerAdapter/YouboraAVPlayerAdapter.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleInteractiveMediaAds.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouboraLib.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouboraAVPlayerAdapter.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

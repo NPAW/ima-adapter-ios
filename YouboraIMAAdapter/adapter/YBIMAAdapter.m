@@ -117,4 +117,17 @@ IMAAdsManager *manager;
 }
 
 
+- (NSString *)getPlayerName {
+    return PLUGIN_NAME;
+}
+
+- (NSString *)getPlayerVersion {
+    return @PLUGIN_NAME_DEF;
+}
+
+- (NSString *)getVersion {
+    return PLUGIN_VERSION;
+}
+
+
 @end
