@@ -115,8 +115,6 @@ IMAAdsManager *manager;
 - (IMAAdsManager *) getAdPlayer{
     return (IMAAdsManager *)self.player;
 }
-
-
 - (NSString *)getPlayerName {
     return PLUGIN_NAME;
 }

@@ -153,6 +153,7 @@ NSString *const kTestAppAdTagUrl =
     //Don' t mind the warning about incompatible types
     adsAdapter.player.delegate = self.multicast;
     [self.youboraPlugin setAdsAdapter:adsAdapter];
+    //[self.youboraPlugin.adsAdapter fireAdInit];
     
     // Create ads rendering settings and tell the SDK to use the in-app browser.
     IMAAdsRenderingSettings *adsRenderingSettings = [[IMAAdsRenderingSettings alloc] init];
