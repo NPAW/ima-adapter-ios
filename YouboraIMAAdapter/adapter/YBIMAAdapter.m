@@ -83,7 +83,7 @@ IMAAdsManager *manager;
     // Something went wrong with the ads manager after ads were loaded. Log the error and play the
     // content.
     NSLog(@"AdsManager error: %@", error.message);
-    [self fireFatalErrorWithMessage:error.message code:[NSString stringWithFormat:@"%ld",error.code] andMetadata:nil];
+    [self fireFatalErrorWithMessage:error.message code:[NSString stringWithFormat:@"%ld",(long)error.code] andMetadata:nil];
 }
 
 - (void)adsManagerDidRequestContentPause:(IMAAdsManager *)adsManager {
