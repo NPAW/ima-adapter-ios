@@ -39,12 +39,25 @@ NSString *const kTestAppAdTagUrl =
     @"iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&"
     @"gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&"
     @"cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator=";
-
+    
+NSString *const kTestSkippableAppAdTagUrl =
+    @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/"
+    @"single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_"
+    @"position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=";
+    
+NSString *const kTestNonLinearAppAdTagUrl =
+    @"https://pubads.g.doubleclick.net/gampad/ads?sz=480x70&iu=/124319096/external/"
+    @"single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&"
+    @"cust_params=deployment%3Ddevsite%26sample_ct%3Dnonlinear&correlator=";
+    
+int midRollCount;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    
+    midRollCount = 0;
     
     // Set Youbora log level
     [YBLog setDebugLevel:YBLogLevelVerbose];
@@ -81,7 +94,7 @@ NSString *const kTestAppAdTagUrl =
     [self startYoubora];
     
     // Start playback
-    [self requestAds];
+    [self requestAdsWithTag:kTestAppAdTagUrl];
     //[self.playerViewController.player play];
     
 }
@@ -127,12 +140,12 @@ NSString *const kTestAppAdTagUrl =
     self.adsLoader.delegate = self;
 }
 
-- (void)requestAds {
+- (void)requestAdsWithTag:(NSString*) adTag  {
     // Create an ad display container for ad rendering.
     IMAAdDisplayContainer *adDisplayContainer =
     [[IMAAdDisplayContainer alloc] initWithAdContainer:self.adVIew companionSlots:nil];
     // Create an ad request with our ad tag, display container, and optional user context.
-    IMAAdsRequest *request = [[IMAAdsRequest alloc] initWithAdTagUrl:kTestAppAdTagUrl
+    IMAAdsRequest *request = [[IMAAdsRequest alloc] initWithAdTagUrl:adTag
                                                   adDisplayContainer:adDisplayContainer
                                                      contentPlayhead:self.contentPlayhead
                                                          userContext:nil];
@@ -153,7 +166,7 @@ NSString *const kTestAppAdTagUrl =
     //Don' t mind the warning about incompatible types
     adsAdapter.player.delegate = self.multicast;
     [self.youboraPlugin setAdsAdapter:adsAdapter];
-    //[self.youboraPlugin.adsAdapter fireAdInit];
+    [self.youboraPlugin.adsAdapter fireAdInit];
     
     // Create ads rendering settings and tell the SDK to use the in-app browser.
     IMAAdsRenderingSettings *adsRenderingSettings = [[IMAAdsRenderingSettings alloc] init];
@@ -198,6 +211,22 @@ NSString *const kTestAppAdTagUrl =
     [self.adVIew setHidden:YES];
     [self.view sendSubviewToBack:self.adVIew];
     [self.playerViewController.player play];
+    
+    //Just to test midrolls
+    if(midRollCount == 0){
+        dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 7);
+        dispatch_after(delay, dispatch_get_main_queue(), ^(void){
+            [self requestAdsWithTag:kTestSkippableAppAdTagUrl];
+            midRollCount++;
+        });
+    }
+    if(midRollCount == 1){
+        dispatch_time_t delay2 = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 7);
+        dispatch_after(delay2, dispatch_get_main_queue(), ^(void){
+            [self requestAdsWithTag:kTestAppAdTagUrl];
+        });
+    }
+    
 }
 
 /*
