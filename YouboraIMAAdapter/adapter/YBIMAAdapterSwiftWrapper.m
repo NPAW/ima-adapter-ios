@@ -26,6 +26,11 @@
     return self;
 }
 
+- (void) fireAdInit{
+    [self initAdapterIfNecessary];
+    [self.plugin.adsAdapter fireAdInit];
+}
+
 - (void) fireStart{
     [self initAdapterIfNecessary];
     [self.plugin.adsAdapter fireStart];

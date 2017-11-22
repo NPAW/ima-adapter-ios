@@ -16,4 +16,5 @@ FOUNDATION_EXPORT const unsigned char YouboraIMAAdapterVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <YouboraIMAAdapter/PublicHeader.h>
 #import <YouboraIMAAdapter/YBIMAAdapter.h>
+#import <YouboraIMAAdapter/YBIMAAdapterSwiftWrapper.h>
 

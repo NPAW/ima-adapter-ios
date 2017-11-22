@@ -12,6 +12,7 @@
 
 
 - (id) initWithPlayer:(NSObject*)player andPlugin:(YBPlugin*)plugin;
+- (void) fireAdInit;
 - (void) fireStart;
 - (void) fireStop;
 - (void) firePause;
