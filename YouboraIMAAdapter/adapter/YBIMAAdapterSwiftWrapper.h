@@ -11,7 +11,7 @@
 @interface YBIMAAdapterSwiftWrapper : NSObject
 
 
-- (id) initWithPlayer:(NSObject*)player andPlugin:(YBPlugin*)plugin;
+- (id) initWithPlayer:(NSObject*)adsManager andPlugin:(YBPlugin*)plugin;
 - (void) fireAdInit;
 - (void) fireStart;
 - (void) fireStop;

@@ -18,9 +18,9 @@
 
 @implementation YBIMAAdapterSwiftWrapper
 
-- (id) initWithPlayer:(NSObject*)player andPlugin:(YBPlugin*)plugin{
+- (id) initWithPlayer:(NSObject*)adsManager andPlugin:(YBPlugin*)plugin{
     if (self = [super init]) {
-        self.player = player;
+        self.player = adsManager;
         self.plugin = plugin;
     }
     return self;
