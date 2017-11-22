@@ -59,6 +59,8 @@ int midRollCount;
     
     midRollCount = 0;
     
+    [self.navigationController setHidesBarsOnTap:YES];
+    
     // Set Youbora log level
     [YBLog setDebugLevel:YBLogLevelVerbose];
     
