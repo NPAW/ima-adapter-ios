@@ -36,11 +36,13 @@ IMAAdsManager *manager;
 - (void)registerListeners {
     [super registerListeners];
     
-    self.player.delegate = self;
-    
     if(self.delegates == nil){
         self.delegates = [[NSMutableArray alloc]init];
     }
+    
+    [self.delegates addObject:self.player.delegate];
+    
+    self.player.delegate = self;
     manager = [self getAdPlayer];
 }
 
@@ -49,11 +51,7 @@ IMAAdsManager *manager;
 }
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdEvent:(IMAAdEvent *)event {
-    //[self.delegates makeObjectsPerformSelector:[adsManager:adsManager didReceiveAdEvent:event]]
-    NSArray* params;
     for (int k = 0; k < [self.delegates count]; k++) {
-        params = @[adsManager,event];
-        //[self.delegates[k] performSelector:@selector(adsManager:didReceiveAdEvent:) withObject:params];
         [self.delegates[k] performSelector:@selector(adsManager:didReceiveAdEvent:) withObject:adsManager withObject:event];
     }
     switch (event.type) {
@@ -96,19 +94,24 @@ IMAAdsManager *manager;
 }
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdError:(IMAAdError *)error {
-    // Something went wrong with the ads manager after ads were loaded. Log the error and play the
-    // content.
+    for (int k = 0; k < [self.delegates count]; k++) {
+        [self.delegates[k] performSelector:@selector(adsManager:didReceiveAdError:) withObject:adsManager withObject:error];
+    }
     NSLog(@"AdsManager error: %@", error.message);
     [self fireFatalErrorWithMessage:error.message code:[NSString stringWithFormat:@"%ld",(long)error.code] andMetadata:nil];
 }
 
 - (void)adsManagerDidRequestContentPause:(IMAAdsManager *)adsManager {
-    
+    for (int k = 0; k < [self.delegates count]; k++) {
+        [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentPause:) withObject:adsManager];
+    }
     
 }
 
 - (void)adsManagerDidRequestContentResume:(IMAAdsManager *)adsManager {
-    
+    for (int k = 0; k < [self.delegates count]; k++) {
+        [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentResume:) withObject:adsManager];
+    }
 }
 
 #pragma mark - Overridden get methods

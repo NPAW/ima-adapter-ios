@@ -159,10 +159,10 @@ int midRollCount;
     // NOTE: This line will cause a warning until the next step, "Display Ads".
     self.adsManager.delegate = self;
     
-    id<IMAAdsManagerDelegate> oldOne = self.adsManager.delegate;
+    //id<IMAAdsManagerDelegate> oldOne = self.adsManager.delegate;
     
     YBIMAAdapter* adsAdapter = [[YBIMAAdapter alloc] initWithPlayer:self.adsManager];
-    [adsAdapter addDelegate:oldOne];
+    //[adsAdapter addDelegate:oldOne];
     [self.youboraPlugin setAdsAdapter:adsAdapter];
     [self.youboraPlugin.adsAdapter fireAdInit];
     
