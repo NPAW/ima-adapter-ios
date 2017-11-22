@@ -11,8 +11,6 @@
 #import <YouboraAVPlayerAdapter/YouboraAVPlayerAdapter.h>
 #import <YouboraIMAAdapter/YBIMAAdapter.h>
 
-#import "LBDelegateMatrioska.h"
-
 @import AVFoundation;
 @import AVKit;
 
@@ -22,7 +20,6 @@
 
 @property (nonatomic, strong) YBAVPlayerAdapter * adapter;
 @property (nonatomic, strong) YBPlugin * youboraPlugin;
-@property (nonatomic, strong) LBDelegateMatrioska* multicast;
 
 //IMA
 @property(nonatomic, strong) IMAAVPlayerContentPlayhead *contentPlayhead;
@@ -162,11 +159,10 @@ int midRollCount;
     // NOTE: This line will cause a warning until the next step, "Display Ads".
     self.adsManager.delegate = self;
     
-    YBIMAAdapter* adsAdapter = [[YBIMAAdapter alloc] initWithPlayer:self.adsManager];
-    self.multicast = [[LBDelegateMatrioska alloc] initWithDelegates:@[self,adsAdapter.player.delegate]];
+    id<IMAAdsManagerDelegate> oldOne = self.adsManager.delegate;
     
-    //Don' t mind the warning about incompatible types
-    adsAdapter.player.delegate = self.multicast;
+    YBIMAAdapter* adsAdapter = [[YBIMAAdapter alloc] initWithPlayer:self.adsManager];
+    [adsAdapter addDelegate:oldOne];
     [self.youboraPlugin setAdsAdapter:adsAdapter];
     [self.youboraPlugin.adsAdapter fireAdInit];
     

@@ -24,22 +24,38 @@
 #define PLUGIN_NAME @PLUGIN_NAME_DEF "-" PLUGIN_PLATFORM_DEF
 #define PLUGIN_VERSION @PLUGIN_VERSION_DEF "-" PLUGIN_NAME_DEF "-" PLUGIN_PLATFORM_DEF
 
+
+@interface YBIMAAdapter()
+    @property (nonatomic,strong,readwrite) NSMutableArray* delegates;
+@end
+
 @implementation YBIMAAdapter
 
 IMAAdsManager *manager;
 
 - (void)registerListeners {
     [super registerListeners];
+    
     self.player.delegate = self;
+    
+    if(self.delegates == nil){
+        self.delegates = [[NSMutableArray alloc]init];
+    }
     manager = [self getAdPlayer];
 }
 
 - (void) unregisterListeners {
-    
     self.player.delegate = nil;
 }
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdEvent:(IMAAdEvent *)event {
+    //[self.delegates makeObjectsPerformSelector:[adsManager:adsManager didReceiveAdEvent:event]]
+    NSArray* params;
+    for (int k = 0; k < [self.delegates count]; k++) {
+        params = @[adsManager,event];
+        //[self.delegates[k] performSelector:@selector(adsManager:didReceiveAdEvent:) withObject:params];
+        [self.delegates[k] performSelector:@selector(adsManager:didReceiveAdEvent:) withObject:adsManager withObject:event];
+    }
     switch (event.type) {
         case kIMAAdEvent_LOADED:
             [self fireStart];
@@ -127,5 +143,12 @@ IMAAdsManager *manager;
     return PLUGIN_VERSION;
 }
 
+- (void) addDelegate:(id<IMAAdsManagerDelegate>)delegate{
+    [self.delegates addObject:delegate];
+}
+
+-(void) dummyMethod{
+    [YBLog debug:@"Hi dummy"];
+}
 
 @end

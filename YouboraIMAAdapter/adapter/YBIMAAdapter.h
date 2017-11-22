@@ -11,4 +11,5 @@
 
 @interface YBIMAAdapter : YBPlayerAdapter<IMAAdsManager *> <IMAAdsManagerDelegate>
 
+- (void) addDelegate:(id<IMAAdsManagerDelegate>)delegate;
 @end

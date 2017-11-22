@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CDA5D1641FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */; };
+		CDA5D1641FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDA5D1651FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D1631FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m */; };
 		CDBA8CB41FA311C0004F8B6D /* YouboraIMAAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBA8CB21FA311C0004F8B6D /* YouboraIMAAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDBA8CBD1FA31B5D004F8B6D /* YBIMAAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBA8CBB1FA31B5D004F8B6D /* YBIMAAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -79,8 +79,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDA5D1641FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h in Headers */,
 				CDBA8CB41FA311C0004F8B6D /* YouboraIMAAdapter.h in Headers */,
+				CDA5D1641FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h in Headers */,
 				CDBA8CBD1FA31B5D004F8B6D /* YBIMAAdapter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
