@@ -227,6 +227,10 @@ int midRollCount;
     
 }
 
+- (void)adsManager:(IMAAdsManager *)adsManager adDidProgressToTime:(NSTimeInterval)mediaTime totalTime:(NSTimeInterval)totalTime{
+    
+}
+
 /*
  #pragma mark - Navigation
  

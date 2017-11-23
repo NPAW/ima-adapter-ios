@@ -19,6 +19,4 @@
 - (void) fireResume;
 - (void) fireJoin;
 
-- (void) addDelegate:(id<IMAAdsManagerDelegate>)delegate;
-
 @end

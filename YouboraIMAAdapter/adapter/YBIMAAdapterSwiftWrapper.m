@@ -70,9 +70,4 @@
     }
 }
 
-- (void) addDelegate:(id<IMAAdsManagerDelegate>)delegate{
-    [self initAdapterIfNecessary];
-    [self.adapter addDelegate:delegate];
-}
-
 @end

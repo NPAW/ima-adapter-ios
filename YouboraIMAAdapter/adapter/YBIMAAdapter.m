@@ -8,6 +8,8 @@
 
 #import "YBIMAAdapter.h"
 
+#import <objc/message.h>
+
 // Constants
 #define MACRO_NAME(f) #f
 #define MACRO_VALUE(f) MACRO_NAME(f)
@@ -52,7 +54,9 @@ IMAAdsManager *manager;
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdEvent:(IMAAdEvent *)event {
     for (int k = 0; k < [self.delegates count]; k++) {
-        [self.delegates[k] performSelector:@selector(adsManager:didReceiveAdEvent:) withObject:adsManager withObject:event];
+        if([self.delegates[k] respondsToSelector:@selector(adsManager:didReceiveAdEvent:)]){
+            [self.delegates[k] performSelector:@selector(adsManager:didReceiveAdEvent:) withObject:adsManager withObject:event];
+        }
     }
     switch (event.type) {
         case kIMAAdEvent_LOADED:
@@ -95,7 +99,9 @@ IMAAdsManager *manager;
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdError:(IMAAdError *)error {
     for (int k = 0; k < [self.delegates count]; k++) {
-        [self.delegates[k] performSelector:@selector(adsManager:didReceiveAdError:) withObject:adsManager withObject:error];
+        if([self.delegates[k] respondsToSelector:@selector(adsManager:didReceiveAdError:)]){
+            [self.delegates[k] performSelector:@selector(adsManager:didReceiveAdError:) withObject:adsManager withObject:error];
+        }
     }
     NSLog(@"AdsManager error: %@", error.message);
     [self fireFatalErrorWithMessage:error.message code:[NSString stringWithFormat:@"%ld",(long)error.code] andMetadata:nil];
@@ -103,14 +109,18 @@ IMAAdsManager *manager;
 
 - (void)adsManagerDidRequestContentPause:(IMAAdsManager *)adsManager {
     for (int k = 0; k < [self.delegates count]; k++) {
-        [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentPause:) withObject:adsManager];
+        if([self.delegates[k] respondsToSelector:@selector(adsManagerDidRequestContentPause:)]){
+            [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentPause:) withObject:adsManager];
+        }
     }
     
 }
 
 - (void)adsManagerDidRequestContentResume:(IMAAdsManager *)adsManager {
     for (int k = 0; k < [self.delegates count]; k++) {
-        [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentResume:) withObject:adsManager];
+        if([self.delegates[k] respondsToSelector:@selector(adsManagerDidRequestContentResume:)]){
+            [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentResume:) withObject:adsManager];
+        }
     }
 }
 
@@ -146,12 +156,79 @@ IMAAdsManager *manager;
     return PLUGIN_VERSION;
 }
 
-- (void) addDelegate:(id<IMAAdsManagerDelegate>)delegate{
-    [self.delegates addObject:delegate];
+//Optional delegate methods
+
+- (void)adsManager:(IMAAdsManager *)adsManager adDidProgressToTime:(NSTimeInterval)mediaTime totalTime:(NSTimeInterval)totalTime{
+    
+    for (int k = 0; k < [self.delegates count]; k++) {
+        if([self.delegates[k] respondsToSelector:@selector(adsManager:adDidProgressToTime:totalTime:)]){
+            NSMethodSignature *sig = [self.delegates[k] methodSignatureForSelector:@selector(adsManager:adDidProgressToTime:totalTime:)];
+            NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
+            [invo setTarget:self.delegates[k]];
+            [invo setSelector:@selector(adsManager:adDidProgressToTime:totalTime:)];
+            //Index 0 and 1 are reserved, so the first one is 2
+            [invo setArgument:&adsManager atIndex:2];
+            [invo setArgument:&mediaTime atIndex:3];
+            [invo setArgument:&totalTime atIndex:4];
+            [invo invoke];
+        }
+    }
 }
 
--(void) dummyMethod{
-    [YBLog debug:@"Hi dummy"];
+- (void)adsManagerAdPlaybackReady:(IMAAdsManager *)adsManager{
+    for (int k = 0; k < [self.delegates count]; k++) {
+        if([self.delegates[k] respondsToSelector:@selector(adsManagerAdPlaybackReady:)]){
+            [self.delegates[k] performSelector:@selector(adsManagerAdPlaybackReady:) withObject:adsManager];
+        }
+    }
 }
+
+- (void)adsManagerAdDidStartBuffering:(IMAAdsManager *)adsManager{
+    for (int k = 0; k < [self.delegates count]; k++) {
+        if([self.delegates[k] respondsToSelector:@selector(adsManagerAdDidStartBuffering:)]){
+            [self.delegates[k] performSelector:@selector(adsManagerAdDidStartBuffering:) withObject:adsManager];
+        }
+    }
+    [self fireBufferBegin];
+}
+
+- (void)adsManager:(IMAAdsManager *)adsManager adDidBufferToMediaTime:(NSTimeInterval)mediaTime{
+    for (int k = 0; k < [self.delegates count]; k++) {
+        if([self.delegates[k] respondsToSelector:@selector(adsManager:adDidBufferToMediaTime:)]){
+            
+            NSMethodSignature *sig = [self.delegates[k] methodSignatureForSelector:@selector(adsManager:adDidBufferToMediaTime:)];
+            NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
+            [invo setTarget:self.delegates[k]];
+            [invo setSelector:@selector(adsManager:adDidBufferToMediaTime:)];
+            //Index 0 and 1 are reserved, so the first one is 2
+            [invo setArgument:&adsManager atIndex:2];
+            [invo setArgument:&mediaTime atIndex:3];
+            [invo invoke];
+        }
+    }
+    [self fireBufferEnd];
+}
+
+//Just for multicast
+/*- (void) performSelector: (SEL) selector forDelegate:(id<IMAAdsManagerDelegate>) delegate withObject: (id) p1 withObject: (id) p2 withObject: (id) p3
+{
+    NSMethodSignature *sig = [self methodSignatureForSelector:selector];
+    if (!sig)
+    return nil;
+    
+    NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
+    [invo setTarget:self];
+    [invo setSelector:selector];
+    [invo setArgument:&p1 atIndex:2];
+    [invo setArgument:&p2 atIndex:3];
+    [invo setArgument:&p3 atIndex:4];
+    [invo invoke];
+    if (sig.methodReturnLength) {
+        id anObject;
+        [invo getReturnValue:&anObject];
+        return anObject;
+    }
+    return nil;
+}*/
 
 @end
