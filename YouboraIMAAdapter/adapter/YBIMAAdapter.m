@@ -81,6 +81,9 @@ IMAAdsManager *manager;
         case kIMAAdEvent_SKIPPED:
             [self fireStop:@{@"skipped":@"true"}];
             break;
+        case kIMAAdEvent_ALL_ADS_COMPLETED:
+            self.plugin.options.adsAfterStop = 0;
+            break;
         case kIMAAdEvent_AD_BREAK_READY:
         case kIMAAdEvent_AD_BREAK_ENDED:
         case kIMAAdEvent_AD_BREAK_STARTED:
@@ -90,7 +93,6 @@ IMAAdsManager *manager;
         case kIMAAdEvent_FIRST_QUARTILE:
         case kIMAAdEvent_STREAM_STARTED:
         case kIMAAdEvent_THIRD_QUARTILE:
-        case kIMAAdEvent_ALL_ADS_COMPLETED:
         case kIMAAdEvent_CUEPOINTS_CHANGED:
             break;
         
@@ -113,6 +115,7 @@ IMAAdsManager *manager;
             [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentPause:) withObject:adsManager];
         }
     }
+    [self fireStart];
     
 }
 
@@ -122,6 +125,7 @@ IMAAdsManager *manager;
             [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentResume:) withObject:adsManager];
         }
     }
+    [self fireStop];
 }
 
 #pragma mark - Overridden get methods

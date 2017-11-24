@@ -19,4 +19,8 @@
 - (void) fireResume;
 - (void) fireJoin;
 
+- (YBPlugin *) getPlugin;
+- (YBIMAAdapter *) getAdapter;
+- (void) removeAdapter;
+
 @end

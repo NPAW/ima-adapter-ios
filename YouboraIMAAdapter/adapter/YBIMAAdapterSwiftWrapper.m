@@ -70,4 +70,8 @@
     }
 }
 
+- (void) removeAdapter{
+    [self.plugin removeAdsAdapter];
+}
+
 @end
