@@ -46,6 +46,12 @@ NSString *const kTestNonLinearAppAdTagUrl =
     @"https://pubads.g.doubleclick.net/gampad/ads?sz=480x70&iu=/124319096/external/"
     @"single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&"
     @"cust_params=deployment%3Ddevsite%26sample_ct%3Dnonlinear&correlator=";
+
+NSString *const kTestAppAdTagUrlVMAPPostroll =
+    @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/"
+    @"ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap"
+    @"&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpostonly"
+    @"&cmsid=496&vid=short_onecue&correlator=";
     
 int midRollCount;
 - (void)viewDidLoad {
@@ -211,7 +217,7 @@ int midRollCount;
     [self.playerViewController.player play];
     
     //Just to test midrolls
-    if(midRollCount == 0){
+    /*if(midRollCount == 0){
         dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 7);
         dispatch_after(delay, dispatch_get_main_queue(), ^(void){
             [self requestAdsWithTag:kTestSkippableAppAdTagUrl];
@@ -223,7 +229,7 @@ int midRollCount;
         dispatch_after(delay2, dispatch_get_main_queue(), ^(void){
             [self requestAdsWithTag:kTestAppAdTagUrl];
         });
-    }
+    }*/
     
 }
 

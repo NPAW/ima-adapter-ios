@@ -73,7 +73,7 @@ IMAAdsManager *manager;
             break;
         case kIMAAdEvent_TAPPED:
         case kIMAAdEvent_CLICKED:
-            //[self fireClick];
+            [self fireClick];
             break;
         case kIMAAdEvent_COMPLETE:
             [self fireStop];
@@ -126,7 +126,7 @@ IMAAdsManager *manager;
 
 #pragma mark - Overridden get methods
 - (NSNumber *)getPlayhead{
- return [NSNumber numberWithDouble:manager.adPlaybackInfo.currentMediaTime];
+ return @(manager.adPlaybackInfo.currentMediaTime);
 }
 
 - (NSNumber *)getDuration{
@@ -135,6 +135,20 @@ IMAAdsManager *manager;
 
 - (NSString*)getTitle{
     return manager.adPlaybackInfo.description;
+}
+
+- (YBAdPosition)getPosition {
+    if([[self.plugin getPlayhead] doubleValue] <= 0){
+        return YBAdPositionPre;
+    }
+    if([[self.plugin getPlayhead] doubleValue] >= [[self.plugin getDuration] doubleValue]){
+        return YBAdPositionPost;
+    }
+    return YBAdPositionMid;
+    
+    /*if(cuePoints){
+        
+    }*/
 }
 
 /*- (NSString*)getResource{
@@ -189,7 +203,9 @@ IMAAdsManager *manager;
             [self.delegates[k] performSelector:@selector(adsManagerAdDidStartBuffering:) withObject:adsManager];
         }
     }
-    [self fireBufferBegin];
+    if(!self.flags.paused){
+        [self fireBufferBegin];
+    }
 }
 
 - (void)adsManager:(IMAAdsManager *)adsManager adDidBufferToMediaTime:(NSTimeInterval)mediaTime{
@@ -208,27 +224,5 @@ IMAAdsManager *manager;
     }
     [self fireBufferEnd];
 }
-
-//Just for multicast
-/*- (void) performSelector: (SEL) selector forDelegate:(id<IMAAdsManagerDelegate>) delegate withObject: (id) p1 withObject: (id) p2 withObject: (id) p3
-{
-    NSMethodSignature *sig = [self methodSignatureForSelector:selector];
-    if (!sig)
-    return nil;
-    
-    NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
-    [invo setTarget:self];
-    [invo setSelector:selector];
-    [invo setArgument:&p1 atIndex:2];
-    [invo setArgument:&p2 atIndex:3];
-    [invo setArgument:&p3 atIndex:4];
-    [invo invoke];
-    if (sig.methodReturnLength) {
-        id anObject;
-        [invo getReturnValue:&anObject];
-        return anObject;
-    }
-    return nil;
-}*/
 
 @end
