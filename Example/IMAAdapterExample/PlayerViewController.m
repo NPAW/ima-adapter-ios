@@ -32,50 +32,34 @@
 @implementation PlayerViewController
 
 NSString *const kTestAppAdTagUrl =
-    @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&"
-    @"iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&"
-    @"gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&"
-    @"cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator=";
+    @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&"
+    @"ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&"
+    @"cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496"
+    @"&vid=short_onecue&correlator=";
     
-NSString *const kTestSkippableAppAdTagUrl =
-    @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/"
-    @"single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_"
-    @"position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=";
-    
-NSString *const kTestNonLinearAppAdTagUrl =
-    @"https://pubads.g.doubleclick.net/gampad/ads?sz=480x70&iu=/124319096/external/"
-    @"single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&"
-    @"cust_params=deployment%3Ddevsite%26sample_ct%3Dnonlinear&correlator=";
-
-NSString *const kTestAppAdTagUrlVMAPPostroll =
-    @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/"
-    @"ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap"
-    @"&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpostonly"
-    @"&cmsid=496&vid=short_onecue&correlator=";
-    
-int midRollCount;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
     
-    midRollCount = 0;
-    
-    [self.navigationController setHidesBarsOnTap:YES];
+    //[self.navigationController setHidesBarsOnTap:YES];
+    self.navigationController.navigationBarHidden = YES;
     
     // Set Youbora log level
     [YBLog setDebugLevel:YBLogLevelVerbose];
     
     // Create Youbora plugin
     YBOptions * youboraOptions = [YouboraConfigManager getOptions]; // [YBOptions new];
+    youboraOptions.adsAfterStop = @1;
     self.youboraPlugin = [[YBPlugin alloc] initWithOptions:youboraOptions];
     
     // Send init - this creates a new view in Youbora
-    //[self.youboraPlugin fireInit];
+    [self.youboraPlugin fireInit];
     
     // Video player controller
     self.playerViewController = [[AVPlayerViewController alloc] init];
+    self.playerViewController.showsPlaybackControls = YES;
     
     // Add view to the current screen
     [self addChildViewController:self.playerViewController];
@@ -92,11 +76,11 @@ int midRollCount;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(contentDidFinishPlaying:)
                                                  name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:self.playerViewController.player.currentItem];
+                                               object:nil];
     
     [self setupAdsLoader];
     // As soon as we have the player instance, create an Adapter to listen for the player events
-    [self startYoubora];
+    //[self startYoubora];
     
     // Start playback
     [self requestAdsWithTag:kTestAppAdTagUrl];
@@ -132,12 +116,11 @@ int midRollCount;
 
 #pragma mark - IMA
 - (void)contentDidFinishPlaying:(NSNotification *)notification {
-    // Make sure we don't call contentComplete as a result of an ad completing.
-    if (notification.object == self.playerViewController.player) {
-        // NOTE: This line will cause an error until the next step, "Request Ads".
+    if (notification.object == self.playerViewController.player.currentItem) {
         [self.adsLoader contentComplete];
     }
 }
+    
 - (void)setupAdsLoader {
     // Re-use this IMAAdsLoader instance for the entire lifecycle of your app.
     self.adsLoader = [[IMAAdsLoader alloc] initWithSettings:nil];
@@ -194,6 +177,9 @@ int midRollCount;
         [self.view bringSubviewToFront:self.adVIew];
         [adsManager start];
     }
+    if(event.type == kIMAAdEvent_COMPLETE && event.ad.adPodInfo.podIndex == 0){
+        [self startYoubora];
+    }
 }
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdError:(IMAAdError *)error {
@@ -215,25 +201,6 @@ int midRollCount;
     [self.adVIew setHidden:YES];
     [self.view sendSubviewToBack:self.adVIew];
     [self.playerViewController.player play];
-    
-    //Just to test midrolls
-    /*if(midRollCount == 0){
-        dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 7);
-        dispatch_after(delay, dispatch_get_main_queue(), ^(void){
-            [self requestAdsWithTag:kTestSkippableAppAdTagUrl];
-            midRollCount++;
-        });
-    }
-    if(midRollCount == 1){
-        dispatch_time_t delay2 = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 7);
-        dispatch_after(delay2, dispatch_get_main_queue(), ^(void){
-            [self requestAdsWithTag:kTestAppAdTagUrl];
-        });
-    }*/
-    
-}
-
-- (void)adsManager:(IMAAdsManager *)adsManager adDidProgressToTime:(NSTimeInterval)mediaTime totalTime:(NSTimeInterval)totalTime{
     
 }
 

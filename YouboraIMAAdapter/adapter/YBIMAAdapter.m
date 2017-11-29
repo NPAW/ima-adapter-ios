@@ -8,8 +8,6 @@
 
 #import "YBIMAAdapter.h"
 
-#import <objc/message.h>
-
 // Constants
 #define MACRO_NAME(f) #f
 #define MACRO_VALUE(f) MACRO_NAME(f)
@@ -29,6 +27,7 @@
 
 @interface YBIMAAdapter()
     @property (nonatomic,strong,readwrite) NSMutableArray* delegates;
+    @property YBAdPosition lastPosition;
 @end
 
 @implementation YBIMAAdapter
@@ -75,15 +74,21 @@ IMAAdsManager *manager;
         case kIMAAdEvent_CLICKED:
             [self fireClick];
             break;
-        case kIMAAdEvent_COMPLETE:
+        case kIMAAdEvent_COMPLETE:{
+        self.lastPosition = self.lastPosition == YBAdPositionPost ? YBAdPositionPost : [self getPosition];
             [self fireStop];
             break;
+        }
         case kIMAAdEvent_SKIPPED:
             [self fireStop:@{@"skipped":@"true"}];
             break;
-        case kIMAAdEvent_ALL_ADS_COMPLETED:
-            self.plugin.options.adsAfterStop = 0;
+        case kIMAAdEvent_ALL_ADS_COMPLETED:{
+            self.plugin.options.adsAfterStop = @0;
+            if(self.lastPosition == YBAdPositionPost){
+                [self.plugin fireStop:nil];
+            }
             break;
+        }
         case kIMAAdEvent_AD_BREAK_READY:
         case kIMAAdEvent_AD_BREAK_ENDED:
         case kIMAAdEvent_AD_BREAK_STARTED:
