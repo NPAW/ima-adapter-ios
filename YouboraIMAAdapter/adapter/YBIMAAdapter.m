@@ -89,10 +89,12 @@ IMAAdsManager *manager;
             }
             break;
         }
+        case kIMAAdEvent_LOG:{
+            [YBLog debug:@"EVENT_LOG: %@",[event.adData description]];
+        }
         case kIMAAdEvent_AD_BREAK_READY:
         case kIMAAdEvent_AD_BREAK_ENDED:
         case kIMAAdEvent_AD_BREAK_STARTED:
-        case kIMAAdEvent_LOG:
         case kIMAAdEvent_MIDPOINT:
         case kIMAAdEvent_STREAM_LOADED:
         case kIMAAdEvent_FIRST_QUARTILE:
@@ -120,7 +122,8 @@ IMAAdsManager *manager;
             [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentPause:) withObject:adsManager];
         }
     }
-    [self fireStart];
+    
+    //[self fireStart];
     
 }
 
@@ -130,7 +133,7 @@ IMAAdsManager *manager;
             [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentResume:) withObject:adsManager];
         }
     }
-    [self fireStop];
+    //[self fireStop];
 }
 
 #pragma mark - Overridden get methods

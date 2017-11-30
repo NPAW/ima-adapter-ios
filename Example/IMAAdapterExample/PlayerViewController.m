@@ -21,6 +21,9 @@
 @property (nonatomic, strong) YBAVPlayerAdapter * adapter;
 @property (nonatomic, strong) YBPlugin * youboraPlugin;
 
+//Testing purposes
+@property BOOL adapterAdded;
+
 //IMA
 @property(nonatomic, strong) IMAAVPlayerContentPlayhead *contentPlayhead;
 @property(nonatomic, strong) IMAAdsLoader *adsLoader;
@@ -39,8 +42,8 @@ NSString *const kTestAppAdTagUrl =
     
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
+    self.adapterAdded = NO;
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
     
     //[self.navigationController setHidesBarsOnTap:YES];
@@ -52,6 +55,7 @@ NSString *const kTestAppAdTagUrl =
     // Create Youbora plugin
     YBOptions * youboraOptions = [YouboraConfigManager getOptions]; // [YBOptions new];
     youboraOptions.adsAfterStop = @1;
+    youboraOptions.autoDetectBackground = NO;
     self.youboraPlugin = [[YBPlugin alloc] initWithOptions:youboraOptions];
     
     // Send init - this creates a new view in Youbora
@@ -91,7 +95,7 @@ NSString *const kTestAppAdTagUrl =
 - (void) startYoubora {
     YBAVPlayerAdapter * adapter = [[YBAVPlayerAdapter alloc] initWithPlayer:self.playerViewController.player];
     [self.youboraPlugin setAdapter:adapter];
-    [self.youboraPlugin.adapter fireStart];
+    //[self.youboraPlugin.adapter fireStart];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -100,18 +104,20 @@ NSString *const kTestAppAdTagUrl =
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    
-    [self.youboraPlugin removeAdapter];
+    //[self.youboraPlugin pter];
     [super viewWillDisappear:animated];
 }
 
 -(void)appDidBecomeActive:(NSNotification*)notification {
-    [self startYoubora];
+    //[self startYoubora];
+    if(!self.adsManager.adPlaybackInfo.isPlaying){
+        [self.adsManager resume];
+    }
     [self.playerViewController.player play];
 }
 
 -(void)appWillResignActive:(NSNotification*)notification {
-    [self.youboraPlugin removeAdapter];
+    //[self.youboraPlugin removeAdapter];
 }
 
 #pragma mark - IMA
@@ -153,7 +159,7 @@ NSString *const kTestAppAdTagUrl =
     YBIMAAdapter* adsAdapter = [[YBIMAAdapter alloc] initWithPlayer:self.adsManager];
     //[adsAdapter addDelegate:oldOne];
     [self.youboraPlugin setAdsAdapter:adsAdapter];
-    [self.youboraPlugin.adsAdapter fireAdInit];
+    //[self.youboraPlugin.adsAdapter fireAdInit];
     
     // Create ads rendering settings and tell the SDK to use the in-app browser.
     IMAAdsRenderingSettings *adsRenderingSettings = [[IMAAdsRenderingSettings alloc] init];
@@ -166,6 +172,10 @@ NSString *const kTestAppAdTagUrl =
 - (void)adsLoader:(IMAAdsLoader *)loader failedWithErrorData:(IMAAdLoadingErrorData *)adErrorData {
     // Something went wrong loading ads. Log the error and play the content.
     NSLog(@"Error loading ads: %@", adErrorData.adError.message);
+    if(self.adapterAdded == NO){
+        [self startYoubora];
+        self.adapterAdded = YES;
+    }
     [self.adVIew setHidden:YES];
     [self.view sendSubviewToBack:self.adVIew];
     [self.playerViewController.player play];
@@ -177,15 +187,22 @@ NSString *const kTestAppAdTagUrl =
         [self.view bringSubviewToFront:self.adVIew];
         [adsManager start];
     }
-    if(event.type == kIMAAdEvent_COMPLETE && event.ad.adPodInfo.podIndex == 0){
-        [self startYoubora];
-    }
+    /*if(event.type == kIMAAdEvent_COMPLETE && event.ad.adPodInfo.podIndex == 0){
+        if(self.adapterAdded == NO){
+            [self startYoubora];
+            self.adapterAdded = YES;
+        }
+    }*/
 }
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdError:(IMAAdError *)error {
     // Something went wrong with the ads manager after ads were loaded. Log the error and play the
     // content.
     NSLog(@"AdsManager error: %@", error.message);
+    if(self.adapterAdded == NO){
+        [self startYoubora];
+        self.adapterAdded = YES;
+    }
     [self.adVIew setHidden:YES];
     [self.view sendSubviewToBack:self.adVIew];
     [self.playerViewController.player play];
@@ -200,6 +217,10 @@ NSString *const kTestAppAdTagUrl =
     // The SDK is done playing ads (at least for now), so resume the content.
     [self.adVIew setHidden:YES];
     [self.view sendSubviewToBack:self.adVIew];
+    if(self.adapterAdded == NO){
+        [self startYoubora];
+        self.adapterAdded = YES;
+    }
     [self.playerViewController.player play];
     
 }
