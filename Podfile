@@ -23,5 +23,5 @@ target 'IMAAdapterExample' do
     pod 'YouboraLib',:path => '../lib-plugin-ios'
     #pod 'YouboraLib', '~> 6.0.5-beta'
     pod 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
-    pod 'YouboraAVPlayerAdapter', :git => 'https://NPAWEnrique@bitbucket.org/npaw/avplayer-adapter-ios.git', :commit => 'f1b94676f4f832f6a07230801dd498713b9100cf'
+    pod 'YouboraAVPlayerAdapter', :git => 'https://NPAWEnrique@bitbucket.org/npaw/avplayer-adapter-ios.git', :commit => 'c61298b7918bcb3c54bd97b1e63aeebbc8ec4c84' #check always if latest
 end
