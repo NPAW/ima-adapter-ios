@@ -83,10 +83,11 @@ IMAAdsManager *manager;
             [self fireStop:@{@"skipped":@"true"}];
             break;
         case kIMAAdEvent_ALL_ADS_COMPLETED:{
-            self.plugin.options.adsAfterStop = @0;
+            [self fireAllAdsCompleted];
+            /*self.plugin.options.adsAfterStop = @0;
             if(self.lastPosition == YBAdPositionPost){
                 [self.plugin fireStop:nil];
-            }
+            }*/
             break;
         }
         case kIMAAdEvent_LOG:{

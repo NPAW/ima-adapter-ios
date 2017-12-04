@@ -34,12 +34,21 @@
 
 @implementation PlayerViewController
 
+// Observation context
+static void * const observationContext = (void *) &observationContext;
+
+//VAST Url with pre, mid and post ads
 NSString *const kTestAppAdTagUrl =
     @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&"
     @"ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&"
     @"cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496"
     @"&vid=short_onecue&correlator=";
-    
+//Single skippable url with just a postroll
+/*NSString *const kTestAppAdTagUrl =
+    @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&"
+    @"ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&"
+    @"cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=";*/
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.adapterAdded = NO;
@@ -88,6 +97,7 @@ NSString *const kTestAppAdTagUrl =
     
     // Start playback
     [self requestAdsWithTag:kTestAppAdTagUrl];
+    [self.playerViewController.player addObserver:self forKeyPath:@"rate" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:observationContext];
     //[self.playerViewController.player play];
     
 }
@@ -119,6 +129,39 @@ NSString *const kTestAppAdTagUrl =
 -(void)appWillResignActive:(NSNotification*)notification {
     //[self.youboraPlugin removeAdapter];
 }
+
+#pragma mark AVPlayer observer
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    @try {
+        if (context == observationContext) {
+            AVPlayer * player = self.playerViewController.player;
+            
+            // AVPlayer properties
+            if ([keyPath isEqualToString:@"rate"]) {
+                NSNumber * newRate = (NSNumber *) [change objectForKey:NSKeyValueChangeNewKey];
+                NSNumber * oldRate = (NSNumber *) [change objectForKey:NSKeyValueChangeOldKey];
+                [YBLog debug:@"AVPlayer's rate has changed, old: %@, new: %@", oldRate, newRate];
+                
+                // We have to check that currentItem is not nil
+                // If the player is sent a "play" message, but has no currentItem loaded
+                // it will still set the rate to 0
+                if (player.currentItem != nil) {
+                    if ([newRate isEqualToNumber:@0]) {
+                        NSNumber* playhead = @(CMTimeGetSeconds(player.currentTime));
+                        NSNumber* duration = @(CMTimeGetSeconds(player.currentItem.asset.duration));
+                        if([playhead intValue] == [duration intValue]){
+                            [self.adsLoader contentComplete];
+                        }
+                    }
+                }
+            }
+        }
+        
+    } @catch (NSException *exception) {
+        [YBLog logException:exception];
+    }
+}
+
 
 #pragma mark - IMA
 - (void)contentDidFinishPlaying:(NSNotification *)notification {
