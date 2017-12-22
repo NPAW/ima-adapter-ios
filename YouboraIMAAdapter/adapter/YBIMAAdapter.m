@@ -28,11 +28,13 @@
 @interface YBIMAAdapter()
     @property (nonatomic,strong,readwrite) NSMutableArray* delegates;
     @property YBAdPosition lastPosition;
+    @property NSNumber* lastPlayhead;
 @end
 
 @implementation YBIMAAdapter
 
 IMAAdsManager *manager;
+BOOL adServed;
 
 - (void)registerListeners {
     [super registerListeners];
@@ -45,6 +47,7 @@ IMAAdsManager *manager;
     
     self.player.delegate = self;
     manager = [self getAdPlayer];
+    adServed = false;
 }
 
 - (void) unregisterListeners {
@@ -58,11 +61,25 @@ IMAAdsManager *manager;
         }
     }
     switch (event.type) {
-        case kIMAAdEvent_LOADED:
+        case kIMAAdEvent_LOADED:{
+            self.lastPosition = YBAdPositionUnknown;
+            int pos = event.ad.adPodInfo.podIndex;
+            if(pos == 0){
+                self.lastPosition = YBAdPositionPre;
+            }
+            if(pos == -1){
+                self.lastPosition = YBAdPositionPost;
+            }
+            if(pos > 0){
+                self.lastPosition = YBAdPositionMid;
+            }
             [self fireStart];
             break;
+        }
         case kIMAAdEvent_STARTED:
             [self fireJoin];
+            //The position is available here, not on kIMAAdEvent_COMPLETE event
+            self.lastPlayhead = [self getDuration];
             break;
         case kIMAAdEvent_PAUSE:
             [self firePause];
@@ -75,8 +92,7 @@ IMAAdsManager *manager;
             [self fireClick];
             break;
         case kIMAAdEvent_COMPLETE:{
-        self.lastPosition = self.lastPosition == YBAdPositionPost ? YBAdPositionPost : [self getPosition];
-            [self fireStop];
+            [self sendStop];
             break;
         }
         case kIMAAdEvent_SKIPPED:
@@ -84,14 +100,14 @@ IMAAdsManager *manager;
             break;
         case kIMAAdEvent_ALL_ADS_COMPLETED:{
             [self fireAllAdsCompleted];
-            /*self.plugin.options.adsAfterStop = @0;
-            if(self.lastPosition == YBAdPositionPost){
-                [self.plugin fireStop:nil];
-            }*/
             break;
         }
         case kIMAAdEvent_LOG:{
             [YBLog debug:@"EVENT_LOG: %@",[event.adData description]];
+            NSDictionary *adData = event.adData;
+            if(adData != nil && adData[@"errorCode"] != nil && ![adData[@"errorCode"] isEqualToString:@"1009"]){
+                [self fireErrorWithMessage:adData[@"errorMessage"] code:adData[@"errorCode"] andMetadata:nil];
+            }
         }
         case kIMAAdEvent_AD_BREAK_READY:
         case kIMAAdEvent_AD_BREAK_ENDED:
@@ -113,7 +129,7 @@ IMAAdsManager *manager;
             [self.delegates[k] performSelector:@selector(adsManager:didReceiveAdError:) withObject:adsManager withObject:error];
         }
     }
-    NSLog(@"AdsManager error: %@", error.message);
+    [YBLog debug:@"AdsManager error: %@",error.message];
     [self fireFatalErrorWithMessage:error.message code:[NSString stringWithFormat:@"%ld",(long)error.code] andMetadata:nil];
 }
 
@@ -123,18 +139,20 @@ IMAAdsManager *manager;
             [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentPause:) withObject:adsManager];
         }
     }
-    
-    //[self fireStart];
+    adServed = true;
+    [self fireStart];
     
 }
 
 - (void)adsManagerDidRequestContentResume:(IMAAdsManager *)adsManager {
+    
     for (int k = 0; k < [self.delegates count]; k++) {
         if([self.delegates[k] respondsToSelector:@selector(adsManagerDidRequestContentResume:)]){
             [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentResume:) withObject:adsManager];
         }
     }
-    //[self fireStop];
+    
+    [self sendStop];
 }
 
 #pragma mark - Overridden get methods
@@ -151,22 +169,9 @@ IMAAdsManager *manager;
 }
 
 - (YBAdPosition)getPosition {
-    if([[self.plugin getPlayhead] doubleValue] <= 0){
-        return YBAdPositionPre;
-    }
-    if([[self.plugin getPlayhead] doubleValue] >= [[self.plugin getDuration] doubleValue]){
-        return YBAdPositionPost;
-    }
-    return YBAdPositionMid;
     
-    /*if(cuePoints){
-        
-    }*/
+    return self.lastPosition;
 }
-
-/*- (NSString*)getResource{
-    return manager.adPlaybackInfo.
-}*/            
 
 - (IMAAdsManager *) getAdPlayer{
     return (IMAAdsManager *)self.player;
@@ -181,6 +186,25 @@ IMAAdsManager *manager;
 
 - (NSString *)getVersion {
     return PLUGIN_VERSION;
+}
+
+- (void) sendStop{
+    self.lastPosition = self.lastPosition == YBAdPositionPost ? YBAdPositionPost : [self getPosition];
+    
+    if(!adServed){
+        NSDictionary *notServedErrorParams = @{
+                                               @"errorCode" : @"AD_NOT_SERVED",
+                                               @"errorMsg" : @"Ad not served",
+                                               @"errorSeverity" : @"AdsNotServed"
+                                               };
+        [self fireError:notServedErrorParams];
+    }
+
+    NSDictionary *adStopParams = @{
+                                   @"adPlayhead": [NSString stringWithFormat:@"%lf",[self.lastPlayhead doubleValue]]
+                                   };
+    [self fireStop:adStopParams];
+    
 }
 
 //Optional delegate methods
