@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0F06E21F734B362F0BA026 /* Pods_YouboraIMAAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CC9392F0894A9D239F8601C /* Pods_YouboraIMAAdapter.framework */; };
 		CDA5D1641FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDA5D1651FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D1631FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m */; };
 		CDBA8CB41FA311C0004F8B6D /* YouboraIMAAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBA8CB21FA311C0004F8B6D /* YouboraIMAAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B34683D20C2D0A163B9B679 /* Pods-YouboraIMAAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YouboraIMAAdapter/Pods-YouboraIMAAdapter.debug.xcconfig"; sourceTree = "<group>"; };
+		61D8132F929ABFFFE7977DC9 /* Pods-YouboraIMAAdapter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter.release.xcconfig"; path = "Pods/Target Support Files/Pods-YouboraIMAAdapter/Pods-YouboraIMAAdapter.release.xcconfig"; sourceTree = "<group>"; };
+		6CC9392F0894A9D239F8601C /* Pods_YouboraIMAAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YouboraIMAAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIMAAdapterSwiftWrapper.h; sourceTree = "<group>"; };
 		CDA5D1631FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBIMAAdapterSwiftWrapper.m; sourceTree = "<group>"; };
 		CDBA8CAF1FA311C0004F8B6D /* YouboraIMAAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YouboraIMAAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C0F06E21F734B362F0BA026 /* Pods_YouboraIMAAdapter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D9192825538B9418490EF4E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B34683D20C2D0A163B9B679 /* Pods-YouboraIMAAdapter.debug.xcconfig */,
+				61D8132F929ABFFFE7977DC9 /* Pods-YouboraIMAAdapter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8CEC79774B3A25BD5792EA39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6CC9392F0894A9D239F8601C /* Pods_YouboraIMAAdapter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CDBA8CA51FA311C0004F8B6D = {
 			isa = PBXGroup;
 			children = (
 				CDBA8CB11FA311C0004F8B6D /* YouboraIMAAdapter */,
 				CDBA8CB01FA311C0004F8B6D /* Products */,
+				2D9192825538B9418490EF4E /* Pods */,
+				8CEC79774B3A25BD5792EA39 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,10 +116,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDBA8CB71FA311C0004F8B6D /* Build configuration list for PBXNativeTarget "YouboraIMAAdapter" */;
 			buildPhases = (
+				6ECD014533DAC16161986FB2 /* [CP] Check Pods Manifest.lock */,
 				CDBA8CAA1FA311C0004F8B6D /* Sources */,
 				CDBA8CAB1FA311C0004F8B6D /* Frameworks */,
 				CDBA8CAC1FA311C0004F8B6D /* Headers */,
 				CDBA8CAD1FA311C0004F8B6D /* Resources */,
+				F309442BB6974EAF43F872CA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -148,6 +174,42 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6ECD014533DAC16161986FB2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YouboraIMAAdapter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F309442BB6974EAF43F872CA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YouboraIMAAdapter/Pods-YouboraIMAAdapter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CDBA8CAA1FA311C0004F8B6D /* Sources */ = {
@@ -268,6 +330,7 @@
 		};
 		CDBA8CB81FA311C0004F8B6D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B34683D20C2D0A163B9B679 /* Pods-YouboraIMAAdapter.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -287,6 +350,7 @@
 		};
 		CDBA8CB91FA311C0004F8B6D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61D8132F929ABFFFE7977DC9 /* Pods-YouboraIMAAdapter.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;

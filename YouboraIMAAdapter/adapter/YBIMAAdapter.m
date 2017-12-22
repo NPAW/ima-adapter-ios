@@ -199,7 +199,7 @@ BOOL adServed;
                                                };
         [self fireError:notServedErrorParams];
     }
-
+    self.lastPlayhead = self.lastPlayhead == nil ? @0 : self.lastPlayhead;
     NSDictionary *adStopParams = @{
                                    @"adPlayhead": [NSString stringWithFormat:@"%lf",[self.lastPlayhead doubleValue]]
                                    };
