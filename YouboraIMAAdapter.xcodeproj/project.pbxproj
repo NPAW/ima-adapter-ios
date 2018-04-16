@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD1B0F412084AEB70048ECEC /* YBIMADAIAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1B0F3F2084AEB70048ECEC /* YBIMADAIAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD1B0F422084AEB70048ECEC /* YBIMADAIAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B0F402084AEB70048ECEC /* YBIMADAIAdapter.m */; };
+		CD1B0F472084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1B0F452084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD1B0F482084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B0F462084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m */; };
 		CDA5D1641FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDA5D1651FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D1631FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m */; };
 		CDBA8CB41FA311C0004F8B6D /* YouboraIMAAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBA8CB21FA311C0004F8B6D /* YouboraIMAAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -15,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD1B0F3F2084AEB70048ECEC /* YBIMADAIAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBIMADAIAdapter.h; sourceTree = "<group>"; };
+		CD1B0F402084AEB70048ECEC /* YBIMADAIAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBIMADAIAdapter.m; sourceTree = "<group>"; };
+		CD1B0F452084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBIMADAIAdapterSwiftWrapper.h; sourceTree = "<group>"; };
+		CD1B0F462084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBIMADAIAdapterSwiftWrapper.m; sourceTree = "<group>"; };
 		CD91948320333A05002A8507 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIMAAdapterSwiftWrapper.h; sourceTree = "<group>"; };
 		CDA5D1631FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBIMAAdapterSwiftWrapper.m; sourceTree = "<group>"; };
@@ -70,6 +78,10 @@
 				CDBA8CBC1FA31B5D004F8B6D /* YBIMAAdapter.m */,
 				CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */,
 				CDA5D1631FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m */,
+				CD1B0F3F2084AEB70048ECEC /* YBIMADAIAdapter.h */,
+				CD1B0F402084AEB70048ECEC /* YBIMADAIAdapter.m */,
+				CD1B0F452084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h */,
+				CD1B0F462084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m */,
 			);
 			path = adapter;
 			sourceTree = "<group>";
@@ -82,6 +94,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDBA8CB41FA311C0004F8B6D /* YouboraIMAAdapter.h in Headers */,
+				CD1B0F472084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h in Headers */,
+				CD1B0F412084AEB70048ECEC /* YBIMADAIAdapter.h in Headers */,
 				CDA5D1641FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h in Headers */,
 				CDBA8CBD1FA31B5D004F8B6D /* YBIMAAdapter.h in Headers */,
 			);
@@ -158,6 +172,8 @@
 			files = (
 				CDA5D1651FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m in Sources */,
 				CDBA8CBE1FA31B5D004F8B6D /* YBIMAAdapter.m in Sources */,
+				CD1B0F422084AEB70048ECEC /* YBIMADAIAdapter.m in Sources */,
+				CD1B0F482084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

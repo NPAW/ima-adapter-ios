@@ -10,8 +10,8 @@ target 'YouboraIMAAdapter' do
     
     # Pods for YouboraAVPlayerAdapter
     #pod 'YouboraLib',:path => '../lib-plugin-ios'
-    pod 'YouboraLib', '~> 6.0.5-beta'
-    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
+    pod 'YouboraLib', '~> 6.0.7'
+    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.7'
 end
 
 target 'IMAAdapterExample' do
@@ -22,6 +22,6 @@ target 'IMAAdapterExample' do
     # Pods for AVPlayerAdapterExample
     #pod 'YouboraLib',:path => '../lib-plugin-ios'
     #pod 'YouboraLib', '~> 6.0.5-beta'
-    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
+    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.7'
     pod 'YouboraAVPlayerAdapter', '6.0.6'
 end
