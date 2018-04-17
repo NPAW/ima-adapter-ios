@@ -26,13 +26,8 @@
 
 @interface YBIMADAIAdapter()<IMAStreamManagerDelegate>
 @property (nonatomic,strong,readwrite) NSMutableArray* delegates;
-@property YBAdPosition lastPosition;
-@property NSNumber* lastPlayhead;
-@property NSNumber* lastDuration;
-
-@property BOOL hasStarted;
-
-@property IMAAd* currentAd;
+@property (nonatomic,strong) IMAAd *currentAd;
+@property (nonatomic,assign) double adProgress;
 @end
 
 @implementation YBIMADAIAdapter
@@ -47,52 +42,42 @@
     [self.delegates addObject:self.player.delegate];
     
     self.player.delegate = self;
-    
-    self.lastDuration = @0;
-    self.hasStarted = NO;
-    self.lastPosition = YBAdPositionUnknown;
-    self.lastPlayhead = @-1;
+    self.adProgress = 0.0;
 }
 
 - (void) unregisterListeners {
     self.player.delegate = nil;
+    [super unregisterListeners];
 }
 
 #pragma mark Get methods
 
-- (NSNumber*) getPlayhead{
-    return self.currentAd == nil ? @0 : self.lastPlayhead;
+- (NSNumber *)getPlayhead{
+    return @(self.adProgress);
 }
 
-- (NSNumber*) getDuration{
-    return self.currentAd == nil ? [super getDuration] : self.lastDuration;
+- (NSNumber *)getDuration{
+    return self.currentAd == nil ? [super getDuration] : @(self.currentAd.duration);
 }
 
-- (NSString*) getTitle{
+- (NSString *)getTitle{
     return self.currentAd == nil ? [super getTitle] : self.currentAd.adTitle;
 }
 
 - (YBAdPosition) getPosition{
-    if(self.currentAd != nil){
-        if(self.currentAd.adPodInfo.timeOffset == 0){
-            return YBAdPositionPre;
-        }
-        if(self.plugin != nil && self.plugin.adapter != nil && self.currentAd.adPodInfo.timeOffset == round([[self.plugin.adapter getDuration] doubleValue])){
-            
-        }
-        if(self.currentAd.adPodInfo.timeOffset == round([[self.plugin getDuration] doubleValue]) - round([[self getDuration] doubleValue]) - round([[self getDuration] doubleValue])){
-            return YBAdPositionPost;
-        }
-        return YBAdPositionMid;
+    if(self.currentAd == nil || [self getDuration] == nil){
+        return YBAdPositionUnknown;
     }
-    return self.lastPosition;
-}
-
-- (void) fireStop{
-    self.lastPosition = self.lastPosition == YBAdPositionPost ? YBAdPositionPost : [self getPosition];
-    self.lastPlayhead = self.lastPlayhead == nil ? @0 : self.lastPlayhead;
-    self.hasStarted = NO;
-    [super fireStop];
+    
+    double offset = self.currentAd.adPodInfo.timeOffset;
+    
+    if(offset == 0.0){
+        return YBAdPositionPre;
+    }
+    if(self.plugin != nil && self.plugin.adapter != nil && offset == round([[self.plugin.adapter getDuration] doubleValue]) - round([[self getDuration] doubleValue])){
+        return YBAdPositionPost;
+    }
+    return YBAdPositionMid;
 }
 
 - (NSString *)getPlayerName {
@@ -109,76 +94,110 @@
 
 #pragma mark Delegate methods
 
-- (void)streamManager:(IMAStreamManager *)streamManager didReceiveError:(NSError *)error {
-    for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(streamManager:didReceiveError:)]){
-            [self.delegates[k] performSelector:@selector(streamManager:didReceiveError:) withObject:streamManager withObject:error];
-        }
+- (void)streamManager:(IMAStreamManager *)streamManager adDidProgressToTime:(NSTimeInterval)time adDuration:(NSTimeInterval)adDuration adPosition:(NSInteger)adPosition totalAds:(NSInteger)totalAds adBreakDuration:(NSTimeInterval)adBreakDuration {
+    self.adProgress = time;
+    if(!self.flags.started){
+        [self fireStart];
     }
-}
-
-- (void)streamManager:(IMAStreamManager *)streamManager didInitializeStream:(NSString *)streamID {
-    for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(streamManager:didInitializeStream:)]){
-            [self.delegates[k] performSelector:@selector(streamManager:didInitializeStream:) withObject:streamManager withObject:streamID];
-        }
-    }
-}
-
-- (void)streamManager:(IMAStreamManager *)streamManager adDidStart:(IMAAd *)ad {
-    self.currentAd = ad;
-    self.hasStarted = YES;
-    [self fireStart];
-    NSString *adInfo = [NSString stringWithFormat:@"Showing ad %d/%ld, title: %@, description: %@",
-                        ad.adPodInfo.adPosition, ad.adPodInfo.totalAds, ad.adTitle, ad.adDescription];
-    //[self playAdHandler];
-    for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(streamManager:adDidStart:)]){
-            [self.delegates[k] performSelector:@selector(streamManager:adDidStart:) withObject:streamManager withObject:ad];
-        }
-    }
-}
-
-- (void)streamManager:(IMAStreamManager *)streamManager didUpdateCuepoints:(NSArray<IMACuepoint *> *)cuepoints {
-    for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(streamManager:didUpdateCuepoints:)]){
-            [self.delegates[k] performSelector:@selector(streamManager:didUpdateCuepoints:) withObject:streamManager withObject:cuepoints];
-        }
-    }
-}
-
-- (void)streamManager:(IMAStreamManager *)streamManager ad:(IMAAd *)ad didCountdownTo:(NSTimeInterval)remainingTime {
-    if([self.lastDuration floatValue] == 0.0){
-        self.lastDuration = @(remainingTime);
-    }
-    self.lastPlayhead = @([self.lastDuration floatValue] - [@(remainingTime) floatValue]);
-    if(![@(remainingTime) isEqual:self.lastDuration]){
-        [self fireJoin];
-    }
-    double remainingTimeThreshold = [self getPosition] == YBAdPositionPost ? 1 : 0.1;
-    if(remainingTime <= remainingTimeThreshold){
-        [self fireStop];
-    }
+    [self fireJoin];
     
     for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(streamManager:ad:didCountdownTo:)]){
-            NSMethodSignature *sig = [self.delegates[k] methodSignatureForSelector:@selector(streamManager:ad:didCountdownTo:)];
+        if([self.delegates[k] respondsToSelector:@selector(streamManager:adDidProgressToTime:adDuration:adPosition:totalAds:adBreakDuration:)]){
+            NSMethodSignature *sig = [self.delegates[k] methodSignatureForSelector:@selector(streamManager:adDidProgressToTime:adDuration:adPosition:totalAds:adBreakDuration:)];
             NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
             [invo setTarget:self.delegates[k]];
-            [invo setSelector:@selector(streamManager:ad:didCountdownTo:)];
+            [invo setSelector:@selector(streamManager:adDidProgressToTime:adDuration:adPosition:totalAds:adBreakDuration:)];
             //Index 0 and 1 are reserved, so the first one is 2
             [invo setArgument:&streamManager atIndex:2];
-            [invo setArgument:&ad atIndex:3];
-            [invo setArgument:&remainingTime atIndex:4];
+            [invo setArgument:&time atIndex:3];
+            [invo setArgument:&adDuration atIndex:4];
+            [invo setArgument:&adPosition atIndex:5];
+            [invo setArgument:&totalAds atIndex:6];
+            [invo setArgument:&adBreakDuration atIndex:7];
             [invo invoke];
         }
     }
 }
 
-- (void)streamManagerIsPlaybackReady:(IMAStreamManager *)streamManager{
+- (void)streamManager:(IMAStreamManager *)streamManager didReceiveAdError:(IMAAdError *)error {
+    [self fireErrorWithMessage:error.message code:[NSString stringWithFormat:@"%ld",(long)error.code] andMetadata:nil];
+    
     for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(streamManagerIsPlaybackReady:)]){
-            [self.delegates[k] performSelector:@selector(streamManagerIsPlaybackReady:) withObject:streamManager];
+        if([self.delegates[k] respondsToSelector:@selector(streamManager:didReceiveAdError:)]){
+            [self.delegates[k] performSelector:@selector(streamManager:didReceiveAdError:) withObject:streamManager withObject:error];
+        }
+    }
+}
+
+- (void)streamManager:(IMAStreamManager *)streamManager didReceiveAdEvent:(IMAAdEvent *)event {
+    [YBLog debug:@"Adapter event: %@",event.typeString];
+    if(event.ad != nil){
+        self.currentAd = event.ad;
+    }
+    
+    switch (event.type) {
+            case kIMAAdEvent_AD_BREAK_READY:
+            
+            break;
+            case kIMAAdEvent_AD_BREAK_ENDED:
+            
+            break;
+            case kIMAAdEvent_AD_BREAK_STARTED:
+            //[self fireStart];
+            break;
+            case kIMAAdEvent_ALL_ADS_COMPLETED:
+            [self fireAllAdsCompleted];
+            break;
+            case kIMAAdEvent_TAPPED:
+            case kIMAAdEvent_CLICKED:
+            [self fireClick];
+            break;
+            case kIMAAdEvent_COMPLETE:
+            [self fireStop:@{@"adPlayhead": [[self getDuration] stringValue]}];
+            break;
+            case kIMAAdEvent_CUEPOINTS_CHANGED:
+            
+            break;
+            case kIMAAdEvent_FIRST_QUARTILE:
+            //self.adProgress = [[self getDuration] doubleValue] * 0.25;
+            break;
+            case kIMAAdEvent_LOADED:
+            
+            break;
+            case kIMAAdEvent_LOG:
+            
+            break;
+            case kIMAAdEvent_MIDPOINT:
+            //self.adProgress = [[self getDuration] doubleValue] * 0.5;
+            break;
+            case kIMAAdEvent_PAUSE:
+            [self firePause];
+            break;
+            case kIMAAdEvent_RESUME:
+            [self fireResume];
+            break;
+            case kIMAAdEvent_SKIPPED:
+            [self fireStop:@{@"skipped": @"true"}];
+            break;
+            case kIMAAdEvent_STARTED:
+            //Do not uncomment fireStop, in case of doing it will stop the one initiated on ad_break
+            //[self fireStop];
+            [self fireStart];
+            break;
+            case kIMAAdEvent_STREAM_LOADED:
+            
+            break;
+            case kIMAAdEvent_STREAM_STARTED:
+            
+            break;
+            case kIMAAdEvent_THIRD_QUARTILE:
+                //self.adProgress = [[self getDuration] doubleValue] * 0.75;
+            break;
+    }
+    
+    for (int k = 0; k < [self.delegates count]; k++) {
+        if([self.delegates[k] respondsToSelector:@selector(streamManager:didReceiveAdEvent:)]){
+            [self.delegates[k] performSelector:@selector(streamManager:didReceiveAdEvent:) withObject:streamManager withObject:event];
         }
     }
 }
