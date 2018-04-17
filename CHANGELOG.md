@@ -1,3 +1,7 @@
+## [6.0.6] - 2018-04-17
+### Add
+- DAI support
+
 ## [6.0.5] - 2017-12-22
 ### Added
 - Ad served metric
