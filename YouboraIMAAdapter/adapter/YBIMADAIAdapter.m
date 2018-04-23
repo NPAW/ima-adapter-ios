@@ -171,10 +171,10 @@
             //self.adProgress = [[self getDuration] doubleValue] * 0.5;
             break;
             case kIMAAdEvent_PAUSE:
-            [self firePause];
+            //[self firePause];
             break;
             case kIMAAdEvent_RESUME:
-            [self fireResume];
+            //[self fireResume];
             break;
             case kIMAAdEvent_SKIPPED:
             [self fireStop:@{@"skipped": @"true"}];
@@ -200,6 +200,13 @@
             [self.delegates[k] performSelector:@selector(streamManager:didReceiveAdEvent:) withObject:streamManager withObject:event];
         }
     }
+}
+
+- (void) fireStart{
+    if(self.plugin != nil && self.plugin.adapter != nil && !self.plugin.adapter.flags.joined && [self getPosition] == YBAdPositionPre){
+        [self.plugin.adapter fireJoin];
+    }
+    [super fireStart];
 }
 
 @end
