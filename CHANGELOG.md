@@ -1,6 +1,6 @@
 ## [6.0.7] - 2018-04-23
 ### Remove
-- Remove ad
+- Remove ad pause and resume
 
 ## [6.0.6] - 2018-04-17
 ### Add
