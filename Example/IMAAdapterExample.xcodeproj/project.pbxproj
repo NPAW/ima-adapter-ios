@@ -263,7 +263,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-IMAAdapterExample/Pods-IMAAdapterExample-frameworks.sh",
-				"${PODS_ROOT}/GoogleAds-IMA-iOS-SDK/GoogleInteractiveMediaAds/GoogleInteractiveMediaAds.framework",
+				"${PODS_ROOT}/GoogleAds-IMA-iOS-SDK/GoogleInteractiveMediaAds.framework",
 				"${BUILT_PRODUCTS_DIR}/YouboraLib/YouboraLib.framework",
 				"${BUILT_PRODUCTS_DIR}/YouboraAVPlayerAdapter/YouboraAVPlayerAdapter.framework",
 			);
