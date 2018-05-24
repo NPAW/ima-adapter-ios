@@ -1,0 +1,24 @@
+PODS:
+  - google-cast-sdk (3.2.0):
+    - google-cast-sdk/Core (= 3.2.0)
+  - google-cast-sdk/Core (3.2.0)
+  - GoogleAds-IMA-iOS-SDK (3.7.2)
+  - YouboraAVPlayerAdapter (6.0.6):
+    - YouboraLib (~> 6.0.7)
+  - YouboraLib (6.0.7)
+
+DEPENDENCIES:
+  - google-cast-sdk (~> 3.2.0)
+  - GoogleAds-IMA-iOS-SDK (~> 3.6)
+  - YouboraAVPlayerAdapter (= 6.0.6)
+  - YouboraLib (~> 6.0.7)
+
+SPEC CHECKSUMS:
+  google-cast-sdk: f4c2a14214ad486cc26a8f8837e8481c906a0ea8
+  GoogleAds-IMA-iOS-SDK: 58693326633b35aa7e95c45693ec0bb8e88086de
+  YouboraAVPlayerAdapter: 55f5f2c820282086107e973bdfa1ae9bf20413d9
+  YouboraLib: c479a7ae08373e778753039a10967acc9381a475
+
+PODFILE CHECKSUM: 567a4e3d57e647ca4e258fdfb842274978f3cd44
+
+COCOAPODS: 1.4.0

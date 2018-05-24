@@ -88,6 +88,7 @@ BOOL adServed;
             [self fireResume];
             break;
         case kIMAAdEvent_TAPPED:
+            break;
         case kIMAAdEvent_CLICKED:
             [self fireClick];
             break;

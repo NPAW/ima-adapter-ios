@@ -141,64 +141,65 @@
     }
     
     switch (event.type) {
-            case kIMAAdEvent_AD_BREAK_READY:
+        case kIMAAdEvent_AD_BREAK_READY:
             
             break;
-            case kIMAAdEvent_AD_BREAK_ENDED:
+        case kIMAAdEvent_AD_BREAK_ENDED:
             
             break;
-            case kIMAAdEvent_AD_BREAK_STARTED:
+        case kIMAAdEvent_AD_BREAK_STARTED:
             //[self fireStart];
             break;
-            case kIMAAdEvent_ALL_ADS_COMPLETED:
+        case kIMAAdEvent_ALL_ADS_COMPLETED:
             [self fireAllAdsCompleted];
             break;
-            case kIMAAdEvent_TAPPED:
-            case kIMAAdEvent_CLICKED:
+        case kIMAAdEvent_TAPPED:
+            break;
+        case kIMAAdEvent_CLICKED:
             [self fireClick];
             break;
-            case kIMAAdEvent_COMPLETE:{
-                float duration = [self getDuration] == nil ? 0.0 : [[self getDuration] floatValue];
-                [self fireStop:@{@"adPlayhead": [NSString stringWithFormat:@"%f",duration]}];
-            }
+        case kIMAAdEvent_COMPLETE:{
+            float duration = [self getDuration] == nil ? 0.0 : [[self getDuration] floatValue];
+            [self fireStop:@{@"adPlayhead": [NSString stringWithFormat:@"%f",duration]}];
+        }
             break;
-            case kIMAAdEvent_CUEPOINTS_CHANGED:
+        case kIMAAdEvent_CUEPOINTS_CHANGED:
             
             break;
-            case kIMAAdEvent_FIRST_QUARTILE:
+        case kIMAAdEvent_FIRST_QUARTILE:
             //self.adProgress = [[self getDuration] doubleValue] * 0.25;
             break;
-            case kIMAAdEvent_LOADED:
+        case kIMAAdEvent_LOADED:
             
             break;
-            case kIMAAdEvent_LOG:
+        case kIMAAdEvent_LOG:
             
             break;
-            case kIMAAdEvent_MIDPOINT:
+        case kIMAAdEvent_MIDPOINT:
             //self.adProgress = [[self getDuration] doubleValue] * 0.5;
             break;
-            case kIMAAdEvent_PAUSE:
+        case kIMAAdEvent_PAUSE:
             //[self firePause];
             break;
-            case kIMAAdEvent_RESUME:
+        case kIMAAdEvent_RESUME:
             //[self fireResume];
             break;
-            case kIMAAdEvent_SKIPPED:
+        case kIMAAdEvent_SKIPPED:
             [self fireStop:@{@"skipped": @"true"}];
             break;
-            case kIMAAdEvent_STARTED:
+        case kIMAAdEvent_STARTED:
             //Do not uncomment fireStop, in case of doing it will stop the one initiated on ad_break
             //[self fireStop];
             [self fireStart];
             break;
-            case kIMAAdEvent_STREAM_LOADED:
+        case kIMAAdEvent_STREAM_LOADED:
             
             break;
-            case kIMAAdEvent_STREAM_STARTED:
+        case kIMAAdEvent_STREAM_STARTED:
             
             break;
-            case kIMAAdEvent_THIRD_QUARTILE:
-                //self.adProgress = [[self getDuration] doubleValue] * 0.75;
+        case kIMAAdEvent_THIRD_QUARTILE:
+            //self.adProgress = [[self getDuration] doubleValue] * 0.75;
             break;
     }
     
