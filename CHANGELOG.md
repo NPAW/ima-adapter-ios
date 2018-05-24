@@ -1,4 +1,4 @@
-## [6.0.8] - 
+## [6.0.8] - 2018-05-24
 ### Fixed
 - Ad positions for live
 - Posible crash when ad completed on live
