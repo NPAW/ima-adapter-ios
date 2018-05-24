@@ -41,8 +41,13 @@ static void * const observationContext = (void *) &observationContext;
 NSString *const kTestAppAdTagUrl =
     @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&"
     @"ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&"
-    @"cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496"
+    @"cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpostpod&cmsid=496"
     @"&vid=short_onecue&correlator=";
+/*NSString *const kTestAppAdTagUrl =
+    @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&"
+    @"ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&"
+    @"cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496"
+    @"&vid=short_onecue&correlator=";*/
 //Single skippable url with just a postroll
 /*NSString *const kTestAppAdTagUrl =
     @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&"

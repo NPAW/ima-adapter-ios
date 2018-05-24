@@ -69,11 +69,16 @@
         return YBAdPositionUnknown;
     }
     
+    if(self.plugin != nil && [[self.plugin getIsLive] isEqualToValue:@YES]){
+        return YBAdPositionMid;
+    }
+    
     double offset = self.currentAd.adPodInfo.timeOffset;
     
     if(offset == 0.0){
         return YBAdPositionPre;
     }
+    
     if(self.plugin != nil && self.plugin.adapter != nil && offset == round([[self.plugin.adapter getDuration] doubleValue]) - round([[self getDuration] doubleValue])){
         return YBAdPositionPost;
     }
@@ -152,8 +157,10 @@
             case kIMAAdEvent_CLICKED:
             [self fireClick];
             break;
-            case kIMAAdEvent_COMPLETE:
-            [self fireStop:@{@"adPlayhead": [[self getDuration] stringValue]}];
+            case kIMAAdEvent_COMPLETE:{
+                float duration = [self getDuration] == nil ? 0.0 : [[self getDuration] floatValue];
+                [self fireStop:@{@"adPlayhead": [NSString stringWithFormat:@"%f",duration]}];
+            }
             break;
             case kIMAAdEvent_CUEPOINTS_CHANGED:
             
@@ -207,6 +214,11 @@
         [self.plugin.adapter fireJoin];
     }
     [super fireStart];
+}
+
+- (void) fireStop:(NSDictionary<NSString *,NSString *> *)params{
+    [super fireStop:params];
+    self.currentAd = nil;
 }
 
 @end
