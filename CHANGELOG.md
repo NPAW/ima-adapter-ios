@@ -2,6 +2,7 @@
 ### Fixed
 - Ad positions for live
 - Posible crash when ad completed on live
+- Join time always before first adStart
 
 ## [6.0.7] - 2018-04-23
 ### Remove

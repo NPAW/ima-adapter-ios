@@ -211,7 +211,7 @@
 }
 
 - (void) fireStart{
-    if(self.plugin != nil && self.plugin.adapter != nil && !self.plugin.adapter.flags.joined && [self getPosition] == YBAdPositionPre){
+    if(self.plugin != nil && self.plugin.adapter != nil && !self.plugin.adapter.flags.joined && ([self getPosition] == YBAdPositionPre || ([self.plugin getIsLive] != nil && [[self.plugin getIsLive] isEqualToValue:@YES]))){
         [self.plugin.adapter fireJoin];
     }
     [super fireStart];
