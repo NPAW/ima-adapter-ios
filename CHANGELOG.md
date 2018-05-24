@@ -1,3 +1,8 @@
+## [6.0.8] - 
+### Fixed
+- Ad positions for live
+- Posible crash when ad completed on live
+
 ## [6.0.7] - 2018-04-23
 ### Remove
 - Remove ad pause and resume
