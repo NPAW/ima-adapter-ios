@@ -139,6 +139,7 @@ typedef NS_ENUM(NSInteger, PlayButtonType) {
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
   [self.contentPlayer pause];
+    [self.plugin removeAdapter];
   // Ignore this if we're presenting a modal view (e.g. in-app clickthrough).
   if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
     // Don't save bookmark if we're playing remotely via cast or playing a live stream.
@@ -168,6 +169,9 @@ typedef NS_ENUM(NSInteger, PlayButtonType) {
         YBOptions *options = [YBOptions new];
         options.accountCode = @"powerdev";
         options.httpSecure = NO;
+        if(self.video.streamType == StreamTypeLive){
+            options.contentIsLive = @YES;
+        }
         
         self.plugin = [[YBPlugin alloc] initWithOptions:options];
     }

@@ -26,8 +26,8 @@ target 'IMAAdapterExample' do
     pod 'YouboraAVPlayerAdapter', '6.0.6'
 end
 
-target 'AdvancedExample' do
-	project 'Example-DAI/AdvancedExample.xcodeproj'
+target 'IMAAdapterExampleDAI' do
+	project 'Example-DAI/IMAAdapterExampleDAI.xcodeproj'
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
 	use_frameworks!
     

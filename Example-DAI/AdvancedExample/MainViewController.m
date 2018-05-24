@@ -1,5 +1,7 @@
 #import "MainViewController.h"
 
+#import <YouboraConfigUtils/YouboraConfigUtils.h>
+
 @import GoogleCast;
 
 #import "CastManager.h"
@@ -67,6 +69,17 @@
   }
 }
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    
+    if(indexPath.row == [self.tableView numberOfRowsInSection:0] - 1){
+        UIViewController * vc = [YouboraConfigViewController new];
+        [[self navigationController] pushViewController:vc animated:YES];
+        return NO;
+    }
+    return YES;
+}
+
 // Only allow one selection.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   return 1;
@@ -74,16 +87,22 @@
 
 // Returns number of items to be presented in the table.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return self.videos.count;
+  return self.videos.count + 1; //+1 for the config row
 }
 
 // Sets the display info for each table row.
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
   UITableViewCell *cell =
-      [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-  Video *selectedVideo = self.videos[indexPath.row];
-  cell.textLabel.text = selectedVideo.title;
+    [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    if(indexPath.row == [tableView numberOfRowsInSection:0] - 1){
+        cell.textLabel.text = @"YouboraConfig";
+    }else{
+        Video *selectedVideo = self.videos[indexPath.row];
+        cell.textLabel.text = selectedVideo.title;
+    }
+  
   return cell;
 }
 
