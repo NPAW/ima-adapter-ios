@@ -7,7 +7,7 @@
 //
 
 #import <YouboraLib/YouboraLib.h>
-#import <GoogleInteractiveMediaAds/GoogleInteractiveMediaAds.h>
+@import InteractiveMediaAds;
 
 @interface YBIMADAIAdapter : YBPlayerAdapter<IMAStreamManager*>
 
