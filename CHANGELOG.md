@@ -1,3 +1,7 @@
+## [6.0.9] - 
+### Fixed
+- No need to call initAdapterIfNecessary on the wrappers
+
 ## [6.0.8] - 2018-05-24
 ### Fixed
 - Ad positions for live

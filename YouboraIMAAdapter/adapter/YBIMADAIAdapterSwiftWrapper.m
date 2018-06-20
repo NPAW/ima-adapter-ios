@@ -21,6 +21,7 @@
         self.player = adsManager;
         self.plugin = plugin;
     }
+    [self initAdapterIfNecessary];
     return self;
 }
 
