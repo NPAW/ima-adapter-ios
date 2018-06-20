@@ -1,4 +1,4 @@
-## [6.0.9] - 
+## [6.0.9] - 2018-06-20
 ### Fixed
 - No need to call initAdapterIfNecessary on the wrappers
 
