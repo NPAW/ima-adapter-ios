@@ -92,6 +92,7 @@
 }
 
 - (void)streamManager:(IMAStreamManager *)streamManager adBreakDidEnd:(IMAAdBreakInfo *)adBreakInfo {
+    [self fireStop];
     for (int k = 0; k < [self.delegates count]; k++) {
         if([self.delegates[k] respondsToSelector:@selector(streamManager:adBreakDidEnd:)]){
             [self.delegates[k] performSelector:@selector(streamManager:adBreakDidEnd:) withObject:streamManager withObject:adBreakInfo];
@@ -117,7 +118,21 @@
     if(![@(remainingTime) isEqual:self.lastDuration]){
         [self fireJoin];
     }
-    double remainingTimeThreshold = [self getPosition] == YBAdPositionPost ? 1 : 0.1;
+    //Most ads doesn't play "to the end" so we give it a little threshold and considered finished when it goes past it
+    double remainingTimeThreshold = 1;
+    
+    if(ad.adPosition == ad.adBreakInfo.totalAds){
+        if([self getIsLive] != nil){
+            if([[self getIsLive] isEqualToValue:@YES]){
+                remainingTimeThreshold += 0.5;
+            }else{
+                if([self getPosition] == YBAdPositionPost){
+                    remainingTimeThreshold += 0.3;
+                }
+            }
+        }
+        
+    }
     if(remainingTime <= remainingTimeThreshold){
         [self fireStop];
     }
@@ -160,6 +175,11 @@
 }
 
 - (YBAdPosition)getPosition {
+    
+    if(self.plugin != nil && [self.plugin getIsLive] != nil && [[self.plugin getIsLive] isEqualToValue: @YES]){
+        return YBAdPositionMid;
+    }
+    
     if(self.currentAd != nil){
         if(self.currentAd.adBreakInfo.timeOffset == 0){
             return YBAdPositionPre;

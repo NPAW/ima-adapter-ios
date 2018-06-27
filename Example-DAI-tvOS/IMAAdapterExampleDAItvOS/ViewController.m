@@ -6,6 +6,9 @@
 
 #import "AdUI.h"
 
+// Live stream asset key.
+static NSString *const kTestAssetKey = @"sN_IYUG8STe1ZzhIIE_ksA";
+
 // VOD content source and video IDs.
 static NSString *const kContentSourceID = @"19463";
 static NSString *const kVideoID = @"googleio-highlights";
@@ -51,7 +54,7 @@ static NSString *const kBackupContentPath =
     [super viewDidLoad];
     [YBLog setDebugLevel:YBLogLevelVerbose];
     YBOptions *options = [YBOptions new];
-    options.accountCode = @"nicetest";
+    options.accountCode = @"powerdev";
     options.httpSecure = false;
     self.plugin = [[YBPlugin alloc] initWithOptions:options];
 }
@@ -80,8 +83,16 @@ static NSString *const kBackupContentPath =
     self.videoDisplay = [[IMAAVPlayerVideoDisplay alloc]
                          initWithAVPlayer:self.playerViewController.player];
     
+    // Create a stream request. Use one of "Live stream request" or "VOD request".
+    // Live stream request.
+    /*IMALiveStreamRequest *streamRequest = [[IMALiveStreamRequest alloc] initWithAssetKey:kTestAssetKey];
+    self.plugin.options.contentIsLive = @YES;*/
+    // VOD request. Comment out the IMALiveStreamRequest above and uncomment this IMAVODStreamRequest
+    // to switch from a livestream to a VOD stream.
     IMAVODStreamRequest *streamRequest =
-    [[IMAVODStreamRequest alloc] initWithContentSourceID:kContentSourceID videoID:kVideoID];
+     [[IMAVODStreamRequest alloc] initWithContentSourceID:kContentSourceID videoID:kVideoID];
+     self.plugin.options.contentIsLive = @NO;
+     
     
     self.streamManager = [[IMAStreamManager alloc] initWithVideoDisplay:self.videoDisplay];
     self.streamManager.delegate = self;
