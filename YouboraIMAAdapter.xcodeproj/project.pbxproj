@@ -11,6 +11,10 @@
 		CD1B0F422084AEB70048ECEC /* YBIMADAIAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B0F402084AEB70048ECEC /* YBIMADAIAdapter.m */; };
 		CD1B0F472084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1B0F452084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD1B0F482084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B0F462084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m */; };
+		CD30295B20D98A1C0027BDCF /* InteractiveMediaAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD30295A20D98A1B0027BDCF /* InteractiveMediaAds.framework */; };
+		CD5FD87F20D800FF001EE724 /* YouboraIMAAdapter_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = CD5FD87D20D800FF001EE724 /* YouboraIMAAdapter_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD5FD89920D96E8F001EE724 /* YBIMADAIAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CD5FD89720D96E8F001EE724 /* YBIMADAIAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD5FD89A20D96E8F001EE724 /* YBIMADAIAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5FD89820D96E8F001EE724 /* YBIMADAIAdapter.m */; };
 		CDA5D1641FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDA5D1651FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D1631FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m */; };
 		CDBA8CB41FA311C0004F8B6D /* YouboraIMAAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBA8CB21FA311C0004F8B6D /* YouboraIMAAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,6 +27,12 @@
 		CD1B0F402084AEB70048ECEC /* YBIMADAIAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBIMADAIAdapter.m; sourceTree = "<group>"; };
 		CD1B0F452084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBIMADAIAdapterSwiftWrapper.h; sourceTree = "<group>"; };
 		CD1B0F462084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBIMADAIAdapterSwiftWrapper.m; sourceTree = "<group>"; };
+		CD30295A20D98A1B0027BDCF /* InteractiveMediaAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = InteractiveMediaAds.framework; sourceTree = "<group>"; };
+		CD5FD87B20D800FE001EE724 /* YouboraIMAAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YouboraIMAAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD5FD87D20D800FF001EE724 /* YouboraIMAAdapter_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouboraIMAAdapter_tvOS.h; sourceTree = "<group>"; };
+		CD5FD87E20D800FF001EE724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD5FD89720D96E8F001EE724 /* YBIMADAIAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBIMADAIAdapter.h; sourceTree = "<group>"; };
+		CD5FD89820D96E8F001EE724 /* YBIMADAIAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBIMADAIAdapter.m; sourceTree = "<group>"; };
 		CD91948320333A05002A8507 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIMAAdapterSwiftWrapper.h; sourceTree = "<group>"; };
 		CDA5D1631FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBIMAAdapterSwiftWrapper.m; sourceTree = "<group>"; };
@@ -34,6 +44,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CD5FD87720D800FE001EE724 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD30295B20D98A1C0027BDCF /* InteractiveMediaAds.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CDBA8CAB1FA311C0004F8B6D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -44,12 +62,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD5FD87C20D800FF001EE724 /* YouboraIMAAdapter tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				CD5FD87D20D800FF001EE724 /* YouboraIMAAdapter_tvOS.h */,
+				CD5FD87E20D800FF001EE724 /* Info.plist */,
+				CD5FD89620D96E29001EE724 /* DAI */,
+			);
+			path = "YouboraIMAAdapter tvOS";
+			sourceTree = "<group>";
+		};
+		CD5FD89320D96DE5001EE724 /* IMA */ = {
+			isa = PBXGroup;
+			children = (
+				CDBA8CBB1FA31B5D004F8B6D /* YBIMAAdapter.h */,
+				CDBA8CBC1FA31B5D004F8B6D /* YBIMAAdapter.m */,
+				CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */,
+				CDA5D1631FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m */,
+			);
+			path = IMA;
+			sourceTree = "<group>";
+		};
+		CD5FD89420D96DF4001EE724 /* DAI */ = {
+			isa = PBXGroup;
+			children = (
+				CD1B0F3F2084AEB70048ECEC /* YBIMADAIAdapter.h */,
+				CD1B0F402084AEB70048ECEC /* YBIMADAIAdapter.m */,
+				CD1B0F452084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h */,
+				CD1B0F462084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m */,
+			);
+			path = DAI;
+			sourceTree = "<group>";
+		};
+		CD5FD89620D96E29001EE724 /* DAI */ = {
+			isa = PBXGroup;
+			children = (
+				CD5FD89720D96E8F001EE724 /* YBIMADAIAdapter.h */,
+				CD5FD89820D96E8F001EE724 /* YBIMADAIAdapter.m */,
+			);
+			path = DAI;
+			sourceTree = "<group>";
+		};
 		CDBA8CA51FA311C0004F8B6D = {
 			isa = PBXGroup;
 			children = (
 				CD91948320333A05002A8507 /* CHANGELOG.md */,
 				CDBA8CB11FA311C0004F8B6D /* YouboraIMAAdapter */,
+				CD5FD87C20D800FF001EE724 /* YouboraIMAAdapter tvOS */,
 				CDBA8CB01FA311C0004F8B6D /* Products */,
+				D4154EE58FC91BC3119DBE68 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				CDBA8CAF1FA311C0004F8B6D /* YouboraIMAAdapter.framework */,
+				CD5FD87B20D800FE001EE724 /* YouboraIMAAdapter.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,21 +136,32 @@
 		CDBA8CBA1FA31B36004F8B6D /* adapter */ = {
 			isa = PBXGroup;
 			children = (
-				CDBA8CBB1FA31B5D004F8B6D /* YBIMAAdapter.h */,
-				CDBA8CBC1FA31B5D004F8B6D /* YBIMAAdapter.m */,
-				CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */,
-				CDA5D1631FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m */,
-				CD1B0F3F2084AEB70048ECEC /* YBIMADAIAdapter.h */,
-				CD1B0F402084AEB70048ECEC /* YBIMADAIAdapter.m */,
-				CD1B0F452084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h */,
-				CD1B0F462084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m */,
+				CD5FD89420D96DF4001EE724 /* DAI */,
+				CD5FD89320D96DE5001EE724 /* IMA */,
 			);
 			path = adapter;
+			sourceTree = "<group>";
+		};
+		D4154EE58FC91BC3119DBE68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD30295A20D98A1B0027BDCF /* InteractiveMediaAds.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		CD5FD87820D800FE001EE724 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD5FD89920D96E8F001EE724 /* YBIMADAIAdapter.h in Headers */,
+				CD5FD87F20D800FF001EE724 /* YouboraIMAAdapter_tvOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CDBA8CAC1FA311C0004F8B6D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -104,6 +177,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		CD5FD87A20D800FE001EE724 /* YouboraIMAAdapter tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD5FD88220D800FF001EE724 /* Build configuration list for PBXNativeTarget "YouboraIMAAdapter tvOS" */;
+			buildPhases = (
+				CD5FD87620D800FE001EE724 /* Sources */,
+				CD5FD87720D800FE001EE724 /* Frameworks */,
+				CD5FD87820D800FE001EE724 /* Headers */,
+				CD5FD87920D800FE001EE724 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "YouboraIMAAdapter tvOS";
+			productName = "YouboraIMAAdapter tvOS";
+			productReference = CD5FD87B20D800FE001EE724 /* YouboraIMAAdapter.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		CDBA8CAE1FA311C0004F8B6D /* YouboraIMAAdapter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDBA8CB71FA311C0004F8B6D /* Build configuration list for PBXNativeTarget "YouboraIMAAdapter" */;
@@ -131,6 +222,11 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = NPAW;
 				TargetAttributes = {
+					CD5FD87A20D800FE001EE724 = {
+						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = DAR8GLKRWU;
+						ProvisioningStyle = Automatic;
+					};
 					CDBA8CAE1FA311C0004F8B6D = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = DAR8GLKRWU;
@@ -151,11 +247,19 @@
 			projectRoot = "";
 			targets = (
 				CDBA8CAE1FA311C0004F8B6D /* YouboraIMAAdapter */,
+				CD5FD87A20D800FE001EE724 /* YouboraIMAAdapter tvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CD5FD87920D800FE001EE724 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CDBA8CAD1FA311C0004F8B6D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,6 +270,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CD5FD87620D800FE001EE724 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD5FD89A20D96E8F001EE724 /* YBIMADAIAdapter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CDBA8CAA1FA311C0004F8B6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -180,6 +292,90 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		CD5FD88020D800FF001EE724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = DAR8GLKRWU;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libs",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "YouboraIMAAdapter tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.npaw.youbora.YouboraIMAAdapter;
+				PRODUCT_MODULE_NAME = YouboraIMAAdapter;
+				PRODUCT_NAME = YouboraIMAAdapter;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		CD5FD88120D800FF001EE724 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = DAR8GLKRWU;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libs",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "YouboraIMAAdapter tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.npaw.youbora.YouboraIMAAdapter;
+				PRODUCT_MODULE_NAME = YouboraIMAAdapter;
+				PRODUCT_NAME = YouboraIMAAdapter;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 		CDBA8CB51FA311C0004F8B6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -325,6 +521,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CD5FD88220D800FF001EE724 /* Build configuration list for PBXNativeTarget "YouboraIMAAdapter tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD5FD88020D800FF001EE724 /* Debug */,
+				CD5FD88120D800FF001EE724 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CDBA8CA91FA311C0004F8B6D /* Build configuration list for PBXProject "YouboraIMAAdapter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
