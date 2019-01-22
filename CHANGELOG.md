@@ -1,3 +1,7 @@
+## [6.0.10] - 2019-01-22
+### Fixed
+- It is posible that the pings stopped when all ads finished, now it's imposible
+
 ## [6.0.9] - 2018-06-20
 ### Fixed
 - No need to call initAdapterIfNecessary on the wrappers
