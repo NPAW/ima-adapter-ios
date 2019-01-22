@@ -11,7 +11,6 @@
 		CD1B0F422084AEB70048ECEC /* YBIMADAIAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B0F402084AEB70048ECEC /* YBIMADAIAdapter.m */; };
 		CD1B0F472084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1B0F452084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD1B0F482084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B0F462084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m */; };
-		CD30295B20D98A1C0027BDCF /* InteractiveMediaAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD30295A20D98A1B0027BDCF /* InteractiveMediaAds.framework */; };
 		CD5FD87F20D800FF001EE724 /* YouboraIMAAdapter_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = CD5FD87D20D800FF001EE724 /* YouboraIMAAdapter_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD5FD89920D96E8F001EE724 /* YBIMADAIAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CD5FD89720D96E8F001EE724 /* YBIMADAIAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD5FD89A20D96E8F001EE724 /* YBIMADAIAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5FD89820D96E8F001EE724 /* YBIMADAIAdapter.m */; };
@@ -20,6 +19,7 @@
 		CDBA8CB41FA311C0004F8B6D /* YouboraIMAAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBA8CB21FA311C0004F8B6D /* YouboraIMAAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDBA8CBD1FA31B5D004F8B6D /* YBIMAAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBA8CBB1FA31B5D004F8B6D /* YBIMAAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDBA8CBE1FA31B5D004F8B6D /* YBIMAAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBA8CBC1FA31B5D004F8B6D /* YBIMAAdapter.m */; };
+		CDD145C121F7ACC10071FBF4 /* InteractiveMediaAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD30295A20D98A1B0027BDCF /* InteractiveMediaAds.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD30295B20D98A1C0027BDCF /* InteractiveMediaAds.framework in Frameworks */,
+				CDD145C121F7ACC10071FBF4 /* InteractiveMediaAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
