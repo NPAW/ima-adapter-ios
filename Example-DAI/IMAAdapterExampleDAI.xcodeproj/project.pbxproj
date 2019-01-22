@@ -204,7 +204,6 @@
 				15D00C9619F5926000532960 /* Frameworks */,
 				15D00C9719F5926000532960 /* Resources */,
 				2B559D20731F0D35AC8B85C5 /* [CP] Embed Pods Frameworks */,
-				8BA46991FE743A37C0208233 /* [CP] Copy Pods Resources */,
 				CDB30B4920B4518800B0CE58 /* Embed Frameworks */,
 				CD693F9920B6C4D000B4726A /* ShellScript */,
 			);
@@ -311,21 +310,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-IMAAdapterExampleDAI/Pods-IMAAdapterExampleDAI-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8BA46991FE743A37C0208233 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-IMAAdapterExampleDAI/Pods-IMAAdapterExampleDAI-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CD693F9920B6C4D000B4726A /* ShellScript */ = {

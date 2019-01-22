@@ -100,7 +100,8 @@ BOOL adServed;
             [self fireStop:@{@"skipped":@"true"}];
             break;
         case kIMAAdEvent_ALL_ADS_COMPLETED:{
-            [self fireAllAdsCompleted];
+            //Not needed anymore
+            //[self fireAllAdsCompleted];
             break;
         }
         case kIMAAdEvent_LOG:{

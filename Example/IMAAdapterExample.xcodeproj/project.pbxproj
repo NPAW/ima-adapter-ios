@@ -178,7 +178,6 @@
 				CDBA8CE81FA31DC6004F8B6D /* Frameworks */,
 				CDBA8CE91FA31DC6004F8B6D /* Resources */,
 				1224D7649B4E181B02AC6E66 /* [CP] Embed Pods Frameworks */,
-				664FE3546F83AC4416F630FA /* [CP] Copy Pods Resources */,
 				CDBA8D181FA32B4E004F8B6D /* ShellScript */,
 				CDB780E31FA3527700B1F03E /* Embed Frameworks */,
 			);
@@ -276,21 +275,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-IMAAdapterExample/Pods-IMAAdapterExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		664FE3546F83AC4416F630FA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-IMAAdapterExample/Pods-IMAAdapterExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CDBA8D181FA32B4E004F8B6D /* ShellScript */ = {

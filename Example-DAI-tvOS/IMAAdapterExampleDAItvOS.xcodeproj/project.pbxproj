@@ -177,7 +177,6 @@
 				1513991B1CE6471800FF6811 /* Frameworks */,
 				1513991C1CE6471800FF6811 /* Resources */,
 				7D7DD151B47BD2E55CE3397B /* [CP] Embed Pods Frameworks */,
-				06424CBDDC902AB748A62010 /* [CP] Copy Pods Resources */,
 				CD30298020D9919C0027BDCF /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -259,21 +258,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		06424CBDDC902AB748A62010 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-IMAAdapterExampleDAItvOS/Pods-IMAAdapterExampleDAItvOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7D7DD151B47BD2E55CE3397B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

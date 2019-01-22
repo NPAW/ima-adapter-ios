@@ -1,3 +1,7 @@
+## [6.0.10] - 2019-01-22
+### Fixed
+- No need to call initAdapterIfNecessary on the wrappers
+
 ## [6.0.9] - 2018-06-20
 ### Fixed
 - No need to call initAdapterIfNecessary on the wrappers
