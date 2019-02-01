@@ -1,3 +1,7 @@
+## [6.3.1] - 2019-02-01
+### Fixed
+- Wrong display version number
+
 ## [6.3.0] - 2019-02-01
 ### Updated
 - Update all dependencies to last YouboraLib 6.3
