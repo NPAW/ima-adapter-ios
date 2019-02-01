@@ -151,7 +151,7 @@
             //[self fireStart];
             break;
         case kIMAAdEvent_ALL_ADS_COMPLETED:
-            [self fireAllAdsCompleted];
+            //[self fireAllAdsCompleted];
             break;
         case kIMAAdEvent_TAPPED:
             break;

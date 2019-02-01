@@ -83,7 +83,6 @@
     [self fireStart];
     NSString *adInfo = [NSString stringWithFormat:@"Showing ad %ld/%ld, title: %@, description: %@",
                         ad.adPosition, ad.adBreakInfo.totalAds, ad.adTitle, ad.adDescription];
-    //[self playAdHandler];
     for (int k = 0; k < [self.delegates count]; k++) {
         if([self.delegates[k] respondsToSelector:@selector(streamManager:adDidStart:)]){
             [self.delegates[k] performSelector:@selector(streamManager:adDidStart:) withObject:streamManager withObject:ad];
