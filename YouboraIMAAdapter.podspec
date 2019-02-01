@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.author             = { "Nice People at Work" => "support@nicepeopleatwork.com" }
 
   # Platforms
-  s.ios.deployment_target = "8.0"
+  s.ios.deployment_target = "9.0"
   #s.tvos.deployment_target = "9.0"
 
   # Source Location
@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) YOUBORAIMAADAPTER_VERSION=' + s.version.to_s }
 
-  s.dependency 'YouboraLib', "~> 6.0"
+  s.dependency 'YouboraLib', "~> 6.3"
   s.dependency 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
 
 end

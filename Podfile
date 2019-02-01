@@ -12,7 +12,7 @@ target 'IMAAdapterExample' do
     #pod 'YouboraLib',:path => '../lib-plugin-ios'
     #pod 'YouboraLib', '~> 6.0.5-beta'
     pod 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
-    pod 'YouboraAVPlayerAdapter', '6.0.6'
+    pod 'YouboraAVPlayerAdapter', '~>6.3.0'
 end
 
 target 'IMAAdapterExampleDAI' do
@@ -25,7 +25,7 @@ target 'IMAAdapterExampleDAI' do
     #pod 'YouboraLib', '~> 6.0.5-beta'
     pod 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
     pod 'google-cast-sdk', '~>3.2.0'
-    pod 'YouboraAVPlayerAdapter', '6.0.6'
+    pod 'YouboraAVPlayerAdapter', '~>6.3.0'
 end
 
 target 'IMAAdapterExampleDAItvOS' do
@@ -37,7 +37,7 @@ target 'IMAAdapterExampleDAItvOS' do
     # Pods for AVPlayerAdapterExample
     #pod 'YouboraLib',:path => '../lib-plugin-ios'
     #pod 'YouboraLib', '~> 6.0.5-beta'
-    pod 'YouboraAVPlayerAdapter', '6.0.6'
+    pod 'YouboraAVPlayerAdapter', '~>6.3.0'
 end
 
 target 'YouboraIMAAdapter' do
@@ -47,7 +47,7 @@ target 'YouboraIMAAdapter' do
     
     # Pods for YouboraAVPlayerAdapter
     #pod 'YouboraLib',:path => '../lib-plugin-ios'
-    pod 'YouboraLib', '~> 6.0.7'
+    pod 'YouboraLib', '~> 6.3.0'
     pod 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
 end
 
@@ -59,5 +59,5 @@ target 'YouboraIMAAdapter tvOS' do
     
     # Pods for YouboraAVPlayerAdapter
     #pod 'YouboraLib',:path => '../lib-plugin-ios'
-    pod 'YouboraLib', '~> 6.0.7'
+    pod 'YouboraLib', '~> 6.3.0'
 end

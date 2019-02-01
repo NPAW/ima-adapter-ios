@@ -1,3 +1,10 @@
+## [6.3.0] - 2019-02-01
+### Updated
+- Update all dependencies to last YouboraLib 6.3
+- Minimum version required now is iOS 9.0
+### Fixed
+- Remove allAdsCompleted from DAI too
+
 ## [6.0.10] - 2019-01-22
 ### Fixed
 - It is posible that the pings stopped when all ads finished, now it's imposible
