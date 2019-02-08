@@ -1,3 +1,0 @@
-# README #
-
-IMA Adapter ios
