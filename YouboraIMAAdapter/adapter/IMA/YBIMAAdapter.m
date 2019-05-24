@@ -29,6 +29,8 @@
     @property (nonatomic,strong,readwrite) NSMutableArray* delegates;
     @property YBAdPosition lastPosition;
     @property NSNumber* lastPlayhead;
+    @property (nonatomic, strong) NSNumber * adsOnCurrentBreak;
+    @property (nonatomic, assign) BOOL isAdSkippable;
 @end
 
 @implementation YBIMAAdapter
@@ -63,7 +65,9 @@ BOOL adServed;
     switch (event.type) {
         case kIMAAdEvent_LOADED:{
             self.lastPosition = YBAdPositionUnknown;
-            int pos = event.ad.adPodInfo.podIndex;
+            int pos = (int)event.ad.adPodInfo.podIndex;
+            self.adsOnCurrentBreak = @(event.ad.adPodInfo.totalAds);
+            self.isAdSkippable = event.ad.skippable;
             if(pos == 0){
                 self.lastPosition = YBAdPositionPre;
             }
@@ -90,7 +94,7 @@ BOOL adServed;
         case kIMAAdEvent_TAPPED:
             break;
         case kIMAAdEvent_CLICKED:
-            [self fireClick];
+            [self fireClickWithAdUrl:[self adUrlWithAd:event.ad]];
             break;
         case kIMAAdEvent_COMPLETE:{
             [self sendStop];
@@ -112,17 +116,39 @@ BOOL adServed;
             }
         }
         case kIMAAdEvent_AD_BREAK_READY:
+            break;
         case kIMAAdEvent_AD_BREAK_ENDED:
+            break;
         case kIMAAdEvent_AD_BREAK_STARTED:
+            break;
         case kIMAAdEvent_MIDPOINT:
+            [self fireQuartile:2];
+            break;
         case kIMAAdEvent_STREAM_LOADED:
         case kIMAAdEvent_FIRST_QUARTILE:
+            [self fireQuartile:1];
+            break;
         case kIMAAdEvent_STREAM_STARTED:
         case kIMAAdEvent_THIRD_QUARTILE:
-        case kIMAAdEvent_CUEPOINTS_CHANGED:
+            [self fireQuartile:3];
             break;
-        
+        case kIMAAdEvent_CUEPOINTS_CHANGED:
+        case kIMAAdEvent_AD_PERIOD_ENDED:
+        case kIMAAdEvent_AD_PERIOD_STARTED:
+            break;
     }
+}
+
+- (NSString *) adUrlWithAd:(IMAAd *) ad {
+    @try {
+        if (self.player != nil && ad != nil) {
+            NSString * adUrl = [ad valueForKey:@"_clickThroughUrl"];
+            return adUrl;
+        }
+    } @catch (NSException *exception) {
+        [YBLog logException:exception];
+    }
+    return nil;
 }
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdError:(IMAAdError *)error {
@@ -146,6 +172,11 @@ BOOL adServed;
     
 }
 
+- (void) fireStart {
+    [self fireAdBreakStart];
+    [super fireStart];
+}
+
 - (void)adsManagerDidRequestContentResume:(IMAAdsManager *)adsManager {
     
     for (int k = 0; k < [self.delegates count]; k++) {
@@ -155,6 +186,7 @@ BOOL adServed;
     }
     
     [self sendStop];
+    [self fireAdBreakStop];
 }
 
 #pragma mark - Overridden get methods
@@ -178,6 +210,30 @@ BOOL adServed;
 - (IMAAdsManager *) getAdPlayer{
     return (IMAAdsManager *)self.player;
 }
+
+- (NSNumber *) getAdBreakNumber {
+    return [super getAdBreakNumber];
+}
+
+- (NSNumber *) getAdGivenBreaks {
+    return @([self getAdPlayer].adCuePoints.count);
+}
+
+- (NSArray *) getAdBreaksTime {
+    return [self getAdPlayer].adCuePoints;
+}
+
+- (NSNumber *) getGivenAds {
+    if (self.player) {
+        
+    }
+    return self.adsOnCurrentBreak;
+}
+
+- (NSValue *) isSkippable {
+    return self.isAdSkippable ? @YES : @NO;
+}
+
 - (NSString *)getPlayerName {
     return PLUGIN_NAME;
 }
