@@ -264,7 +264,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-IMAAdapterExampleDAItvOS/Pods-IMAAdapterExampleDAItvOS-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-IMAAdapterExampleDAItvOS/Pods-IMAAdapterExampleDAItvOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/YouboraAVPlayerAdapter-tvOS/YouboraAVPlayerAdapter.framework",
 				"${BUILT_PRODUCTS_DIR}/YouboraLib-tvOS/YouboraLib.framework",
 			);
@@ -275,7 +275,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-IMAAdapterExampleDAItvOS/Pods-IMAAdapterExampleDAItvOS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IMAAdapterExampleDAItvOS/Pods-IMAAdapterExampleDAItvOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9124C54AE94E3CA10B21E282 /* [CP] Check Pods Manifest.lock */ = {

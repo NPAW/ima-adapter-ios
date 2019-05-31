@@ -294,7 +294,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-IMAAdapterExampleDAI/Pods-IMAAdapterExampleDAI-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-IMAAdapterExampleDAI/Pods-IMAAdapterExampleDAI-frameworks.sh",
 				"${PODS_ROOT}/GoogleAds-IMA-iOS-SDK/GoogleInteractiveMediaAds.framework",
 				"${BUILT_PRODUCTS_DIR}/YouboraAVPlayerAdapter-iOS/YouboraAVPlayerAdapter.framework",
 				"${BUILT_PRODUCTS_DIR}/YouboraLib-iOS/YouboraLib.framework",
@@ -309,7 +309,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-IMAAdapterExampleDAI/Pods-IMAAdapterExampleDAI-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IMAAdapterExampleDAI/Pods-IMAAdapterExampleDAI-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CD693F9920B6C4D000B4726A /* ShellScript */ = {

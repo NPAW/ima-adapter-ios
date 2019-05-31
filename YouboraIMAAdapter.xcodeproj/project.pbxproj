@@ -62,6 +62,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		065BEC5CB6D07EFBD9340603 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CD5FD87C20D800FF001EE724 /* YouboraIMAAdapter tvOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +118,7 @@
 				CD5FD87C20D800FF001EE724 /* YouboraIMAAdapter tvOS */,
 				CDBA8CB01FA311C0004F8B6D /* Products */,
 				D4154EE58FC91BC3119DBE68 /* Frameworks */,
+				065BEC5CB6D07EFBD9340603 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -239,6 +247,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = CDBA8CA51FA311C0004F8B6D;
