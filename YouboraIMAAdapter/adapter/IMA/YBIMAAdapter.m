@@ -31,6 +31,7 @@
     @property NSNumber* lastPlayhead;
     @property (nonatomic, strong) NSNumber * adsOnCurrentBreak;
     @property (nonatomic, assign) BOOL isAdSkippable;
+    @property (nonatomic, strong) NSString * creativeId;
 @end
 
 @implementation YBIMAAdapter
@@ -68,6 +69,7 @@ BOOL adServed;
             int pos = (int)event.ad.adPodInfo.podIndex;
             self.adsOnCurrentBreak = @(event.ad.adPodInfo.totalAds);
             self.isAdSkippable = event.ad.skippable;
+            self.creativeId = event.ad.creativeAdID;
             if(pos == 0){
                 self.lastPosition = YBAdPositionPre;
             }
@@ -220,18 +222,29 @@ BOOL adServed;
 }
 
 - (NSArray *) getAdBreaksTime {
-    return [self getAdPlayer].adCuePoints;
+    NSMutableArray *cuePoints = [[self getAdPlayer].adCuePoints mutableCopy];
+    if (cuePoints != nil && [[cuePoints lastObject] isEqual:@(-1)]) {
+        if (self.plugin != nil && ![[self.plugin getDuration] isEqualToNumber:@(0)]) {
+            cuePoints[cuePoints.count - 1] = [self.plugin getDuration];
+        }
+    }
+    return cuePoints;
 }
 
 - (NSNumber *) getGivenAds {
-    if (self.player) {
-        
-    }
     return self.adsOnCurrentBreak;
 }
 
 - (NSValue *) isSkippable {
     return self.isAdSkippable ? @YES : @NO;
+}
+
+- (NSString *) getAdProvider {
+    return @"DFP";
+}
+
+- (NSString *) getAdCreativeId {
+    return self.creativeId
 }
 
 - (NSString *)getPlayerName {
