@@ -19,7 +19,6 @@
 		15D00CC719F5937D00532960 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D00CC619F5937D00532960 /* Video.m */; };
 		15D00CCA19F593BF00532960 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D00CC919F593BF00532960 /* iPad.storyboard */; };
 		15D00CCC19F5A02F00532960 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D00CCB19F5A02F00532960 /* iPhone.storyboard */; };
-		247E53E4EDC1CB42EC06CDB1 /* Pods_AdvancedExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E5D3F7C8283709C82A5E8D2 /* Pods_AdvancedExample.framework */; };
 		CD693F9820B6C4C900B4726A /* YouboraConfigUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD693F9720B6C4C900B4726A /* YouboraConfigUtils.framework */; };
 		CDB30B4520B4518800B0CE58 /* YouboraIMAAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB30B3720B40D5500B0CE58 /* YouboraIMAAdapter.framework */; };
 		CDB30B4620B4518800B0CE58 /* YouboraIMAAdapter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDB30B3720B40D5500B0CE58 /* YouboraIMAAdapter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -27,6 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CD1A915522A7B555005A9927 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDB30B3220B40D5500B0CE58 /* YouboraIMAAdapter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD5FD87B20D800FE001EE724;
+			remoteInfo = "YouboraIMAAdapter tvOS";
+		};
 		CDB30B3620B40D5500B0CE58 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CDB30B3220B40D5500B0CE58 /* YouboraIMAAdapter.xcodeproj */;
@@ -94,7 +100,6 @@
 			files = (
 				CD693F9820B6C4C900B4726A /* YouboraConfigUtils.framework in Frameworks */,
 				15C30C561AE6D69700374786 /* WebKit.framework in Frameworks */,
-				247E53E4EDC1CB42EC06CDB1 /* Pods_AdvancedExample.framework in Frameworks */,
 				CDB30B4520B4518800B0CE58 /* YouboraIMAAdapter.framework in Frameworks */,
 				D0D44C5536C15091A33B1375 /* Pods_IMAAdapterExampleDAI.framework in Frameworks */,
 			);
@@ -177,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				CDB30B3720B40D5500B0CE58 /* YouboraIMAAdapter.framework */,
+				CD1A915622A7B555005A9927 /* YouboraIMAAdapter.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,7 +234,7 @@
 				TargetAttributes = {
 					15D00C9819F5926000532960 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = DAR8GLKRWU;
+						DevelopmentTeam = S65Y3ZP8PG;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -243,6 +249,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -263,6 +270,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		CD1A915622A7B555005A9927 /* YouboraIMAAdapter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = YouboraIMAAdapter.framework;
+			remoteRef = CD1A915522A7B555005A9927 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		CDB30B3720B40D5500B0CE58 /* YouboraIMAAdapter.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -458,7 +472,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DAR8GLKRWU;
+				DEVELOPMENT_TEAM = S65Y3ZP8PG;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -468,10 +482,11 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				INFOPLIST_FILE = AdvancedExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.npaw.youbora.IMAAdapterExampleDAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -485,7 +500,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DAR8GLKRWU;
+				DEVELOPMENT_TEAM = S65Y3ZP8PG;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -495,10 +510,11 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				INFOPLIST_FILE = AdvancedExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.npaw.youbora.IMAAdapterExampleDAI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};

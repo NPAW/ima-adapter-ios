@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD1A914922A6F5DC005A9927 /* YBIMAAdapterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A914822A6F5DC005A9927 /* YBIMAAdapterHelper.swift */; };
+		CD1A914A22A6F5DC005A9927 /* YBIMAAdapterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A914822A6F5DC005A9927 /* YBIMAAdapterHelper.swift */; };
 		CD1B0F412084AEB70048ECEC /* YBIMADAIAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1B0F3F2084AEB70048ECEC /* YBIMADAIAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD1B0F422084AEB70048ECEC /* YBIMADAIAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B0F402084AEB70048ECEC /* YBIMADAIAdapter.m */; };
 		CD1B0F472084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1B0F452084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD1A914822A6F5DC005A9927 /* YBIMAAdapterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBIMAAdapterHelper.swift; sourceTree = "<group>"; };
 		CD1B0F3F2084AEB70048ECEC /* YBIMADAIAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBIMADAIAdapter.h; sourceTree = "<group>"; };
 		CD1B0F402084AEB70048ECEC /* YBIMADAIAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBIMADAIAdapter.m; sourceTree = "<group>"; };
 		CD1B0F452084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBIMADAIAdapterSwiftWrapper.h; sourceTree = "<group>"; };
@@ -146,6 +149,7 @@
 			children = (
 				CD5FD89420D96DF4001EE724 /* DAI */,
 				CD5FD89320D96DE5001EE724 /* IMA */,
+				CD1A914822A6F5DC005A9927 /* YBIMAAdapterHelper.swift */,
 			);
 			path = adapter;
 			sourceTree = "<group>";
@@ -233,11 +237,13 @@
 					CD5FD87A20D800FE001EE724 = {
 						CreatedOnToolsVersion = 9.4;
 						DevelopmentTeam = DAR8GLKRWU;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					CDBA8CAE1FA311C0004F8B6D = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = DAR8GLKRWU;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -283,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD1A914A22A6F5DC005A9927 /* YBIMAAdapterHelper.swift in Sources */,
 				CD5FD89A20D96E8F001EE724 /* YBIMADAIAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD1A914922A6F5DC005A9927 /* YBIMAAdapterHelper.swift in Sources */,
 				CDA5D1651FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m in Sources */,
 				CDBA8CBE1FA31B5D004F8B6D /* YBIMAAdapter.m in Sources */,
 				CD1B0F422084AEB70048ECEC /* YBIMADAIAdapter.m in Sources */,
@@ -305,6 +313,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_COMMA = YES;
@@ -340,6 +349,8 @@
 				PRODUCT_NAME = YouboraIMAAdapter;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -349,6 +360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_COMMA = YES;
@@ -380,6 +392,7 @@
 				PRODUCT_NAME = YouboraIMAAdapter;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -492,6 +505,7 @@
 		CDBA8CB81FA311C0004F8B6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = DAR8GLKRWU;
@@ -500,17 +514,20 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = YouboraIMAAdapter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.npaw.youbora.YouboraIMAAdapter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		CDBA8CB91FA311C0004F8B6D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = DAR8GLKRWU;
@@ -519,11 +536,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = YouboraIMAAdapter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.npaw.youbora.YouboraIMAAdapter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
