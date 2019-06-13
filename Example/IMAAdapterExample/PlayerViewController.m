@@ -9,7 +9,7 @@
 #import "PlayerViewController.h"
 #import <YouboraConfigUtils/YouboraConfigUtils.h>
 #import <YouboraAVPlayerAdapter/YouboraAVPlayerAdapter.h>
-#import <YouboraIMAAdapter/YBIMAAdapter.h>
+#import <YouboraIMAAdapter/YouboraIMAAdapter.h>
 
 @import AVFoundation;
 @import AVKit;
@@ -20,6 +20,7 @@
 
 @property (nonatomic, strong) YBAVPlayerAdapter * adapter;
 @property (nonatomic, strong) YBPlugin * youboraPlugin;
+@property (nonatomic, strong) YBIMAAdapterHelper * helper;
 
 //Testing purposes
 @property BOOL adapterAdded;
@@ -68,8 +69,10 @@ NSString *const kTestAppAdTagUrl =
     
     // Create Youbora plugin
     YBOptions * youboraOptions = [YouboraConfigManager getOptions]; // [YBOptions new];
-    youboraOptions.adsAfterStop = @1;
+    youboraOptions.offline = NO;
     youboraOptions.autoDetectBackground = NO;
+    youboraOptions.accountCode = @"powerdev";
+    youboraOptions.contentDuration = @288;
     self.youboraPlugin = [[YBPlugin alloc] initWithOptions:youboraOptions];
     
     // Send init - this creates a new view in Youbora
@@ -180,6 +183,8 @@ NSString *const kTestAppAdTagUrl =
     self.adsLoader = [[IMAAdsLoader alloc] initWithSettings:nil];
     // NOTE: This line will cause a warning until the next step, "Get the Ads Manager".
     self.adsLoader.delegate = self;
+    
+    self.helper = [[YBIMAAdapterHelper alloc] initWithAdsLoader:self.adsLoader andPlugin:self.youboraPlugin];
 }
 
 - (void)requestAdsWithTag:(NSString*) adTag  {
@@ -197,17 +202,15 @@ NSString *const kTestAppAdTagUrl =
     // Grab the instance of the IMAAdsManager and set ourselves as the delegate.
     self.adsManager = adsLoadedData.adsManager;
     
-    
-    
     // NOTE: This line will cause a warning until the next step, "Display Ads".
     self.adsManager.delegate = self;
     
     //id<IMAAdsManagerDelegate> oldOne = self.adsManager.delegate;
     
-    YBIMAAdapter* adsAdapter = [[YBIMAAdapter alloc] initWithPlayer:self.adsManager];
+    /*YBIMAAdapter* adsAdapter = [[YBIMAAdapter alloc] initWithPlayer:self.adsManager];
     //[adsAdapter addDelegate:oldOne];
     [self.youboraPlugin setAdsAdapter:adsAdapter];
-    //[self.youboraPlugin.adsAdapter fireAdInit];
+    //[self.youboraPlugin.adsAdapter fireAdInit];*/
     
     // Create ads rendering settings and tell the SDK to use the in-app browser.
     IMAAdsRenderingSettings *adsRenderingSettings = [[IMAAdsRenderingSettings alloc] init];

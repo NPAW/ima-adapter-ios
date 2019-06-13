@@ -139,6 +139,7 @@ typedef NS_ENUM(NSInteger, PlayButtonType) {
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
   [self.contentPlayer pause];
+    [self.plugin removeAdsAdapter];
     [self.plugin removeAdapter];
   // Ignore this if we're presenting a modal view (e.g. in-app clickthrough).
   if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
