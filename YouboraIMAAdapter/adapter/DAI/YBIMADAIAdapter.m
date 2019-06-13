@@ -28,6 +28,12 @@
 @property (nonatomic,strong,readwrite) NSMutableArray* delegates;
 @property (nonatomic,strong) IMAAd *currentAd;
 @property (nonatomic,assign) double adProgress;
+@property (nonatomic, strong) NSNumber * adsOnCurrentBreak;
+@property (nonatomic, assign) BOOL isAdSkippable;
+@property (nonatomic, strong) NSArray * breaksTime;
+
+//This is done to prevent some "fake" quartile event that StreamManager fires
+@property (nonatomic, assign) int lastQuartile;
 @end
 
 @implementation YBIMADAIAdapter
@@ -97,6 +103,37 @@
     return PLUGIN_VERSION;
 }
 
+- (NSNumber *) getAdGivenBreaks {
+    return @([self.breaksTime count]);
+}
+
+- (NSArray *) getAdBreaksTime {
+    
+    NSMutableArray *cuePoints = [self.breaksTime mutableCopy];
+    if (cuePoints != nil && [[cuePoints lastObject] isEqual:@(-1)]) {
+        if (self.plugin != nil && self.plugin.adapter != nil) {
+            cuePoints[cuePoints.count - 1] = [self.plugin getDuration];
+        }
+    }
+    return cuePoints;
+}
+
+- (NSNumber *) getGivenAds {
+    return self.adsOnCurrentBreak;
+}
+
+- (NSValue *) isSkippable {
+    return self.isAdSkippable ? @YES : @NO;
+}
+
+- (NSString *) getAdProvider {
+    return @"DFP";
+}
+
+- (NSString *) getAdCreativeId {
+    return self.currentAd == nil ? [super getAdCreativeId] : self.currentAd.creativeAdID;
+}
+
 #pragma mark Delegate methods
 
 - (void)streamManager:(IMAStreamManager *)streamManager adDidProgressToTime:(NSTimeInterval)time adDuration:(NSTimeInterval)adDuration adPosition:(NSInteger)adPosition totalAds:(NSInteger)totalAds adBreakDuration:(NSTimeInterval)adBreakDuration {
@@ -145,10 +182,10 @@
             
             break;
         case kIMAAdEvent_AD_BREAK_ENDED:
-            
+            [self fireAdBreakStop];
             break;
         case kIMAAdEvent_AD_BREAK_STARTED:
-            //[self fireStart];
+            [self fireAdBreakStart];
             break;
         case kIMAAdEvent_ALL_ADS_COMPLETED:
             //[self fireAllAdsCompleted];
@@ -156,7 +193,7 @@
         case kIMAAdEvent_TAPPED:
             break;
         case kIMAAdEvent_CLICKED:
-            [self fireClick];
+            [self fireClickWithAdUrl:[self getAdUrl]];
             break;
         case kIMAAdEvent_COMPLETE:{
             float duration = [self getDuration] == nil ? 0.0 : [[self getDuration] floatValue];
@@ -164,10 +201,10 @@
         }
             break;
         case kIMAAdEvent_CUEPOINTS_CHANGED:
-            
+            self.breaksTime = event.adData[@"cuepoints"];
             break;
         case kIMAAdEvent_FIRST_QUARTILE:
-            //self.adProgress = [[self getDuration] doubleValue] * 0.25;
+            [self fireQuartile:1];
             break;
         case kIMAAdEvent_LOADED:
             
@@ -176,20 +213,18 @@
             
             break;
         case kIMAAdEvent_MIDPOINT:
-            //self.adProgress = [[self getDuration] doubleValue] * 0.5;
+            [self fireQuartile:2];
             break;
         case kIMAAdEvent_PAUSE:
-            //[self firePause];
             break;
         case kIMAAdEvent_RESUME:
-            //[self fireResume];
             break;
         case kIMAAdEvent_SKIPPED:
             [self fireStop:@{@"skipped": @"true"}];
             break;
         case kIMAAdEvent_STARTED:
-            //Do not uncomment fireStop, in case of doing it will stop the one initiated on ad_break
-            //[self fireStop];
+            self.adsOnCurrentBreak = @(self.currentAd.adPodInfo.totalAds);
+            self.isAdSkippable = self.currentAd.skippable;
             [self fireStart];
             break;
         case kIMAAdEvent_STREAM_LOADED:
@@ -199,7 +234,13 @@
             
             break;
         case kIMAAdEvent_THIRD_QUARTILE:
-            //self.adProgress = [[self getDuration] doubleValue] * 0.75;
+            [self fireQuartile:3];
+            break;
+        case kIMAAdEvent_AD_PERIOD_ENDED:
+            [self fireAdBreakStop];
+            break;
+        case kIMAAdEvent_AD_PERIOD_STARTED:
+            [self fireAdBreakStart];
             break;
     }
     
@@ -210,7 +251,20 @@
     }
 }
 
+- (NSString *) getAdUrl {
+    @try {
+        if (self.player != nil && self.currentAd != nil) {
+            NSString * adUrl = [self.currentAd valueForKey:@"_clickThroughUrl"];
+            return adUrl;
+        }
+    } @catch (NSException *exception) {
+        [YBLog logException:exception];
+    }
+    return nil;
+}
+
 - (void) fireStart{
+    [self fireAdBreakStart];
     if(self.plugin != nil && self.plugin.adapter != nil && !self.plugin.adapter.flags.joined && ([self getPosition] == YBAdPositionPre || ([self.plugin getIsLive] != nil && [[self.plugin getIsLive] isEqualToValue:@YES]))){
         [self.plugin.adapter fireJoin];
     }
@@ -220,6 +274,20 @@
 - (void) fireStop:(NSDictionary<NSString *,NSString *> *)params{
     [super fireStop:params];
     self.currentAd = nil;
+    self.lastQuartile = 0;
+    self.isAdSkippable = false;
+}
+
+- (void) fireQuartile:(int)quartileNumber {
+    if (quartileNumber > self.lastQuartile) {
+        [super fireQuartile:quartileNumber];
+    }
+}
+
+- (void) fireAdBreakStop {
+    [super fireAdBreakStop];
+    self.breaksTime = @[];
+    self.adsOnCurrentBreak = nil;
 }
 
 @end
