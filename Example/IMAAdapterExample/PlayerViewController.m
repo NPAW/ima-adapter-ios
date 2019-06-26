@@ -71,8 +71,7 @@ NSString *const kTestAppAdTagUrl =
     YBOptions * youboraOptions = [YouboraConfigManager getOptions]; // [YBOptions new];
     youboraOptions.offline = NO;
     youboraOptions.autoDetectBackground = NO;
-    youboraOptions.accountCode = @"powerdev";
-    youboraOptions.contentDuration = @288;
+    youboraOptions.waitForMetadata = false;
     self.youboraPlugin = [[YBPlugin alloc] initWithOptions:youboraOptions];
     
     // Send init - this creates a new view in Youbora

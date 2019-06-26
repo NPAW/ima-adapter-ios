@@ -1,5 +1,5 @@
 #import "VideoViewController.h"
-#import <YouboraIMAAdapter/YBIMADAIAdapter.h>
+#import <YouboraIMAAdapter/YouboraIMAAdapter.h>
 #import <YouboraAVPlayerAdapter/YBAVPlayerAdapter.h>
 
 @import AVFoundation;
@@ -74,6 +74,7 @@ typedef NS_ENUM(NSInteger, PlayButtonType) {
 
 //Youbora plugin
 @property(nonatomic, strong) YBPlugin *plugin;
+@property (nonatomic, strong) YBIMAAdapterHelper * helper;
 //@property(nonatomic, strong) YBIMADAIAdapter *adapter;
 
 @end
@@ -175,6 +176,7 @@ typedef NS_ENUM(NSInteger, PlayButtonType) {
         }
         
         self.plugin = [[YBPlugin alloc] initWithOptions:options];
+        [self.plugin fireInit];
     }
     [self.plugin setAdapter: [[YBAVPlayerAdapter alloc] initWithPlayer:self.contentPlayer]];
 
@@ -464,6 +466,7 @@ typedef NS_ENUM(NSInteger, PlayButtonType) {
                                                       videoDisplay:self.IMAVideoDisplay];
     request.apiKey = self.video.apiKey;
   }
+  self.helper = [[YBIMAAdapterHelper alloc] initWithAdsLoader:self.adsLoader andPlugin:self.plugin];
   [self.adsLoader requestStreamWithRequest:request];
 }
 
@@ -482,9 +485,9 @@ typedef NS_ENUM(NSInteger, PlayButtonType) {
         
         self.plugin = [[YBPlugin alloc] initWithOptions:options];
     }
-    if(self.plugin.adsAdapter == nil){
+    /*if(self.plugin.adsAdapter == nil){
         [self.plugin setAdsAdapter:[[YBIMADAIAdapter alloc] initWithPlayer:self.streamManager]];
-    }
+    }*/
     
   IMAAdsRenderingSettings *adsRenderingSettings = [[IMAAdsRenderingSettings alloc] init];
   adsRenderingSettings.uiElements =

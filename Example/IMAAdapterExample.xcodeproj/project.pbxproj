@@ -23,6 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CD87BDB122BBD08900852B15 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDBA8D051FA324B2004F8B6D /* YouboraIMAAdapter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD5FD87B20D800FE001EE724;
+			remoteInfo = "YouboraIMAAdapter tvOS";
+		};
 		CDB780EA1FA35B8A00B1F03E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CDBA8D051FA324B2004F8B6D /* YouboraIMAAdapter.xcodeproj */;
@@ -150,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				CDBA8D0A1FA324B3004F8B6D /* YouboraIMAAdapter.framework */,
+				CD87BDB222BBD08900852B15 /* YouboraIMAAdapter.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -202,7 +210,7 @@
 				TargetAttributes = {
 					CDBA8CEA1FA31DC6004F8B6D = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = DAR8GLKRWU;
+						DevelopmentTeam = S65Y3ZP8PG;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -212,6 +220,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -232,6 +241,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		CD87BDB222BBD08900852B15 /* YouboraIMAAdapter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = YouboraIMAAdapter.framework;
+			remoteRef = CD87BDB122BBD08900852B15 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		CDBA8D0A1FA324B3004F8B6D /* YouboraIMAAdapter.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -451,7 +467,7 @@
 			baseConfigurationReference = 1C840099F8096164ED4EE89A /* Pods-IMAAdapterExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DAR8GLKRWU;
+				DEVELOPMENT_TEAM = S65Y3ZP8PG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -470,7 +486,7 @@
 			baseConfigurationReference = 9C8721FF4C5C355CF3D07161 /* Pods-IMAAdapterExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DAR8GLKRWU;
+				DEVELOPMENT_TEAM = S65Y3ZP8PG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
