@@ -20,6 +20,9 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "9.0"
   #s.tvos.deployment_target = "9.0"
 
+  # Swift version
+  s.swift_version = "5.0"
+
   # Source Location
   s.source       = { :git => 'https://bitbucket.org/npaw/ima-adapter-ios.git', :tag => s.version}
 
