@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YouboraIMAAdapter"
-  s.version      = "6.3.1"
+  s.version      = "6.5.0"
 
   # Metadata
   s.summary      = "Library required to track IMA Ads on Youbora"
@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) YOUBORAIMAADAPTER_VERSION=' + s.version.to_s }
 
-  s.dependency 'YouboraLib', "~> 6.3"
+  s.dependency 'YouboraLib', "~> 6.5.0"
   s.dependency 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
 
 end
