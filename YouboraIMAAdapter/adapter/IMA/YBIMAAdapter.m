@@ -244,7 +244,7 @@ BOOL adServed;
 }
 
 - (NSString *) getAdCreativeId {
-    return self.creativeId
+    return self.creativeId;
 }
 
 - (NSString *)getPlayerName {

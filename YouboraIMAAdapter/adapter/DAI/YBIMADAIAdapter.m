@@ -85,7 +85,7 @@
         return YBAdPositionPre;
     }
     
-    if(self.plugin != nil && self.plugin.adapter != nil && offset == round([[self.plugin.adapter getDuration] doubleValue]) - round([[self getDuration] doubleValue])){
+    if(self.plugin != nil && self.plugin.adapter != nil && (offset + 1) >= round([[self.plugin.adapter getDuration] doubleValue]) - round([[self getDuration] doubleValue])){
         return YBAdPositionPost;
     }
     return YBAdPositionMid;
@@ -138,9 +138,9 @@
 
 - (void)streamManager:(IMAStreamManager *)streamManager adDidProgressToTime:(NSTimeInterval)time adDuration:(NSTimeInterval)adDuration adPosition:(NSInteger)adPosition totalAds:(NSInteger)totalAds adBreakDuration:(NSTimeInterval)adBreakDuration {
     self.adProgress = time;
-    if(!self.flags.started){
+    /*if(!self.flags.started){
         [self fireStart];
-    }
+    }*/
     [self fireJoin];
     
     for (int k = 0; k < [self.delegates count]; k++) {
@@ -184,8 +184,11 @@
         case kIMAAdEvent_AD_BREAK_ENDED:
             [self fireAdBreakStop];
             break;
-        case kIMAAdEvent_AD_BREAK_STARTED:
-            [self fireAdBreakStart];
+        case kIMAAdEvent_AD_BREAK_STARTED:{
+            if (self.plugin != nil && self.plugin.adapter != nil && self.plugin.adapter.flags.joined) {
+                [self fireAdBreakStart];
+            }
+        }
             break;
         case kIMAAdEvent_ALL_ADS_COMPLETED:
             //[self fireAllAdsCompleted];
@@ -237,10 +240,10 @@
             [self fireQuartile:3];
             break;
         case kIMAAdEvent_AD_PERIOD_ENDED:
-            [self fireAdBreakStop];
+            //[self fireAdBreakStop];
             break;
         case kIMAAdEvent_AD_PERIOD_STARTED:
-            [self fireAdBreakStart];
+            //[self fireAdBreakStart];
             break;
     }
     
@@ -280,6 +283,7 @@
 
 - (void) fireQuartile:(int)quartileNumber {
     if (quartileNumber > self.lastQuartile) {
+        self.lastQuartile = quartileNumber;
         [super fireQuartile:quartileNumber];
     }
 }
