@@ -55,7 +55,7 @@ open class YBIMAAdapterHelper: NSObject, IMAAdsLoaderDelegate {
                 //case .API_ERROR, .FAILED_TO_REQUEST_ADS, .PLAYLIST_MALFORMED_RESPONSE, .UNKNOWN_ERROR, .VAST_ASSET_NOT_FOUND
             case .VAST_EMPTY_RESPONSE:
                 errorType = .emptyResponse
-            case .UNKNOWN_AD_RESPONSE, .UNKNOWN_ERROR, .VAST_LOAD_TIMEOUT:
+            case .VAST_TRAFFICKING_ERROR, .UNKNOWN_ERROR, .VAST_LOAD_TIMEOUT:
                 errorType = .errorNoResponse
             case .API_ERROR, .FAILED_TO_REQUEST_ADS, .PLAYLIST_MALFORMED_RESPONSE, .VAST_ASSET_NOT_FOUND:
                 errorType = .wrongResponse
