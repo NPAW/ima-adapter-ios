@@ -18,7 +18,6 @@
 		CDBA8D0E1FA32620004F8B6D /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBA8D0D1FA32620004F8B6D /* PlayerViewController.m */; };
 		CDBA8D111FA32A70004F8B6D /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBA8D101FA32A70004F8B6D /* AVKit.framework */; };
 		CDBA8D131FA32A76004F8B6D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBA8D121FA32A76004F8B6D /* AVFoundation.framework */; };
-		CDBA8D171FA32B3E004F8B6D /* YouboraConfigUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBA8D161FA32B3E004F8B6D /* YouboraConfigUtils.framework */; };
 		CF9D7ED9B17B803333F9DDF8 /* Pods_IMAAdapterExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96547B94ED7515BD97B1C916 /* Pods_IMAAdapterExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,7 +90,6 @@
 				CDBA8D131FA32A76004F8B6D /* AVFoundation.framework in Frameworks */,
 				CDBA8D111FA32A70004F8B6D /* AVKit.framework in Frameworks */,
 				CDB780E81FA35B8A00B1F03E /* YouboraIMAAdapter.framework in Frameworks */,
-				CDBA8D171FA32B3E004F8B6D /* YouboraConfigUtils.framework in Frameworks */,
 				CF9D7ED9B17B803333F9DDF8 /* Pods_IMAAdapterExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,7 +184,6 @@
 				CDBA8CE81FA31DC6004F8B6D /* Frameworks */,
 				CDBA8CE91FA31DC6004F8B6D /* Resources */,
 				1224D7649B4E181B02AC6E66 /* [CP] Embed Pods Frameworks */,
-				CDBA8D181FA32B4E004F8B6D /* ShellScript */,
 				CDB780E31FA3527700B1F03E /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -280,33 +277,20 @@
 				"${PODS_ROOT}/Target Support Files/Pods-IMAAdapterExample/Pods-IMAAdapterExample-frameworks.sh",
 				"${PODS_ROOT}/GoogleAds-IMA-iOS-SDK/GoogleInteractiveMediaAds.framework",
 				"${BUILT_PRODUCTS_DIR}/YouboraAVPlayerAdapter-iOS/YouboraAVPlayerAdapter.framework",
+				"${BUILT_PRODUCTS_DIR}/YouboraConfigUtils-iOS/YouboraConfigUtils.framework",
 				"${BUILT_PRODUCTS_DIR}/YouboraLib-iOS/YouboraLib.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleInteractiveMediaAds.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouboraAVPlayerAdapter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouboraConfigUtils.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouboraLib.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IMAAdapterExample/Pods-IMAAdapterExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		CDBA8D181FA32B4E004F8B6D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/YouboraConfigUtils.framework",
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/YouboraConfigUtils.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		EA582F1A06D2D469CF09B035 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

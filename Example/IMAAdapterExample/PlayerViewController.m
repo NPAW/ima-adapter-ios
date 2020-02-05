@@ -7,12 +7,12 @@
 //
 
 #import "PlayerViewController.h"
-#import <YouboraConfigUtils/YouboraConfigUtils.h>
 #import <YouboraAVPlayerAdapter/YouboraAVPlayerAdapter.h>
 #import <YouboraIMAAdapter/YouboraIMAAdapter.h>
 
 @import AVFoundation;
 @import AVKit;
+@import YouboraConfigUtils;
 
 @interface PlayerViewController ()
 
@@ -69,7 +69,6 @@ NSString *const kTestAppAdTagUrl =
     
     // Create Youbora plugin
     YBOptions * youboraOptions = [YouboraConfigManager getOptions]; // [YBOptions new];
-    youboraOptions.offline = NO;
     youboraOptions.autoDetectBackground = NO;
     youboraOptions.waitForMetadata = false;
     self.youboraPlugin = [[YBPlugin alloc] initWithOptions:youboraOptions];

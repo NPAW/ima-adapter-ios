@@ -3,16 +3,29 @@ platform :ios, '9.0'
 
 workspace 'YouboraIMAAdapter.xcworkspace'
 
+def common_pod
+    pod 'YouboraLib', '~> 6.5.0'
+end
+
+def common_example_pod
+    common_pod
+    pod 'YouboraAVPlayerAdapter', '~>6.5.0'
+    pod 'YouboraConfigUtils', '~>1.1.0'
+end
+
+def google_ima_pod_ios
+    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
+end
+
 target 'IMAAdapterExample' do
     project 'Example/IMAAdapterExample.xcodeproj'
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
     
-    # Pods for AVPlayerAdapterExample
-    #pod 'YouboraLib',:path => '../lib-plugin-ios'
-    #pod 'YouboraLib', '~> 6.0.5-beta'
-    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
-    pod 'YouboraAVPlayerAdapter', '~>6.5.0'
+    # Pods for IMAAdapterExample
+    common_example_pod
+    google_ima_pod_ios
+    
 end
 
 target 'IMAAdapterExampleDAI' do
@@ -20,12 +33,10 @@ target 'IMAAdapterExampleDAI' do
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
     
-    # Pods for AVPlayerAdapterExample
-    #pod 'YouboraLib',:path => '../lib-plugin-ios'
-    #pod 'YouboraLib', '~> 6.0.5-beta'
-    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
+    # Pods for IMAAdapterExampleDAI
+    common_example_pod
+    google_ima_pod_ios
     pod 'google-cast-sdk', '~>3.2.0'
-    pod 'YouboraAVPlayerAdapter', '~>6.5.0'
 end
 
 target 'IMAAdapterExampleDAItvOS' do
@@ -34,10 +45,8 @@ target 'IMAAdapterExampleDAItvOS' do
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
     
-    # Pods for AVPlayerAdapterExample
-    #pod 'YouboraLib',:path => '../lib-plugin-ios'
-    #pod 'YouboraLib', '~> 6.0.5-beta'
-    pod 'YouboraAVPlayerAdapter', '~>6.5.0'
+    # Pods for IMAAdapterExampleDAItvOS
+    common_example_pod
 end
 
 target 'YouboraIMAAdapter' do
@@ -45,10 +54,9 @@ target 'YouboraIMAAdapter' do
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
     
-    # Pods for YouboraAVPlayerAdapter
-    #pod 'YouboraLib',:path => '../lib-plugin-ios'
-    pod 'YouboraLib', '~> 6.5.0'
-    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
+    # Pods for YouboraIMAAdapter
+    common_pod
+    google_ima_pod_ios
 end
 
 target 'YouboraIMAAdapter tvOS' do
@@ -56,8 +64,6 @@ target 'YouboraIMAAdapter tvOS' do
     project 'YouboraIMAAdapter.xcodeproj'
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
-    
-    # Pods for YouboraAVPlayerAdapter
-    #pod 'YouboraLib',:path => '../lib-plugin-ios'
-    pod 'YouboraLib', '~> 6.5.0'
+    # Pods for YouboraIMAAdapter
+    common_pod
 end

@@ -1,8 +1,7 @@
 #import "MainViewController.h"
 
-#import <YouboraConfigUtils/YouboraConfigUtils.h>
-
 @import GoogleCast;
+@import YouboraConfigUtils;
 
 #import "CastManager.h"
 #import "Video.h"
@@ -73,7 +72,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
     if(indexPath.row == [self.tableView numberOfRowsInSection:0] - 1){
-        UIViewController * vc = [YouboraConfigViewController new];
+        UIViewController * vc = [YouboraConfigViewController initFromXIB];
         [[self navigationController] pushViewController:vc animated:YES];
         return NO;
     }

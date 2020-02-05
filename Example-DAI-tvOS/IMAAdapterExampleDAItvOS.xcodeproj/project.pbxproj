@@ -267,11 +267,13 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-IMAAdapterExampleDAItvOS/Pods-IMAAdapterExampleDAItvOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/YouboraAVPlayerAdapter-tvOS/YouboraAVPlayerAdapter.framework",
+				"${BUILT_PRODUCTS_DIR}/YouboraConfigUtils-tvOS/YouboraConfigUtils.framework",
 				"${BUILT_PRODUCTS_DIR}/YouboraLib-tvOS/YouboraLib.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouboraAVPlayerAdapter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouboraConfigUtils.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouboraLib.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

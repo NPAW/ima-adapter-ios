@@ -1,3 +1,6 @@
+## [6.5.1] - 2020-02-05
+### Fixed
+- Youbora lib imports
 ## [6.3.1] - 2019-02-01
 ### Fixed
 - Wrong display version number

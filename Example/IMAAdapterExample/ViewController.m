@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
-#import <YouboraConfigUtils/YouboraConfigUtils.h>
 #import "PlayerViewController.h"
+
+@import YouboraConfigUtils;
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textFieldResource;
@@ -71,7 +72,7 @@
 }
 
 - (IBAction)youboraSettingsClicked:(id)sender {
-    UIViewController * vc = [YouboraConfigViewController new];
+    UIViewController * vc = [YouboraConfigViewController initFromXIB];
     [[self navigationController] pushViewController:vc animated:YES];
 }
 
