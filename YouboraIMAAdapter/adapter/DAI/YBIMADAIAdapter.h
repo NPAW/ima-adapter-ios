@@ -6,7 +6,7 @@
 //  Copyright © 2018 NPAW. All rights reserved.
 //
 
-#import <YouboraLib/YouboraLib.h>
+@import YouboraLib;
 @import GoogleInteractiveMediaAds;
 
 @interface YBIMADAIAdapter : YBPlayerAdapter<IMAStreamManager*>
