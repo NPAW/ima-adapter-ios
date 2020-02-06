@@ -19,4 +19,5 @@ FOUNDATION_EXPORT const unsigned char YouboraIMAAdapterVersionString[];
 #import <YouboraIMAAdapter/YBIMAAdapterSwiftWrapper.h>
 #import <YouboraIMAAdapter/YBIMADAIAdapter.h>
 #import <YouboraIMAAdapter/YBIMADAIAdapterSwiftWrapper.h>
+#import <YouboraIMAAdapter/YBIMAAdapterSwiftTransformer.h>
 

@@ -1,3 +1,6 @@
+## [6.5.2] - 2020-02-06
+### Updated
+- Add tranformers to make adapter compatible with Swift
 ## [6.5.1] - 2020-02-05
 ### Fixed
 - Youbora lib imports

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		066A9C0C23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 066A9C0A23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		066A9C0E23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 066A9C0B23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.m */; };
 		56D4C39EE65B27DF5C9AD08C /* Pods_YouboraIMAAdapter_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54468C02C811E8847E18835D /* Pods_YouboraIMAAdapter_tvOS.framework */; };
 		CD1A914922A6F5DC005A9927 /* YBIMAAdapterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A914822A6F5DC005A9927 /* YBIMAAdapterHelper.swift */; };
 		CD1A914A22A6F5DC005A9927 /* YBIMAAdapterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A914822A6F5DC005A9927 /* YBIMAAdapterHelper.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		066A9C0A23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBIMAAdapterSwiftTransformer.h; sourceTree = "<group>"; };
+		066A9C0B23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBIMAAdapterSwiftTransformer.m; sourceTree = "<group>"; };
 		23BA74AB19818647C83C16CF /* Pods-YouboraIMAAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter.debug.xcconfig"; path = "Target Support Files/Pods-YouboraIMAAdapter/Pods-YouboraIMAAdapter.debug.xcconfig"; sourceTree = "<group>"; };
 		37180593DEA385E3979FD685 /* Pods-YouboraIMAAdapter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter.release.xcconfig"; path = "Target Support Files/Pods-YouboraIMAAdapter/Pods-YouboraIMAAdapter.release.xcconfig"; sourceTree = "<group>"; };
 		3F9BC57EB7A592EAA5D01D0F /* Pods-YouboraIMAAdapter tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter tvOS.release.xcconfig"; path = "Target Support Files/Pods-YouboraIMAAdapter tvOS/Pods-YouboraIMAAdapter tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +88,15 @@
 				3F9BC57EB7A592EAA5D01D0F /* Pods-YouboraIMAAdapter tvOS.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		066A9C0923EC6321006FD205 /* transformer */ = {
+			isa = PBXGroup;
+			children = (
+				066A9C0A23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.h */,
+				066A9C0B23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.m */,
+			);
+			path = transformer;
 			sourceTree = "<group>";
 		};
 		CD5FD87C20D800FF001EE724 /* YouboraIMAAdapter tvOS */ = {
@@ -151,6 +164,7 @@
 		CDBA8CB11FA311C0004F8B6D /* YouboraIMAAdapter */ = {
 			isa = PBXGroup;
 			children = (
+				066A9C0923EC6321006FD205 /* transformer */,
 				CDBA8CB21FA311C0004F8B6D /* YouboraIMAAdapter.h */,
 				CDBA8CB31FA311C0004F8B6D /* Info.plist */,
 				CDBA8CBA1FA31B36004F8B6D /* adapter */,
@@ -195,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDBA8CB41FA311C0004F8B6D /* YouboraIMAAdapter.h in Headers */,
+				066A9C0C23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.h in Headers */,
 				CD1B0F472084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h in Headers */,
 				CD1B0F412084AEB70048ECEC /* YBIMADAIAdapter.h in Headers */,
 				CDA5D1641FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h in Headers */,
@@ -365,6 +380,7 @@
 			files = (
 				CD1A914922A6F5DC005A9927 /* YBIMAAdapterHelper.swift in Sources */,
 				CDA5D1651FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m in Sources */,
+				066A9C0E23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.m in Sources */,
 				CDBA8CBE1FA31B5D004F8B6D /* YBIMAAdapter.m in Sources */,
 				CD1B0F422084AEB70048ECEC /* YBIMADAIAdapter.m in Sources */,
 				CD1B0F482084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m in Sources */,
