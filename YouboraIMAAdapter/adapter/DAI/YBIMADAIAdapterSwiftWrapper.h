@@ -8,6 +8,7 @@
 
 #import "YBIMADAIAdapter.h"
 
+__attribute__ ((deprecated)) DEPRECATED_MSG_ATTRIBUTE("This class is deprecated. Use YBIMAAdapterSwiftTransformer instead")
 @interface YBIMADAIAdapterSwiftWrapper : NSObject
 
 - (id) initWithPlayer:(NSObject*)adsManager andPlugin:(YBPlugin*)plugin;

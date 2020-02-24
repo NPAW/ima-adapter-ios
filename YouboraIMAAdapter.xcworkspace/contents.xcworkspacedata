@@ -8,10 +8,10 @@
       location = "group:Example-DAI/IMAAdapterExampleDAI.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Example-DAI-tvOS/IMAAdapterExampleDAItvOS.xcodeproj">
+      location = "group:YouboraIMAAdapter.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:YouboraIMAAdapter.xcodeproj">
+      location = "group:ExampleTvOS/ExampleTvOS.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

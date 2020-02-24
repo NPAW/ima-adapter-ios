@@ -37,11 +37,11 @@ open class YBIMAAdapterHelper: NSObject, IMAAdsLoaderDelegate {
         }
         
         if let adsManager = adsLoadedData.adsManager {
-            YBIMAAdapterSwiftWrapper.init(player: adsManager, andPlugin: self.plugin)
+            self.plugin?.adsAdapter = YBIMAAdapterSwiftTransformer.tranformImaAdapter(YBIMAAdapter(player: adsManager))
             self.plugin?.adsAdapter?.fireAdManifest([:])
         }
         if let streamManager = adsLoadedData.streamManager {
-            YBIMADAIAdapterSwiftWrapper.init(player: streamManager, andPlugin: self.plugin)
+            self.plugin?.adsAdapter = YBIMAAdapterSwiftTransformer.tranformImaDaiAdapter(YBIMADAIAdapter(player: streamManager))
             self.plugin?.adsAdapter?.fireAdManifest([:])
         }
     }

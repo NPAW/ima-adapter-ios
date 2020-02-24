@@ -1,3 +1,10 @@
+## [6.5.3] - 2020-02-24
+### Added
+- Dai and Ima Dai support to tvOS
+- README.md
+### Deprecated
+- YBIMADAIAdapterSwiftWrapper
+- YBIMAAdapterSwiftWrapper
 ## [6.5.2] - 2020-02-06
 ### Updated
 - Add tranformers to make adapter compatible with Swift

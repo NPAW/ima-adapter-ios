@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YouboraIMAAdapter"
-  s.version      = "6.5.2"
+  s.version      = "6.5.3"
 
   # Metadata
   s.summary      = "Library required to track IMA Ads on Youbora"
@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
 
   # Platforms
   s.ios.deployment_target = "9.0"
+  s.tvos.deployment_target = "9.1"
 
   # Swift version
   s.swift_version = "4.0", "4.1", "4.2", "4.3", "5.0", "5.1"
@@ -27,6 +28,8 @@ Pod::Spec.new do |s|
 
   # Source files
   s.source_files  = 'YouboraIMAAdapter/**/*.{h,m,swift}'
+  
+   # Public header files
   s.public_header_files = "YouboraIMAAdapter/**/*.h"
 
   # Project settings
@@ -34,6 +37,6 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) YOUBORAIMAADAPTER_VERSION=' + s.version.to_s }
 
   s.dependency 'YouboraLib', "~> 6.5.0"
-  s.dependency 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
-
+  s.ios.dependency 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
+  s.tvos.dependency 'GoogleAds-IMA-tvOS-SDK', '~> 4.2'
 end

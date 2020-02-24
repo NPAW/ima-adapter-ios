@@ -8,8 +8,8 @@
 
 #import "YouboraIMAAdapter.h"
 
+__attribute__ ((deprecated)) DEPRECATED_MSG_ATTRIBUTE("This class is deprecated. Use YBIMAAdapterSwiftTransformer instead")
 @interface YBIMAAdapterSwiftWrapper : NSObject
-
 
 - (id) initWithPlayer:(NSObject*)adsManager andPlugin:(YBPlugin*)plugin;
 - (void) fireAdInit;

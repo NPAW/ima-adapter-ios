@@ -219,8 +219,10 @@
             [self fireQuartile:2];
             break;
         case kIMAAdEvent_PAUSE:
+            [self firePause];
             break;
         case kIMAAdEvent_RESUME:
+            [self fireResume];
             break;
         case kIMAAdEvent_SKIPPED:
             [self fireStop:@{@"skipped": @"true"}];

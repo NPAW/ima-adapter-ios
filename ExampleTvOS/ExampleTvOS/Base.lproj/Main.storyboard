@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="15702" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i98-bl-mDm">
+    <device id="appleTV" appearance="light"/>
+    <dependencies>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="PmV-RO-i3l">
+                                <rect key="frame" x="812.5" y="414" width="295" height="252"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nL6-ja-Cl2">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="86"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Play IMA"/>
+                                        <connections>
+                                            <segue destination="dO7-Fs-1Oq" kind="show" id="tu3-Fb-gKv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cw2-si-jaB">
+                                        <rect key="frame" x="0.0" y="166" width="295" height="86"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Play IMA DAI"/>
+                                        <connections>
+                                            <segue destination="Pkj-Js-VGI" kind="show" id="sXZ-Q8-Co8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zs-0H-2ag">
+                                <rect key="frame" x="812" y="293" width="295" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <action selector="pressAtSettings:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="fOy-Mz-gMx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PmV-RO-i3l" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="I49-rS-u6Y"/>
+                            <constraint firstItem="PmV-RO-i3l" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="PzQ-BL-oKv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Egq-Hl-6WB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="69" y="69"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Kzi-d0-D5r">
+            <objects>
+                <navigationController id="i98-bl-mDm" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L5f-Fh-VU5">
+                        <rect key="frame" x="0.0" y="60" width="1920" height="145"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="QYg-9s-SCa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GOj-ZX-0cM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2619" y="69"/>
+        </scene>
+        <!--Ima Player View Controller-->
+        <scene sceneID="DBb-nO-dAC">
+            <objects>
+                <viewController id="dO7-Fs-1Oq" customClass="ImaPlayerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z0w-ww-et2"/>
+                        <viewControllerLayoutGuide type="bottom" id="ula-y0-76l"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LG1-KS-u6c">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="QDo-wf-bNO"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BlT-JN-fkX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rgk-PW-uum" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2383" y="-900"/>
+        </scene>
+        <!--Ima Dai Player View Controller-->
+        <scene sceneID="4Q9-gb-RDd">
+            <objects>
+                <viewController id="Pkj-Js-VGI" customClass="ImaDaiPlayerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pkd-2F-6y1"/>
+                        <viewControllerLayoutGuide type="bottom" id="iZe-Fe-w4H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cc2-g2-048">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="erC-3W-RXq"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GRn-lZ-JPe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wGW-xB-CiF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2383" y="644"/>
+        </scene>
+    </scenes>
+</document>

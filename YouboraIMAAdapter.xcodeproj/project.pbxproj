@@ -7,36 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		066A9C0C23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 066A9C0A23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		066A9C0E23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 066A9C0B23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.m */; };
-		56D4C39EE65B27DF5C9AD08C /* Pods_YouboraIMAAdapter_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54468C02C811E8847E18835D /* Pods_YouboraIMAAdapter_tvOS.framework */; };
+		06B2038F23EB251400DD995D /* YBIMAAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBA8CBB1FA31B5D004F8B6D /* YBIMAAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06B2039023EB251A00DD995D /* YBIMAAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBA8CBC1FA31B5D004F8B6D /* YBIMAAdapter.m */; };
+		06B2039123EB251D00DD995D /* YBIMAAdapterSwiftWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06B2039223EB252100DD995D /* YBIMAAdapterSwiftWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D1631FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m */; };
+		06B2039323EB252400DD995D /* YBIMAAdapterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A914822A6F5DC005A9927 /* YBIMAAdapterHelper.swift */; };
+		06B2039423EB252800DD995D /* YBIMADAIAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1B0F3F2084AEB70048ECEC /* YBIMADAIAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06B2039523EB252D00DD995D /* YBIMADAIAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B0F402084AEB70048ECEC /* YBIMADAIAdapter.m */; };
+		06B2039623EB253000DD995D /* YBIMADAIAdapterSwiftWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1B0F452084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06B2039723EB253500DD995D /* YBIMADAIAdapterSwiftWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B0F462084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m */; };
+		06B2039823EB253D00DD995D /* YouboraIMAAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBA8CB21FA311C0004F8B6D /* YouboraIMAAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06B203D723EB356200DD995D /* YBIMAAdapterSwiftTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 06B203D523EB356200DD995D /* YBIMAAdapterSwiftTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06B203D823EB356200DD995D /* YBIMAAdapterSwiftTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 06B203D523EB356200DD995D /* YBIMAAdapterSwiftTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06B203D923EB356200DD995D /* YBIMAAdapterSwiftTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B203D623EB356200DD995D /* YBIMAAdapterSwiftTransformer.m */; };
+		06B203DA23EB356200DD995D /* YBIMAAdapterSwiftTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B203D623EB356200DD995D /* YBIMAAdapterSwiftTransformer.m */; };
+		C7A1E2834DD7D6CA80FA7191 /* Pods_YouboraIMAAdapter_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB1054DC94FF4D79D041790 /* Pods_YouboraIMAAdapter_tvOS.framework */; };
 		CD1A914922A6F5DC005A9927 /* YBIMAAdapterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A914822A6F5DC005A9927 /* YBIMAAdapterHelper.swift */; };
-		CD1A914A22A6F5DC005A9927 /* YBIMAAdapterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A914822A6F5DC005A9927 /* YBIMAAdapterHelper.swift */; };
 		CD1B0F412084AEB70048ECEC /* YBIMADAIAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1B0F3F2084AEB70048ECEC /* YBIMADAIAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD1B0F422084AEB70048ECEC /* YBIMADAIAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B0F402084AEB70048ECEC /* YBIMADAIAdapter.m */; };
 		CD1B0F472084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1B0F452084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD1B0F482084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B0F462084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m */; };
-		CD5FD87F20D800FF001EE724 /* YouboraIMAAdapter_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = CD5FD87D20D800FF001EE724 /* YouboraIMAAdapter_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CD5FD89920D96E8F001EE724 /* YBIMADAIAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CD5FD89720D96E8F001EE724 /* YBIMADAIAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CD5FD89A20D96E8F001EE724 /* YBIMADAIAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5FD89820D96E8F001EE724 /* YBIMADAIAdapter.m */; };
 		CDA5D1641FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDA5D1651FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA5D1631FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m */; };
 		CDBA8CB41FA311C0004F8B6D /* YouboraIMAAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBA8CB21FA311C0004F8B6D /* YouboraIMAAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDBA8CBD1FA31B5D004F8B6D /* YBIMAAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = CDBA8CBB1FA31B5D004F8B6D /* YBIMAAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDBA8CBE1FA31B5D004F8B6D /* YBIMAAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBA8CBC1FA31B5D004F8B6D /* YBIMAAdapter.m */; };
-		CDD145C121F7ACC10071FBF4 /* InteractiveMediaAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD30295A20D98A1B0027BDCF /* InteractiveMediaAds.framework */; };
-		E5CBA6BCEEB7C3B8AA160CC0 /* Pods_YouboraIMAAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66272EA83C8765E5811F14AE /* Pods_YouboraIMAAdapter.framework */; };
+		ECC904806E58DB1C4E5C800F /* Pods_YouboraIMAAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7A42E476DD3FB6A2E8A022 /* Pods_YouboraIMAAdapter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		066A9C0A23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBIMAAdapterSwiftTransformer.h; sourceTree = "<group>"; };
-		066A9C0B23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBIMAAdapterSwiftTransformer.m; sourceTree = "<group>"; };
-		23BA74AB19818647C83C16CF /* Pods-YouboraIMAAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter.debug.xcconfig"; path = "Target Support Files/Pods-YouboraIMAAdapter/Pods-YouboraIMAAdapter.debug.xcconfig"; sourceTree = "<group>"; };
-		37180593DEA385E3979FD685 /* Pods-YouboraIMAAdapter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter.release.xcconfig"; path = "Target Support Files/Pods-YouboraIMAAdapter/Pods-YouboraIMAAdapter.release.xcconfig"; sourceTree = "<group>"; };
-		3F9BC57EB7A592EAA5D01D0F /* Pods-YouboraIMAAdapter tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter tvOS.release.xcconfig"; path = "Target Support Files/Pods-YouboraIMAAdapter tvOS/Pods-YouboraIMAAdapter tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		54468C02C811E8847E18835D /* Pods_YouboraIMAAdapter_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YouboraIMAAdapter_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		66272EA83C8765E5811F14AE /* Pods_YouboraIMAAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YouboraIMAAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB26637A39DA9640F4A8F1F1 /* Pods-YouboraIMAAdapter tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter tvOS.debug.xcconfig"; path = "Target Support Files/Pods-YouboraIMAAdapter tvOS/Pods-YouboraIMAAdapter tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		06B203D523EB356200DD995D /* YBIMAAdapterSwiftTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBIMAAdapterSwiftTransformer.h; sourceTree = "<group>"; };
+		06B203D623EB356200DD995D /* YBIMAAdapterSwiftTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBIMAAdapterSwiftTransformer.m; sourceTree = "<group>"; };
+		3F787B45C4B437679B0E61B4 /* Pods-YouboraIMAAdapter tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter tvOS.debug.xcconfig"; path = "Target Support Files/Pods-YouboraIMAAdapter tvOS/Pods-YouboraIMAAdapter tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		461D73D042E4DABF53563CF2 /* Pods-YouboraIMAAdapter tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter tvOS.release.xcconfig"; path = "Target Support Files/Pods-YouboraIMAAdapter tvOS/Pods-YouboraIMAAdapter tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		5D4E1367F0A5595F49A82E98 /* Pods-YouboraIMAAdapter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter.release.xcconfig"; path = "Target Support Files/Pods-YouboraIMAAdapter/Pods-YouboraIMAAdapter.release.xcconfig"; sourceTree = "<group>"; };
+		6122C36F509662115C15632F /* Pods-YouboraIMAAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouboraIMAAdapter.debug.xcconfig"; path = "Target Support Files/Pods-YouboraIMAAdapter/Pods-YouboraIMAAdapter.debug.xcconfig"; sourceTree = "<group>"; };
+		7EB1054DC94FF4D79D041790 /* Pods_YouboraIMAAdapter_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YouboraIMAAdapter_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC7A42E476DD3FB6A2E8A022 /* Pods_YouboraIMAAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YouboraIMAAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1A914822A6F5DC005A9927 /* YBIMAAdapterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBIMAAdapterHelper.swift; sourceTree = "<group>"; };
 		CD1B0F3F2084AEB70048ECEC /* YBIMADAIAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBIMADAIAdapter.h; sourceTree = "<group>"; };
 		CD1B0F402084AEB70048ECEC /* YBIMADAIAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBIMADAIAdapter.m; sourceTree = "<group>"; };
@@ -44,10 +51,7 @@
 		CD1B0F462084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBIMADAIAdapterSwiftWrapper.m; sourceTree = "<group>"; };
 		CD30295A20D98A1B0027BDCF /* InteractiveMediaAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = InteractiveMediaAds.framework; sourceTree = "<group>"; };
 		CD5FD87B20D800FE001EE724 /* YouboraIMAAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YouboraIMAAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD5FD87D20D800FF001EE724 /* YouboraIMAAdapter_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouboraIMAAdapter_tvOS.h; sourceTree = "<group>"; };
 		CD5FD87E20D800FF001EE724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD5FD89720D96E8F001EE724 /* YBIMADAIAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBIMADAIAdapter.h; sourceTree = "<group>"; };
-		CD5FD89820D96E8F001EE724 /* YBIMADAIAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBIMADAIAdapter.m; sourceTree = "<group>"; };
 		CD91948320333A05002A8507 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		CDA5D1621FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIMAAdapterSwiftWrapper.h; sourceTree = "<group>"; };
 		CDA5D1631FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBIMAAdapterSwiftWrapper.m; sourceTree = "<group>"; };
@@ -63,8 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDD145C121F7ACC10071FBF4 /* InteractiveMediaAds.framework in Frameworks */,
-				56D4C39EE65B27DF5C9AD08C /* Pods_YouboraIMAAdapter_tvOS.framework in Frameworks */,
+				C7A1E2834DD7D6CA80FA7191 /* Pods_YouboraIMAAdapter_tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5CBA6BCEEB7C3B8AA160CC0 /* Pods_YouboraIMAAdapter.framework in Frameworks */,
+				ECC904806E58DB1C4E5C800F /* Pods_YouboraIMAAdapter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,31 +85,29 @@
 		065BEC5CB6D07EFBD9340603 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				23BA74AB19818647C83C16CF /* Pods-YouboraIMAAdapter.debug.xcconfig */,
-				37180593DEA385E3979FD685 /* Pods-YouboraIMAAdapter.release.xcconfig */,
-				AB26637A39DA9640F4A8F1F1 /* Pods-YouboraIMAAdapter tvOS.debug.xcconfig */,
-				3F9BC57EB7A592EAA5D01D0F /* Pods-YouboraIMAAdapter tvOS.release.xcconfig */,
+				6122C36F509662115C15632F /* Pods-YouboraIMAAdapter.debug.xcconfig */,
+				5D4E1367F0A5595F49A82E98 /* Pods-YouboraIMAAdapter.release.xcconfig */,
+				3F787B45C4B437679B0E61B4 /* Pods-YouboraIMAAdapter tvOS.debug.xcconfig */,
+				461D73D042E4DABF53563CF2 /* Pods-YouboraIMAAdapter tvOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		066A9C0923EC6321006FD205 /* transformer */ = {
+		06B203D423EB353F00DD995D /* Transformer */ = {
 			isa = PBXGroup;
 			children = (
-				066A9C0A23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.h */,
-				066A9C0B23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.m */,
+				06B203D523EB356200DD995D /* YBIMAAdapterSwiftTransformer.h */,
+				06B203D623EB356200DD995D /* YBIMAAdapterSwiftTransformer.m */,
 			);
-			path = transformer;
+			path = Transformer;
 			sourceTree = "<group>";
 		};
-		CD5FD87C20D800FF001EE724 /* YouboraIMAAdapter tvOS */ = {
+		CD5FD87C20D800FF001EE724 /* YouboraIMAAdapter_tvOS */ = {
 			isa = PBXGroup;
 			children = (
-				CD5FD87D20D800FF001EE724 /* YouboraIMAAdapter_tvOS.h */,
 				CD5FD87E20D800FF001EE724 /* Info.plist */,
-				CD5FD89620D96E29001EE724 /* DAI */,
 			);
-			path = "YouboraIMAAdapter tvOS";
+			path = YouboraIMAAdapter_tvOS;
 			sourceTree = "<group>";
 		};
 		CD5FD89320D96DE5001EE724 /* IMA */ = {
@@ -131,21 +132,12 @@
 			path = DAI;
 			sourceTree = "<group>";
 		};
-		CD5FD89620D96E29001EE724 /* DAI */ = {
-			isa = PBXGroup;
-			children = (
-				CD5FD89720D96E8F001EE724 /* YBIMADAIAdapter.h */,
-				CD5FD89820D96E8F001EE724 /* YBIMADAIAdapter.m */,
-			);
-			path = DAI;
-			sourceTree = "<group>";
-		};
 		CDBA8CA51FA311C0004F8B6D = {
 			isa = PBXGroup;
 			children = (
 				CD91948320333A05002A8507 /* CHANGELOG.md */,
 				CDBA8CB11FA311C0004F8B6D /* YouboraIMAAdapter */,
-				CD5FD87C20D800FF001EE724 /* YouboraIMAAdapter tvOS */,
+				CD5FD87C20D800FF001EE724 /* YouboraIMAAdapter_tvOS */,
 				CDBA8CB01FA311C0004F8B6D /* Products */,
 				D4154EE58FC91BC3119DBE68 /* Frameworks */,
 				065BEC5CB6D07EFBD9340603 /* Pods */,
@@ -164,7 +156,6 @@
 		CDBA8CB11FA311C0004F8B6D /* YouboraIMAAdapter */ = {
 			isa = PBXGroup;
 			children = (
-				066A9C0923EC6321006FD205 /* transformer */,
 				CDBA8CB21FA311C0004F8B6D /* YouboraIMAAdapter.h */,
 				CDBA8CB31FA311C0004F8B6D /* Info.plist */,
 				CDBA8CBA1FA31B36004F8B6D /* adapter */,
@@ -175,6 +166,7 @@
 		CDBA8CBA1FA31B36004F8B6D /* adapter */ = {
 			isa = PBXGroup;
 			children = (
+				06B203D423EB353F00DD995D /* Transformer */,
 				CD5FD89420D96DF4001EE724 /* DAI */,
 				CD5FD89320D96DE5001EE724 /* IMA */,
 				CD1A914822A6F5DC005A9927 /* YBIMAAdapterHelper.swift */,
@@ -186,8 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				CD30295A20D98A1B0027BDCF /* InteractiveMediaAds.framework */,
-				66272EA83C8765E5811F14AE /* Pods_YouboraIMAAdapter.framework */,
-				54468C02C811E8847E18835D /* Pods_YouboraIMAAdapter_tvOS.framework */,
+				CC7A42E476DD3FB6A2E8A022 /* Pods_YouboraIMAAdapter.framework */,
+				7EB1054DC94FF4D79D041790 /* Pods_YouboraIMAAdapter_tvOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,8 +191,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD5FD89920D96E8F001EE724 /* YBIMADAIAdapter.h in Headers */,
-				CD5FD87F20D800FF001EE724 /* YouboraIMAAdapter_tvOS.h in Headers */,
+				06B2039823EB253D00DD995D /* YouboraIMAAdapter.h in Headers */,
+				06B203D823EB356200DD995D /* YBIMAAdapterSwiftTransformer.h in Headers */,
+				06B2039123EB251D00DD995D /* YBIMAAdapterSwiftWrapper.h in Headers */,
+				06B2039623EB253000DD995D /* YBIMADAIAdapterSwiftWrapper.h in Headers */,
+				06B2039423EB252800DD995D /* YBIMADAIAdapter.h in Headers */,
+				06B2038F23EB251400DD995D /* YBIMAAdapter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDBA8CB41FA311C0004F8B6D /* YouboraIMAAdapter.h in Headers */,
-				066A9C0C23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.h in Headers */,
+				06B203D723EB356200DD995D /* YBIMAAdapterSwiftTransformer.h in Headers */,
 				CD1B0F472084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.h in Headers */,
 				CD1B0F412084AEB70048ECEC /* YBIMADAIAdapter.h in Headers */,
 				CDA5D1641FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.h in Headers */,
@@ -224,7 +220,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD5FD88220D800FF001EE724 /* Build configuration list for PBXNativeTarget "YouboraIMAAdapter tvOS" */;
 			buildPhases = (
-				8A1AB6748F73590368AD0D81 /* [CP] Check Pods Manifest.lock */,
+				907CE81CD94B7981E2DCF318 /* [CP] Check Pods Manifest.lock */,
 				CD5FD87620D800FE001EE724 /* Sources */,
 				CD5FD87720D800FE001EE724 /* Frameworks */,
 				CD5FD87820D800FE001EE724 /* Headers */,
@@ -243,7 +239,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDBA8CB71FA311C0004F8B6D /* Build configuration list for PBXNativeTarget "YouboraIMAAdapter" */;
 			buildPhases = (
-				FEEF26D05A79A35DD270093A /* [CP] Check Pods Manifest.lock */,
+				1ADD9E2381BECA5B4391A919 /* [CP] Check Pods Manifest.lock */,
 				CDBA8CAA1FA311C0004F8B6D /* Sources */,
 				CDBA8CAB1FA311C0004F8B6D /* Frameworks */,
 				CDBA8CAC1FA311C0004F8B6D /* Headers */,
@@ -318,29 +314,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8A1AB6748F73590368AD0D81 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-YouboraIMAAdapter tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FEEF26D05A79A35DD270093A /* [CP] Check Pods Manifest.lock */ = {
+		1ADD9E2381BECA5B4391A919 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -362,6 +336,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		907CE81CD94B7981E2DCF318 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YouboraIMAAdapter tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -369,8 +365,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD1A914A22A6F5DC005A9927 /* YBIMAAdapterHelper.swift in Sources */,
-				CD5FD89A20D96E8F001EE724 /* YBIMADAIAdapter.m in Sources */,
+				06B2039023EB251A00DD995D /* YBIMAAdapter.m in Sources */,
+				06B2039223EB252100DD995D /* YBIMAAdapterSwiftWrapper.m in Sources */,
+				06B203DA23EB356200DD995D /* YBIMAAdapterSwiftTransformer.m in Sources */,
+				06B2039323EB252400DD995D /* YBIMAAdapterHelper.swift in Sources */,
+				06B2039523EB252D00DD995D /* YBIMADAIAdapter.m in Sources */,
+				06B2039723EB253500DD995D /* YBIMADAIAdapterSwiftWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +380,7 @@
 			files = (
 				CD1A914922A6F5DC005A9927 /* YBIMAAdapterHelper.swift in Sources */,
 				CDA5D1651FC5D837005635F8 /* YBIMAAdapterSwiftWrapper.m in Sources */,
-				066A9C0E23EC633E006FD205 /* YBIMAAdapterSwiftTransformer.m in Sources */,
+				06B203D923EB356200DD995D /* YBIMAAdapterSwiftTransformer.m in Sources */,
 				CDBA8CBE1FA31B5D004F8B6D /* YBIMAAdapter.m in Sources */,
 				CD1B0F422084AEB70048ECEC /* YBIMADAIAdapter.m in Sources */,
 				CD1B0F482084BFE10048ECEC /* YBIMADAIAdapterSwiftWrapper.m in Sources */,
@@ -392,7 +392,7 @@
 /* Begin XCBuildConfiguration section */
 		CD5FD88020D800FF001EE724 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB26637A39DA9640F4A8F1F1 /* Pods-YouboraIMAAdapter tvOS.debug.xcconfig */;
+			baseConfigurationReference = 3F787B45C4B437679B0E61B4 /* Pods-YouboraIMAAdapter tvOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_MODULES = YES;
@@ -423,7 +423,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "YouboraIMAAdapter tvOS/Info.plist";
+				INFOPLIST_FILE = YouboraIMAAdapter_tvOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.npaw.youbora.YouboraIMAAdapter;
@@ -434,13 +434,13 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
 		};
 		CD5FD88120D800FF001EE724 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F9BC57EB7A592EAA5D01D0F /* Pods-YouboraIMAAdapter tvOS.release.xcconfig */;
+			baseConfigurationReference = 461D73D042E4DABF53563CF2 /* Pods-YouboraIMAAdapter tvOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_MODULES = YES;
@@ -467,7 +467,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "YouboraIMAAdapter tvOS/Info.plist";
+				INFOPLIST_FILE = YouboraIMAAdapter_tvOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.npaw.youbora.YouboraIMAAdapter;
@@ -477,7 +477,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Release;
 		};
@@ -532,7 +532,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				YOUBORAIMAADAPTER_VERSION_SETTING = 6.5.2;
+				YOUBORAIMAADAPTER_VERSION_SETTING = 6.5.3;
 			};
 			name = Debug;
 		};
@@ -581,13 +581,13 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				YOUBORAIMAADAPTER_VERSION_SETTING = 6.5.2;
+				YOUBORAIMAADAPTER_VERSION_SETTING = 6.5.3;
 			};
 			name = Release;
 		};
 		CDBA8CB81FA311C0004F8B6D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23BA74AB19818647C83C16CF /* Pods-YouboraIMAAdapter.debug.xcconfig */;
+			baseConfigurationReference = 6122C36F509662115C15632F /* Pods-YouboraIMAAdapter.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -610,7 +610,7 @@
 		};
 		CDBA8CB91FA311C0004F8B6D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37180593DEA385E3979FD685 /* Pods-YouboraIMAAdapter.release.xcconfig */;
+			baseConfigurationReference = 5D4E1367F0A5595F49A82E98 /* Pods-YouboraIMAAdapter.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";

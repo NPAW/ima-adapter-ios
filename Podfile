@@ -1,6 +1,4 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
-
 workspace 'YouboraIMAAdapter.xcworkspace'
 
 def common_pod
@@ -17,7 +15,12 @@ def google_ima_pod_ios
     pod 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
 end
 
+def google_ima_pod_tvos
+    pod 'GoogleAds-IMA-tvOS-SDK', '~> 4.2'
+end
+
 target 'IMAAdapterExample' do
+    platform :ios, '9.0'
     project 'Example/IMAAdapterExample.xcodeproj'
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
@@ -29,6 +32,7 @@ target 'IMAAdapterExample' do
 end
 
 target 'IMAAdapterExampleDAI' do
+    platform :ios, '9.0'
     project 'Example-DAI/IMAAdapterExampleDAI.xcodeproj'
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
@@ -39,17 +43,17 @@ target 'IMAAdapterExampleDAI' do
     pod 'google-cast-sdk', '~>3.2.0'
 end
 
-target 'IMAAdapterExampleDAItvOS' do
-    platform :tvos, '9.0'
-    project 'Example-DAI-tvOS/IMAAdapterExampleDAItvOS.xcodeproj'
-    # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+target 'ExampleTvOS' do
+    platform :tvos, '9.1'
+    project 'ExampleTvOS/ExampleTvOS.xcodeproj'
+
     use_frameworks!
-    
-    # Pods for IMAAdapterExampleDAItvOS
     common_example_pod
+    google_ima_pod_tvos
 end
 
 target 'YouboraIMAAdapter' do
+    platform :ios, '9.0'
     project 'YouboraIMAAdapter.xcodeproj'
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
@@ -60,10 +64,11 @@ target 'YouboraIMAAdapter' do
 end
 
 target 'YouboraIMAAdapter tvOS' do
-    platform :tvos, '9.0'
+    platform :tvos, '9.1'
     project 'YouboraIMAAdapter.xcodeproj'
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
     # Pods for YouboraIMAAdapter
     common_pod
+    google_ima_pod_tvos
 end

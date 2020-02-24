@@ -1,0 +1,534 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06B203A823EB275000DD995D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B203A723EB275000DD995D /* AppDelegate.m */; };
+		06B203AB23EB275000DD995D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B203AA23EB275000DD995D /* ViewController.m */; };
+		06B203AE23EB275000DD995D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B203AC23EB275000DD995D /* Main.storyboard */; };
+		06B203B023EB275200DD995D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B203AF23EB275200DD995D /* Assets.xcassets */; };
+		06B203B323EB275200DD995D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B203B123EB275200DD995D /* LaunchScreen.storyboard */; };
+		06B203B623EB275200DD995D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B203B523EB275200DD995D /* main.m */; };
+		06B203C323EB2FB500DD995D /* ImaPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B203C223EB2FB500DD995D /* ImaPlayerViewController.m */; };
+		06B203D023EB33B100DD995D /* ImaViewModelSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B203CF23EB33B100DD995D /* ImaViewModelSwift.swift */; };
+		06B203E023EC156200DD995D /* ImaDaiPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B203DF23EC156200DD995D /* ImaDaiPlayerViewController.m */; };
+		06C2F60A23EC296D00D9E75D /* YouboraIMAAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C2F60923EC296600D9E75D /* YouboraIMAAdapter.framework */; };
+		06C2F60B23EC296D00D9E75D /* YouboraIMAAdapter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06C2F60923EC296600D9E75D /* YouboraIMAAdapter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B3FF6F3BE5B628FC377A40D9 /* Pods_ExampleTvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E55582080482555345A75FE /* Pods_ExampleTvOS.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		06C2F60623EC296600D9E75D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06C2F60123EC296600D9E75D /* YouboraIMAAdapter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CDBA8CAF1FA311C0004F8B6D;
+			remoteInfo = YouboraIMAAdapter;
+		};
+		06C2F60823EC296600D9E75D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06C2F60123EC296600D9E75D /* YouboraIMAAdapter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD5FD87B20D800FE001EE724;
+			remoteInfo = "YouboraIMAAdapter tvOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0632653B23EC22F2009D1C36 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				06C2F60B23EC296D00D9E75D /* YouboraIMAAdapter.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		06B203A323EB275000DD995D /* ExampleTvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleTvOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		06B203A623EB275000DD995D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		06B203A723EB275000DD995D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		06B203A923EB275000DD995D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		06B203AA23EB275000DD995D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		06B203AD23EB275000DD995D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		06B203AF23EB275200DD995D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		06B203B223EB275200DD995D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		06B203B423EB275200DD995D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06B203B523EB275200DD995D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		06B203C123EB2FB500DD995D /* ImaPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImaPlayerViewController.h; sourceTree = "<group>"; };
+		06B203C223EB2FB500DD995D /* ImaPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImaPlayerViewController.m; sourceTree = "<group>"; };
+		06B203CD23EB324700DD995D /* ImaViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImaViewModel.h; sourceTree = "<group>"; };
+		06B203CE23EB33B100DD995D /* ExampleTvOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExampleTvOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		06B203CF23EB33B100DD995D /* ImaViewModelSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImaViewModelSwift.swift; sourceTree = "<group>"; };
+		06B203DE23EC156200DD995D /* ImaDaiPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImaDaiPlayerViewController.h; sourceTree = "<group>"; };
+		06B203DF23EC156200DD995D /* ImaDaiPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImaDaiPlayerViewController.m; sourceTree = "<group>"; };
+		06C2F60123EC296600D9E75D /* YouboraIMAAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = YouboraIMAAdapter.xcodeproj; path = ../YouboraIMAAdapter.xcodeproj; sourceTree = "<group>"; };
+		0E55582080482555345A75FE /* Pods_ExampleTvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleTvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		294BD2E05581165D15DDB07B /* Pods-ExampleTvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleTvOS.debug.xcconfig"; path = "Target Support Files/Pods-ExampleTvOS/Pods-ExampleTvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		62EC53D2AB60D1ABBC72C52E /* Pods-ExampleTvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleTvOS.release.xcconfig"; path = "Target Support Files/Pods-ExampleTvOS/Pods-ExampleTvOS.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06B203A023EB275000DD995D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06C2F60A23EC296D00D9E75D /* YouboraIMAAdapter.framework in Frameworks */,
+				B3FF6F3BE5B628FC377A40D9 /* Pods_ExampleTvOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06B2039A23EB275000DD995D = {
+			isa = PBXGroup;
+			children = (
+				06C2F60123EC296600D9E75D /* YouboraIMAAdapter.xcodeproj */,
+				06B203A523EB275000DD995D /* ExampleTvOS */,
+				06B203A423EB275000DD995D /* Products */,
+				43BB7D5B342147ADF364075E /* Pods */,
+				A6FFBFEED6C75D7F7F4B4904 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		06B203A423EB275000DD995D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06B203A323EB275000DD995D /* ExampleTvOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		06B203A523EB275000DD995D /* ExampleTvOS */ = {
+			isa = PBXGroup;
+			children = (
+				06B203CB23EB308500DD995D /* ViewModel */,
+				06B203C023EB2F9B00DD995D /* ImaDai */,
+				06B203BF23EB2F9600DD995D /* Ima */,
+				06B203A623EB275000DD995D /* AppDelegate.h */,
+				06B203A723EB275000DD995D /* AppDelegate.m */,
+				06B203A923EB275000DD995D /* ViewController.h */,
+				06B203AA23EB275000DD995D /* ViewController.m */,
+				06B203CE23EB33B100DD995D /* ExampleTvOS-Bridging-Header.h */,
+				06B203AC23EB275000DD995D /* Main.storyboard */,
+				06B203AF23EB275200DD995D /* Assets.xcassets */,
+				06B203B123EB275200DD995D /* LaunchScreen.storyboard */,
+				06B203B423EB275200DD995D /* Info.plist */,
+				06B203B523EB275200DD995D /* main.m */,
+			);
+			path = ExampleTvOS;
+			sourceTree = "<group>";
+		};
+		06B203BF23EB2F9600DD995D /* Ima */ = {
+			isa = PBXGroup;
+			children = (
+				06B203C123EB2FB500DD995D /* ImaPlayerViewController.h */,
+				06B203C223EB2FB500DD995D /* ImaPlayerViewController.m */,
+			);
+			path = Ima;
+			sourceTree = "<group>";
+		};
+		06B203C023EB2F9B00DD995D /* ImaDai */ = {
+			isa = PBXGroup;
+			children = (
+				06B203DE23EC156200DD995D /* ImaDaiPlayerViewController.h */,
+				06B203DF23EC156200DD995D /* ImaDaiPlayerViewController.m */,
+			);
+			path = ImaDai;
+			sourceTree = "<group>";
+		};
+		06B203CB23EB308500DD995D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				06B203CD23EB324700DD995D /* ImaViewModel.h */,
+				06B203CF23EB33B100DD995D /* ImaViewModelSwift.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		06C2F60223EC296600D9E75D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06C2F60723EC296600D9E75D /* YouboraIMAAdapter.framework */,
+				06C2F60923EC296600D9E75D /* YouboraIMAAdapter.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		43BB7D5B342147ADF364075E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				294BD2E05581165D15DDB07B /* Pods-ExampleTvOS.debug.xcconfig */,
+				62EC53D2AB60D1ABBC72C52E /* Pods-ExampleTvOS.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		A6FFBFEED6C75D7F7F4B4904 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E55582080482555345A75FE /* Pods_ExampleTvOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		06B203A223EB275000DD995D /* ExampleTvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06B203B923EB275200DD995D /* Build configuration list for PBXNativeTarget "ExampleTvOS" */;
+			buildPhases = (
+				B8526C5030AEC2F0F6577C16 /* [CP] Check Pods Manifest.lock */,
+				06B2039F23EB275000DD995D /* Sources */,
+				06B203A023EB275000DD995D /* Frameworks */,
+				06B203A123EB275000DD995D /* Resources */,
+				64E7F9ABA5C3755F18E22FA8 /* [CP] Embed Pods Frameworks */,
+				0632653B23EC22F2009D1C36 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExampleTvOS;
+			productName = ExampleTvOS;
+			productReference = 06B203A323EB275000DD995D /* ExampleTvOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		06B2039B23EB275000DD995D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = npaw;
+				TargetAttributes = {
+					06B203A223EB275000DD995D = {
+						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1130;
+					};
+				};
+			};
+			buildConfigurationList = 06B2039E23EB275000DD995D /* Build configuration list for PBXProject "ExampleTvOS" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 06B2039A23EB275000DD995D;
+			productRefGroup = 06B203A423EB275000DD995D /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 06C2F60223EC296600D9E75D /* Products */;
+					ProjectRef = 06C2F60123EC296600D9E75D /* YouboraIMAAdapter.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				06B203A223EB275000DD995D /* ExampleTvOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		06C2F60723EC296600D9E75D /* YouboraIMAAdapter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = YouboraIMAAdapter.framework;
+			remoteRef = 06C2F60623EC296600D9E75D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06C2F60923EC296600D9E75D /* YouboraIMAAdapter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = YouboraIMAAdapter.framework;
+			remoteRef = 06C2F60823EC296600D9E75D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		06B203A123EB275000DD995D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06B203B323EB275200DD995D /* LaunchScreen.storyboard in Resources */,
+				06B203B023EB275200DD995D /* Assets.xcassets in Resources */,
+				06B203AE23EB275000DD995D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		64E7F9ABA5C3755F18E22FA8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleTvOS/Pods-ExampleTvOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExampleTvOS/Pods-ExampleTvOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExampleTvOS/Pods-ExampleTvOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8526C5030AEC2F0F6577C16 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ExampleTvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		06B2039F23EB275000DD995D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06B203E023EC156200DD995D /* ImaDaiPlayerViewController.m in Sources */,
+				06B203AB23EB275000DD995D /* ViewController.m in Sources */,
+				06B203B623EB275200DD995D /* main.m in Sources */,
+				06B203A823EB275000DD995D /* AppDelegate.m in Sources */,
+				06B203D023EB33B100DD995D /* ImaViewModelSwift.swift in Sources */,
+				06B203C323EB2FB500DD995D /* ImaPlayerViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		06B203AC23EB275000DD995D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06B203AD23EB275000DD995D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		06B203B123EB275200DD995D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06B203B223EB275200DD995D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		06B203B723EB275200DD995D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 13.2;
+			};
+			name = Debug;
+		};
+		06B203B823EB275200DD995D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 13.2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		06B203BA23EB275200DD995D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 294BD2E05581165D15DDB07B /* Pods-ExampleTvOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DAR8GLKRWU;
+				INFOPLIST_FILE = ExampleTvOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = npaw.ExampleTvOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ExampleTvOS/ExampleTvOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		06B203BB23EB275200DD995D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62EC53D2AB60D1ABBC72C52E /* Pods-ExampleTvOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DAR8GLKRWU;
+				INFOPLIST_FILE = ExampleTvOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = npaw.ExampleTvOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ExampleTvOS/ExampleTvOS-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06B2039E23EB275000DD995D /* Build configuration list for PBXProject "ExampleTvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06B203B723EB275200DD995D /* Debug */,
+				06B203B823EB275200DD995D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06B203B923EB275200DD995D /* Build configuration list for PBXNativeTarget "ExampleTvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06B203BA23EB275200DD995D /* Debug */,
+				06B203BB23EB275200DD995D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 06B2039B23EB275000DD995D /* Project object */;
+}
