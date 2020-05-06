@@ -11,7 +11,7 @@ PODS:
     - YouboraLib (~> 6.5.19)
   - YouboraConfigUtils (1.1.5):
     - YouboraLib (~> 6.5.0)
-  - YouboraLib (6.5.22)
+  - YouboraLib (6.5.23)
 
 DEPENDENCIES:
   - google-cast-sdk (~> 3.2.0)
@@ -36,7 +36,7 @@ SPEC CHECKSUMS:
   GoogleAds-IMA-tvOS-SDK: 2e13f90cdb893de667b12db571e5bed5a6c0ec8c
   YouboraAVPlayerAdapter: ac6843ca6b8e68abc849aab3478de88239dfcff0
   YouboraConfigUtils: 064689fc7e1c2c5b47d18f7e5e261dea886c4cb8
-  YouboraLib: caea431b9c4be694de54bcd443f61cb9fca3ad9c
+  YouboraLib: d794e870d50250cfd8fa5605a60b7ea2590b805d
 
 PODFILE CHECKSUM: 42df21ff373ffdf45c06b574734937e4a32a6f3d
 

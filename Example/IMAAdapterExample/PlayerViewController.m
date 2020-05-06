@@ -129,7 +129,6 @@ NSString *const kTestAppAdTagUrl =
     if(!self.adsManager.adPlaybackInfo.isPlaying){
         [self.adsManager resume];
     }
-    [self.playerViewController.player play];
 }
 
 -(void)appWillResignActive:(NSNotification*)notification {
