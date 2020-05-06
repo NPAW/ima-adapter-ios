@@ -175,11 +175,16 @@ BOOL adServed;
 }
 
 - (void) fireStart {
+    if (self.lastPosition == YBAdPositionMid && self.plugin && self.plugin.adapter) {
+        [self.plugin.adapter firePause];
+    }
     [self fireAdBreakStart];
     [super fireStart];
 }
 
 - (void)adsManagerDidRequestContentResume:(IMAAdsManager *)adsManager {
+    [self sendStop];
+    [self fireAdBreakStop];
     
     for (int k = 0; k < [self.delegates count]; k++) {
         if([self.delegates[k] respondsToSelector:@selector(adsManagerDidRequestContentResume:)]){
@@ -187,8 +192,9 @@ BOOL adServed;
         }
     }
     
-    [self sendStop];
-    [self fireAdBreakStop];
+    if (self.lastPosition == YBAdPositionMid && self.plugin && self.plugin.adapter) {
+        [self.plugin.adapter fireResume];
+    }
 }
 
 #pragma mark - Overridden get methods

@@ -69,7 +69,7 @@ NSString *const kTestAppAdTagUrl =
     
     // Create Youbora plugin
     YBOptions * youboraOptions = [YouboraConfigManager getOptions]; // [YBOptions new];
-    youboraOptions.autoDetectBackground = NO;
+    youboraOptions.autoDetectBackground = true;
     youboraOptions.waitForMetadata = false;
     self.youboraPlugin = [[YBPlugin alloc] initWithOptions:youboraOptions];
     

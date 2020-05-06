@@ -1,3 +1,6 @@
+## [6.5.4] - 2020-05-06
+### Added
+- Send start and pause events when ad break start and stop
 ## [6.5.3] - 2020-02-24
 ### Added
 - Dai and Ima Dai support to tvOS

@@ -72,7 +72,7 @@
 }
 
 - (IBAction)youboraSettingsClicked:(id)sender {
-    UIViewController * vc = [YouboraConfigViewController initFromXIB];
+    UIViewController * vc = [YouboraConfigViewController initFromXIBWithAnimatedNavigation:false];
     [[self navigationController] pushViewController:vc animated:YES];
 }
 
