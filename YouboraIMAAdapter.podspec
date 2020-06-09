@@ -37,6 +37,6 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) YOUBORAIMAADAPTER_VERSION=' + s.version.to_s }
 
   s.dependency 'YouboraLib', "~> 6.5.0"
-  s.ios.dependency 'GoogleAds-IMA-iOS-SDK', '~> 4.11.4'
+  s.ios.dependency 'GoogleAds-IMA-iOS-SDK', '~> 3.11.4'
   s.tvos.dependency 'GoogleAds-IMA-tvOS-SDK', '~> 4.2'
 end
