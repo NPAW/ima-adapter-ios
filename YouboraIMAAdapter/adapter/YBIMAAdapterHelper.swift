@@ -70,7 +70,6 @@ open class YBIMAAdapterHelper: NSObject, IMAAdsLoaderDelegate {
                  .ADSLOT_NOT_VISIBLE,
                  .FAILED_LOADING_AD,
                  .INVALID_ARGUMENTS,
-                 .IOS_RUNTIME_TOO_OLD,
                  .VIDEO_ELEMENT_USED,
                  .VIDEO_ELEMENT_REQUIRED,
                  .CONTENT_PLAYHEAD_MISSING,

@@ -1,6 +1,8 @@
 # Uncomment the next line to define a global platform for your project
 workspace 'YouboraIMAAdapter.xcworkspace'
 
+platform :ios, '10.0'
+
 def common_pod
     pod 'YouboraLib', '~> 6.5.0'
 end
@@ -12,7 +14,7 @@ def common_example_pod
 end
 
 def google_ima_pod_ios
-    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
+    pod 'GoogleAds-IMA-iOS-SDK', '3.11.4'
 end
 
 def google_ima_pod_tvos
@@ -20,7 +22,6 @@ def google_ima_pod_tvos
 end
 
 target 'IMAAdapterExample' do
-    platform :ios, '9.0'
     project 'Example/IMAAdapterExample.xcodeproj'
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
@@ -32,7 +33,7 @@ target 'IMAAdapterExample' do
 end
 
 target 'IMAAdapterExampleDAI' do
-    platform :ios, '9.0'
+    
     project 'Example-DAI/IMAAdapterExampleDAI.xcodeproj'
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!
@@ -53,7 +54,6 @@ target 'ExampleTvOS' do
 end
 
 target 'YouboraIMAAdapter' do
-    platform :ios, '9.0'
     project 'YouboraIMAAdapter.xcodeproj'
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!

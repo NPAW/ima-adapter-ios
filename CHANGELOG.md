@@ -1,3 +1,8 @@
+## [6.5.5] - 2020-06-09
+### Changed
+- Google Ima Ads SDK minimum version to 3.11.4
+### Removed
+- IOS_RUNTIME_TOO_OLD error code that's no longer supported by google ima
 ## [6.5.4] - 2020-05-06
 ### Added
 - Send start and pause events when ad break start and stop
