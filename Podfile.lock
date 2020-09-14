@@ -2,42 +2,46 @@ PODS:
   - google-cast-sdk (3.2.0):
     - google-cast-sdk/Core (= 3.2.0)
   - google-cast-sdk/Core (3.2.0)
-  - GoogleAds-IMA-iOS-SDK (3.11.4)
+  - GoogleAds-IMA-iOS-SDK (3.12.1)
   - GoogleAds-IMA-tvOS-SDK (4.2.1)
-  - YouboraAVPlayerAdapter (6.5.15):
-    - YouboraAVPlayerAdapter/Default (= 6.5.15)
+  - YouboraAVPlayerAdapter (6.5.17):
+    - YouboraAVPlayerAdapter/Default (= 6.5.17)
     - YouboraLib (~> 6.5.19)
-  - YouboraAVPlayerAdapter/Default (6.5.15):
+  - YouboraAVPlayerAdapter/Default (6.5.17):
     - YouboraLib (~> 6.5.19)
   - YouboraConfigUtils (1.1.5):
     - YouboraLib (~> 6.5.0)
-  - YouboraLib (6.5.23)
+  - YouboraLib (6.5.30)
 
 DEPENDENCIES:
   - google-cast-sdk (~> 3.2.0)
-  - GoogleAds-IMA-iOS-SDK (= 3.11.4)
+  - GoogleAds-IMA-iOS-SDK (~> 3.12.1)
   - GoogleAds-IMA-tvOS-SDK (~> 4.2)
-  - YouboraAVPlayerAdapter (~> 6.5.0)
+  - YouboraAVPlayerAdapter
   - YouboraConfigUtils (~> 1.1.0)
-  - YouboraLib (~> 6.5.0)
+  - YouboraLib (from `~/Documents/projects/lib-plugin-ios`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - google-cast-sdk
-    - GoogleAds-IMA-iOS-SDK
     - GoogleAds-IMA-tvOS-SDK
     - YouboraAVPlayerAdapter
     - YouboraConfigUtils
-    - YouboraLib
+  trunk:
+    - GoogleAds-IMA-iOS-SDK
+
+EXTERNAL SOURCES:
+  YouboraLib:
+    :path: "~/Documents/projects/lib-plugin-ios"
 
 SPEC CHECKSUMS:
   google-cast-sdk: f4c2a14214ad486cc26a8f8837e8481c906a0ea8
-  GoogleAds-IMA-iOS-SDK: 7f5b78b31ce97ec1f515866ed54118922004f987
+  GoogleAds-IMA-iOS-SDK: 3c01b8db7d01de6b4a3b1d58744d4bc426a2d821
   GoogleAds-IMA-tvOS-SDK: 2e13f90cdb893de667b12db571e5bed5a6c0ec8c
-  YouboraAVPlayerAdapter: ac6843ca6b8e68abc849aab3478de88239dfcff0
+  YouboraAVPlayerAdapter: 21a1b40a09711bbf87b97f344e381a38b3ae5893
   YouboraConfigUtils: 064689fc7e1c2c5b47d18f7e5e261dea886c4cb8
-  YouboraLib: d794e870d50250cfd8fa5605a60b7ea2590b805d
+  YouboraLib: 5aeefb2b3062fac4bb5d41c5e7bb576ab5098b3b
 
-PODFILE CHECKSUM: 6aeaf4a66a34d36c64da98a5801632354f8147a1
+PODFILE CHECKSUM: 0427698f92c04e42d51827676746bbfb15ab47e9
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.9.3

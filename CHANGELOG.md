@@ -1,3 +1,6 @@
+## [6.5.6] - 2020-09-14
+### Changed
+- Google Ima Ads SDK minimum version to 3.12.1
 ## [6.5.5] - 2020-06-09
 ### Changed
 - Google Ima Ads SDK minimum version to 3.11.4

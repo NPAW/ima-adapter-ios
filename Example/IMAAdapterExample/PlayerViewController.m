@@ -87,8 +87,16 @@ NSString *const kTestAppAdTagUrl =
     // We use the playerView view as a guide for the video
     self.playerViewController.view.frame = self.view.frame;
     
+    AVPlayerItem *item = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:self.resourceUrl]];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(observeConnectionFail:)
+     name:AVPlayerItemFailedToPlayToEndTimeNotification
+     object:item];
+    
     // Create AVPlayer
-    self.playerViewController.player = [AVPlayer playerWithURL:[NSURL URLWithString:self.resourceUrl]];
+    self.playerViewController.player = [AVPlayer playerWithPlayerItem:item];
     
     //IMA
     self.contentPlayhead = [[IMAAVPlayerContentPlayhead alloc] initWithAVPlayer:self.playerViewController.player];
@@ -104,8 +112,8 @@ NSString *const kTestAppAdTagUrl =
     // Start playback
     [self requestAdsWithTag:kTestAppAdTagUrl];
     [self.playerViewController.player addObserver:self forKeyPath:@"rate" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:observationContext];
-    //[self.playerViewController.player play];
     
+    [self.playerViewController.player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:observationContext];
 }
 
 - (void) startYoubora {
@@ -136,8 +144,40 @@ NSString *const kTestAppAdTagUrl =
 }
 
 #pragma mark AVPlayer observer
+
+-(void)observeConnectionFail:(NSNotification*)notification {
+    NSError *error = notification.userInfo[AVPlayerItemFailedToPlayToEndTimeErrorKey];
+    
+    if (self.youboraPlugin && self.youboraPlugin.adapter) {
+        NSString *code = [NSString stringWithFormat:@"%ld",error.code];
+        [self.youboraPlugin.adapter fireFatalErrorWithMessage:error.localizedDescription code:code andMetadata:nil];
+    }
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     @try {
+        
+        NSInteger newStatus = ((NSNumber *)[change objectForKey:NSKeyValueChangeNewKey]).integerValue;
+        
+        if (newStatus == AVPlayerItemStatusFailed) { // If failed
+            // It can be either the status of the player or the status from its currentItem
+            // because both of them are subscribed
+            NSError * error = self.playerViewController.player.error;
+            
+            if (!error) {
+                error = self.playerViewController.player.currentItem.error;
+            }
+            
+            if (error && self.youboraPlugin && self.youboraPlugin.adapter) {
+                NSString *code = [NSString stringWithFormat:@"%ld",error.code];
+                
+                [self.youboraPlugin.adapter
+                 fireFatalErrorWithMessage:error.description
+                 code:code
+                 andMetadata:nil];
+            }
+        }
+        
         if (context == observationContext) {
             AVPlayer * player = self.playerViewController.player;
             
@@ -187,7 +227,7 @@ NSString *const kTestAppAdTagUrl =
 - (void)requestAdsWithTag:(NSString*) adTag  {
     // Create an ad display container for ad rendering.
     IMAAdDisplayContainer *adDisplayContainer =
-    [[IMAAdDisplayContainer alloc] initWithAdContainer:self.adVIew companionSlots:nil];
+    [[IMAAdDisplayContainer alloc] initWithAdContainer:self.adVIew viewController:self companionSlots:nil];
     // Create an ad request with our ad tag, display container, and optional user context.
     IMAAdsRequest *request = [[IMAAdsRequest alloc] initWithAdTagUrl:adTag
                                                   adDisplayContainer:adDisplayContainer

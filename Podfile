@@ -9,12 +9,12 @@ end
 
 def common_example_pod
     common_pod
-    pod 'YouboraAVPlayerAdapter', '~>6.5.0'
+    pod 'YouboraAVPlayerAdapter'
     pod 'YouboraConfigUtils', '~>1.1.0'
 end
 
 def google_ima_pod_ios
-    pod 'GoogleAds-IMA-iOS-SDK', '3.11.4'
+    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.12.1'
 end
 
 def google_ima_pod_tvos
