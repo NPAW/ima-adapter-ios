@@ -179,7 +179,6 @@
     
     switch (event.type) {
         case kIMAAdEvent_AD_BREAK_READY:
-            
             break;
         case kIMAAdEvent_AD_BREAK_ENDED:
             [self fireAdBreakStop];

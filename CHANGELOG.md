@@ -1,3 +1,6 @@
+## [6.5.7] - 2020-09-28
+### Fixed
+- Don't trigger new views when post-roll starts on IMA
 ## [6.5.6] - 2020-09-14
 ### Changed
 - Google Ima Ads SDK minimum version to 3.12.1

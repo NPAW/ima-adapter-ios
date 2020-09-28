@@ -11,7 +11,7 @@ PODS:
     - YouboraLib (~> 6.5.19)
   - YouboraConfigUtils (1.1.5):
     - YouboraLib (~> 6.5.0)
-  - YouboraLib (6.5.30)
+  - YouboraLib (6.5.31)
 
 DEPENDENCIES:
   - google-cast-sdk (~> 3.2.0)
@@ -19,7 +19,7 @@ DEPENDENCIES:
   - GoogleAds-IMA-tvOS-SDK (~> 4.2)
   - YouboraAVPlayerAdapter
   - YouboraConfigUtils (~> 1.1.0)
-  - YouboraLib (from `~/Documents/projects/lib-plugin-ios`)
+  - YouboraLib (~> 6.5.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -29,10 +29,7 @@ SPEC REPOS:
     - YouboraConfigUtils
   trunk:
     - GoogleAds-IMA-iOS-SDK
-
-EXTERNAL SOURCES:
-  YouboraLib:
-    :path: "~/Documents/projects/lib-plugin-ios"
+    - YouboraLib
 
 SPEC CHECKSUMS:
   google-cast-sdk: f4c2a14214ad486cc26a8f8837e8481c906a0ea8
@@ -40,8 +37,8 @@ SPEC CHECKSUMS:
   GoogleAds-IMA-tvOS-SDK: 2e13f90cdb893de667b12db571e5bed5a6c0ec8c
   YouboraAVPlayerAdapter: 21a1b40a09711bbf87b97f344e381a38b3ae5893
   YouboraConfigUtils: 064689fc7e1c2c5b47d18f7e5e261dea886c4cb8
-  YouboraLib: 5aeefb2b3062fac4bb5d41c5e7bb576ab5098b3b
+  YouboraLib: ad566b0e32099e40f4e37fc7f642a803b96e308c
 
-PODFILE CHECKSUM: 0427698f92c04e42d51827676746bbfb15ab47e9
+PODFILE CHECKSUM: caa0b66b05e1bec34c09c7e76129bfd54a5cc29a
 
 COCOAPODS: 1.9.3

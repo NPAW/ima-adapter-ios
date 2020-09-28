@@ -29,7 +29,6 @@ target 'IMAAdapterExample' do
     # Pods for IMAAdapterExample
     common_example_pod
     google_ima_pod_ios
-    
 end
 
 target 'IMAAdapterExampleDAI' do
