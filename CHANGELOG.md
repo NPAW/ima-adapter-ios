@@ -1,3 +1,6 @@
+## [6.5.8] - 2020-10-20
+### Fixed
+- Fix a memory leak in IMA adapter
 ## [6.5.7] - 2020-09-28
 ### Fixed
 - Don't trigger new views when post-roll starts on IMA

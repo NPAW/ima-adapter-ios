@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xlB-Pa-DCJ">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xlB-Pa-DCJ">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,19 +36,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current resource:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvy-ji-4RW">
-                                <rect key="frame" x="16" y="156" width="135" height="21"/>
+                                <rect key="frame" x="16" y="136" width="134" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QA1-wD-uu2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QA1-wD-uu2">
                                 <rect key="frame" x="79" y="578" width="30" height="30"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
                                     <segue destination="eaL-Nx-nWr" kind="show" identifier="PlayerSegue" id="d6G-RF-4QT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OS-f8-B3D">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OS-f8-B3D">
                                 <rect key="frame" x="190" y="578" width="118" height="30"/>
                                 <state key="normal" title="Youbora Settings"/>
                                 <connections>
@@ -59,13 +56,12 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Resource" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5R0-tn-iPE">
-                                <rect key="frame" x="16" y="185" width="343" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="16" y="165" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFH-iE-nOx">
-                                <rect key="frame" x="16" y="223" width="53" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFH-iE-nOx">
+                                <rect key="frame" x="16" y="207" width="53" height="30"/>
                                 <state key="normal" title="Change"/>
                                 <connections>
                                     <action selector="changeResourceClicked:" destination="q3s-hf-dO8" eventType="touchUpInside" id="3Ca-B3-Bm4"/>
@@ -109,25 +105,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZpY-au-irR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icF-xc-s9j">
+                                <rect key="frame" x="0.0" y="44" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="JeP-bV-HRl"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="X4g-dd-Jkn"/>
+                                </constraints>
+                                <state key="normal" title="Replay"/>
+                                <connections>
+                                    <action selector="pressToReplay:" destination="eaL-Nx-nWr" eventType="touchUpInside" id="oIz-n2-GoS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZpY-au-irR" firstAttribute="centerX" secondItem="bfH-Y8-Uc5" secondAttribute="centerX" id="7nL-Ff-ubF"/>
-                            <constraint firstItem="ZpY-au-irR" firstAttribute="width" secondItem="bfH-Y8-Uc5" secondAttribute="width" id="BjN-sa-0Io"/>
-                            <constraint firstItem="ZpY-au-irR" firstAttribute="centerY" secondItem="bfH-Y8-Uc5" secondAttribute="centerY" id="WPK-i3-Pep"/>
-                            <constraint firstItem="ZpY-au-irR" firstAttribute="height" secondItem="bfH-Y8-Uc5" secondAttribute="height" id="hle-2s-nfe"/>
+                            <constraint firstItem="ZpY-au-irR" firstAttribute="leading" secondItem="bfH-Y8-Uc5" secondAttribute="leading" id="4AC-dO-pmk"/>
+                            <constraint firstItem="icF-xc-s9j" firstAttribute="top" secondItem="hXo-sH-Jb1" secondAttribute="bottom" id="6kO-RU-eIT"/>
+                            <constraint firstItem="hWw-ps-b1c" firstAttribute="top" secondItem="ZpY-au-irR" secondAttribute="bottom" id="7G6-1P-mPL"/>
+                            <constraint firstAttribute="trailing" secondItem="icF-xc-s9j" secondAttribute="trailing" id="aEE-OU-llC"/>
+                            <constraint firstItem="icF-xc-s9j" firstAttribute="leading" secondItem="bfH-Y8-Uc5" secondAttribute="leading" id="eLF-Oz-WpN"/>
+                            <constraint firstItem="ZpY-au-irR" firstAttribute="top" secondItem="icF-xc-s9j" secondAttribute="bottom" id="o8y-is-6nn"/>
+                            <constraint firstAttribute="trailing" secondItem="ZpY-au-irR" secondAttribute="trailing" id="tdL-Ps-eDA"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="adVIew" destination="ZpY-au-irR" id="tWG-aH-xMd"/>
+                        <outlet property="replayButton" destination="icF-xc-s9j" id="8vf-zP-6o6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWp-Vc-CaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1020" y="36"/>
+            <point key="canvasLocation" x="1020" y="35.532233883058474"/>
         </scene>
     </scenes>
 </document>

@@ -26,46 +26,48 @@
 
 
 @interface YBIMAAdapter()
-    @property (nonatomic,strong,readwrite) NSMutableArray* delegates;
+    @property (weak) NSObject<IMAAdsManagerDelegate>* mainDelegate;
     @property YBAdPosition lastPosition;
     @property NSNumber* lastPlayhead;
     @property (nonatomic, strong) NSNumber * adsOnCurrentBreak;
     @property (nonatomic, assign) BOOL isAdSkippable;
     @property (nonatomic, strong) NSString * creativeId;
+@property (nonatomic, strong) IMAAd* lastAd;
 @end
 
 @implementation YBIMAAdapter
 
-IMAAdsManager *manager;
 BOOL adServed;
 
 - (void)registerListeners {
     [super registerListeners];
-    
-    if(self.delegates == nil){
-        self.delegates = [[NSMutableArray alloc]init];
+   
+    if (!self.player.delegate) {
+        [YBLog error:@"No delegate found. Please init the ads adapter after the delegate be defined"];
+        return;
     }
     
-    [self.delegates addObject:self.player.delegate];
+    self.mainDelegate = self.player.delegate;
     
     self.player.delegate = self;
-    manager = [self getAdPlayer];
     adServed = false;
 }
 
 - (void) unregisterListeners {
     self.player.delegate = nil;
+    self.mainDelegate = nil;
 }
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdEvent:(IMAAdEvent *)event {
-    for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(adsManager:didReceiveAdEvent:)]){
-            [self.delegates[k] performSelector:@selector(adsManager:didReceiveAdEvent:) withObject:adsManager withObject:event];
-        }
+    if(self.mainDelegate && [self.mainDelegate respondsToSelector:@selector(adsManager:didReceiveAdEvent:)]){
+        [self.mainDelegate performSelector:@selector(adsManager:didReceiveAdEvent:) withObject:adsManager withObject:event];
     }
+    
     switch (event.type) {
         case kIMAAdEvent_LOADED:{
+            self.lastAd = event.ad;
             self.lastPosition = YBAdPositionUnknown;
+            
             int pos = (int)event.ad.adPodInfo.podIndex;
             self.adsOnCurrentBreak = @(event.ad.adPodInfo.totalAds);
             self.isAdSkippable = event.ad.skippable;
@@ -156,24 +158,20 @@ BOOL adServed;
 }
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdError:(IMAAdError *)error {
-    for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(adsManager:didReceiveAdError:)]){
-            [self.delegates[k] performSelector:@selector(adsManager:didReceiveAdError:) withObject:adsManager withObject:error];
+        if(self.mainDelegate && [self.mainDelegate respondsToSelector:@selector(adsManager:didReceiveAdError:)]){
+            [self.mainDelegate performSelector:@selector(adsManager:didReceiveAdError:) withObject:adsManager withObject:error];
         }
-    }
     [YBLog debug:@"AdsManager error: %@",error.message];
     [self fireFatalErrorWithMessage:error.message code:[NSString stringWithFormat:@"%ld",(long)error.code] andMetadata:nil];
 }
 
 - (void)adsManagerDidRequestContentPause:(IMAAdsManager *)adsManager {
-    for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(adsManagerDidRequestContentPause:)]){
-            [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentPause:) withObject:adsManager];
-        }
+    if(self.mainDelegate && [self.mainDelegate respondsToSelector:@selector(adsManagerDidRequestContentPause:)]){
+        [self.mainDelegate performSelector:@selector(adsManagerDidRequestContentPause:) withObject:adsManager];
     }
+    
     adServed = true;
     [self fireStart];
-    
 }
 
 - (void) fireStart {
@@ -188,10 +186,8 @@ BOOL adServed;
     [self sendStop];
     [self fireAdBreakStop];
     
-    for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(adsManagerDidRequestContentResume:)]){
-            [self.delegates[k] performSelector:@selector(adsManagerDidRequestContentResume:) withObject:adsManager];
-        }
+    if(self.mainDelegate && [self.mainDelegate respondsToSelector:@selector(adsManagerDidRequestContentResume:)]){
+        [self.mainDelegate performSelector:@selector(adsManagerDidRequestContentResume:) withObject:adsManager];
     }
     
     if (self.lastPosition == YBAdPositionMid && self.plugin && self.plugin.adapter) {
@@ -201,19 +197,19 @@ BOOL adServed;
 
 #pragma mark - Overridden get methods
 - (NSNumber *)getPlayhead{
- return @(manager.adPlaybackInfo.currentMediaTime);
+    return @([self getAdPlayer].adPlaybackInfo.currentMediaTime);
 }
 
 - (NSNumber *)getDuration{
-    return [NSNumber numberWithDouble:manager.adPlaybackInfo.totalMediaTime];
+    return [NSNumber numberWithDouble: [self getAdPlayer].adPlaybackInfo.totalMediaTime];
 }
 
 - (NSString*)getTitle{
-    return manager.adPlaybackInfo.description;
+    if (!self.lastAd) { return [super getTitle]; }
+    return self.lastAd.adTitle;
 }
 
 - (YBAdPosition)getPosition {
-    
     return self.lastPosition;
 }
 
@@ -290,11 +286,10 @@ BOOL adServed;
 
 - (void)adsManager:(IMAAdsManager *)adsManager adDidProgressToTime:(NSTimeInterval)mediaTime totalTime:(NSTimeInterval)totalTime{
     
-    for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(adsManager:adDidProgressToTime:totalTime:)]){
-            NSMethodSignature *sig = [self.delegates[k] methodSignatureForSelector:@selector(adsManager:adDidProgressToTime:totalTime:)];
+        if(self.mainDelegate && [self.mainDelegate respondsToSelector:@selector(adsManager:adDidProgressToTime:totalTime:)]){
+            NSMethodSignature *sig = [self.mainDelegate methodSignatureForSelector:@selector(adsManager:adDidProgressToTime:totalTime:)];
             NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
-            [invo setTarget:self.delegates[k]];
+            [invo setTarget:self.mainDelegate];
             [invo setSelector:@selector(adsManager:adDidProgressToTime:totalTime:)];
             //Index 0 and 1 are reserved, so the first one is 2
             [invo setArgument:&adsManager atIndex:2];
@@ -302,42 +297,37 @@ BOOL adServed;
             [invo setArgument:&totalTime atIndex:4];
             [invo invoke];
         }
-    }
 }
 
 - (void)adsManagerAdPlaybackReady:(IMAAdsManager *)adsManager{
-    for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(adsManagerAdPlaybackReady:)]){
-            [self.delegates[k] performSelector:@selector(adsManagerAdPlaybackReady:) withObject:adsManager];
-        }
+    if(self.mainDelegate && [self.mainDelegate respondsToSelector:@selector(adsManagerAdPlaybackReady:)]){
+        [self.mainDelegate performSelector:@selector(adsManagerAdPlaybackReady:) withObject:adsManager];
     }
 }
 
 - (void)adsManagerAdDidStartBuffering:(IMAAdsManager *)adsManager{
-    for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(adsManagerAdDidStartBuffering:)]){
-            [self.delegates[k] performSelector:@selector(adsManagerAdDidStartBuffering:) withObject:adsManager];
-        }
+    if(self.mainDelegate && [self.mainDelegate respondsToSelector:@selector(adsManagerAdDidStartBuffering:)]){
+        [self.mainDelegate performSelector:@selector(adsManagerAdDidStartBuffering:) withObject:adsManager];
     }
+    
     if(!self.flags.paused){
         [self fireBufferBegin];
     }
 }
 
 - (void)adsManager:(IMAAdsManager *)adsManager adDidBufferToMediaTime:(NSTimeInterval)mediaTime{
-    for (int k = 0; k < [self.delegates count]; k++) {
-        if([self.delegates[k] respondsToSelector:@selector(adsManager:adDidBufferToMediaTime:)]){
-            
-            NSMethodSignature *sig = [self.delegates[k] methodSignatureForSelector:@selector(adsManager:adDidBufferToMediaTime:)];
-            NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
-            [invo setTarget:self.delegates[k]];
-            [invo setSelector:@selector(adsManager:adDidBufferToMediaTime:)];
-            //Index 0 and 1 are reserved, so the first one is 2
-            [invo setArgument:&adsManager atIndex:2];
-            [invo setArgument:&mediaTime atIndex:3];
-            [invo invoke];
-        }
+    if(self.mainDelegate && [self.mainDelegate respondsToSelector:@selector(adsManager:adDidBufferToMediaTime:)]){
+        
+        NSMethodSignature *sig = [self.mainDelegate methodSignatureForSelector:@selector(adsManager:adDidBufferToMediaTime:)];
+        NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
+        [invo setTarget:self.mainDelegate];
+        [invo setSelector:@selector(adsManager:adDidBufferToMediaTime:)];
+        //Index 0 and 1 are reserved, so the first one is 2
+        [invo setArgument:&adsManager atIndex:2];
+        [invo setArgument:&mediaTime atIndex:3];
+        [invo invoke];
     }
+    
     [self fireBufferEnd];
 }
 

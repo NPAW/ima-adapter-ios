@@ -20,10 +20,10 @@
 
 @property (nonatomic, strong) YBAVPlayerAdapter * adapter;
 @property (nonatomic, strong) YBPlugin * youboraPlugin;
-@property (nonatomic, strong) YBIMAAdapterHelper * helper;
 
 //Testing purposes
 @property BOOL adapterAdded;
+@property BOOL executeReplay;
 
 //IMA
 @property(nonatomic, strong) IMAAVPlayerContentPlayhead *contentPlayhead;
@@ -44,11 +44,8 @@ NSString *const kTestAppAdTagUrl =
     @"ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&"
     @"cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpostpod&cmsid=496"
     @"&vid=short_onecue&correlator=";
-/*NSString *const kTestAppAdTagUrl =
-    @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&"
-    @"ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&"
-    @"cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496"
-    @"&vid=short_onecue&correlator=";*/
+//VAST preroll
+NSString *const preRollTag = @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpreonly&cmsid=496&vid=short_onecue&correlator=";
 //Single skippable url with just a postroll
 /*NSString *const kTestAppAdTagUrl =
     @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&"
@@ -57,12 +54,10 @@ NSString *const kTestAppAdTagUrl =
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.adapterAdded = NO;
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
     
-    //[self.navigationController setHidesBarsOnTap:YES];
-    self.navigationController.navigationBarHidden = YES;
+    self.executeReplay = false;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
     
     // Set Youbora log level
     [YBLog setDebugLevel:YBLogLevelVerbose];
@@ -72,20 +67,41 @@ NSString *const kTestAppAdTagUrl =
     youboraOptions.autoDetectBackground = true;
     youboraOptions.waitForMetadata = false;
     self.youboraPlugin = [[YBPlugin alloc] initWithOptions:youboraOptions];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
-    // Send init - this creates a new view in Youbora
-    [self.youboraPlugin fireInit];
+    self.adapterAdded = NO;
     
+    [self initPlayer];
+    
+    [self setupAdsLoader];
+    // As soon as we have the player instance, create an Adapter to listen for the player events
+    [self startYoubora];
+    
+    // Start playback
+    [self requestAdsWithTag:kTestAppAdTagUrl];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear: animated];
+    
+    if ([self isMovingFromParentViewController]) {
+        [self.playerViewController.player removeObserver:self forKeyPath:@"rate"];
+        [self.playerViewController.player removeObserver:self forKeyPath:@"status"];
+        [self.youboraPlugin fireStop];
+        [self.youboraPlugin removeAdapter];
+        [self.youboraPlugin removeAdsAdapter];
+    }
+}
+
+-(void)initPlayer {
     // Video player controller
     self.playerViewController = [[AVPlayerViewController alloc] init];
-    self.playerViewController.showsPlaybackControls = YES;
     
-    // Add view to the current screen
     [self addChildViewController:self.playerViewController];
     [self.view addSubview:self.playerViewController.view];
-    
-    // We use the playerView view as a guide for the video
-    self.playerViewController.view.frame = self.view.frame;
     
     AVPlayerItem *item = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:self.resourceUrl]];
     
@@ -98,19 +114,11 @@ NSString *const kTestAppAdTagUrl =
     // Create AVPlayer
     self.playerViewController.player = [AVPlayer playerWithPlayerItem:item];
     
-    //IMA
-    self.contentPlayhead = [[IMAAVPlayerContentPlayhead alloc] initWithAVPlayer:self.playerViewController.player];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(contentDidFinishPlaying:)
-                                                 name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:nil];
+                                               selector:@selector(contentDidFinishPlaying:)
+                                                   name:AVPlayerItemDidPlayToEndTimeNotification
+                                                 object:nil];
     
-    [self setupAdsLoader];
-    // As soon as we have the player instance, create an Adapter to listen for the player events
-    //[self startYoubora];
-    
-    // Start playback
-    [self requestAdsWithTag:kTestAppAdTagUrl];
     [self.playerViewController.player addObserver:self forKeyPath:@"rate" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:observationContext];
     
     [self.playerViewController.player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:observationContext];
@@ -119,7 +127,6 @@ NSString *const kTestAppAdTagUrl =
 - (void) startYoubora {
     YBAVPlayerAdapter * adapter = [[YBAVPlayerAdapter alloc] initWithPlayer:self.playerViewController.player];
     [self.youboraPlugin setAdapter:adapter];
-    //[self.youboraPlugin.adapter fireStart];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -216,12 +223,13 @@ NSString *const kTestAppAdTagUrl =
 }
     
 - (void)setupAdsLoader {
+    //IMA
+    self.contentPlayhead = [[IMAAVPlayerContentPlayhead alloc] initWithAVPlayer:self.playerViewController.player];
+    
     // Re-use this IMAAdsLoader instance for the entire lifecycle of your app.
     self.adsLoader = [[IMAAdsLoader alloc] initWithSettings:nil];
     // NOTE: This line will cause a warning until the next step, "Get the Ads Manager".
     self.adsLoader.delegate = self;
-    
-    self.helper = [[YBIMAAdapterHelper alloc] initWithAdsLoader:self.adsLoader andPlugin:self.youboraPlugin];
 }
 
 - (void)requestAdsWithTag:(NSString*) adTag  {
@@ -242,6 +250,8 @@ NSString *const kTestAppAdTagUrl =
     // NOTE: This line will cause a warning until the next step, "Display Ads".
     self.adsManager.delegate = self;
     
+    
+    [self.youboraPlugin setAdsAdapter: [[YBIMAAdapter alloc] initWithPlayer: self.adsManager]];
     //id<IMAAdsManagerDelegate> oldOne = self.adsManager.delegate;
     
     /*YBIMAAdapter* adsAdapter = [[YBIMAAdapter alloc] initWithPlayer:self.adsManager];
@@ -264,17 +274,20 @@ NSString *const kTestAppAdTagUrl =
         [self startYoubora];
         self.adapterAdded = YES;
     }
-    [self.adVIew setHidden:YES];
-    [self.view sendSubviewToBack:self.adVIew];
+    [self.adVIew setHidden: YES];
+    [self.view sendSubviewToBack: self.adVIew];
     [self.playerViewController.player play];
+    [self.view bringSubviewToFront:self.replayButton];
 }
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdEvent:(IMAAdEvent *)event {
     if (event.type == kIMAAdEvent_LOADED) {
         // When the SDK notifies us that ads have been loaded, play them.
-        [self.adVIew setHidden:NO];
-        [self.view bringSubviewToFront:self.adVIew];
+        [self.adVIew setHidden: NO];
+        [self.view bringSubviewToFront: self.adVIew];
         [adsManager start];
     }
+    
+    [self.view bringSubviewToFront:self.replayButton];
     /*if(event.type == kIMAAdEvent_COMPLETE && event.ad.adPodInfo.podIndex == 0){
         if(self.adapterAdded == NO){
             [self startYoubora];
@@ -291,9 +304,10 @@ NSString *const kTestAppAdTagUrl =
         [self startYoubora];
         self.adapterAdded = YES;
     }
-    [self.adVIew setHidden:YES];
-    [self.view sendSubviewToBack:self.adVIew];
+    [self.adVIew setHidden: YES];
+    [self.view sendSubviewToBack: self.adVIew];
     [self.playerViewController.player play];
+    [self.view bringSubviewToFront: self.replayButton];
 }
 
 - (void)adsManagerDidRequestContentPause:(IMAAdsManager *)adsManager {
@@ -310,17 +324,18 @@ NSString *const kTestAppAdTagUrl =
         self.adapterAdded = YES;
     }
     [self.playerViewController.player play];
-    
+    [self.view bringSubviewToFront: self.replayButton];
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+-(IBAction)pressToReplay:(id)sender {
+    [self.youboraPlugin removeAdapter];
+    [self.youboraPlugin removeAdsAdapter];
+    [self.adsManager destroy];
+    self.adsLoader = nil;
+    [self setupAdsLoader];
+    [self requestAdsWithTag: kTestAppAdTagUrl];
+    [self.playerViewController.player seekToTime: kCMTimeZero];
+    [self.playerViewController.player play];
+}
 
 @end

@@ -18,6 +18,8 @@
  * prepareForSegue method
  */
 @property (nonatomic, strong) NSString * resourceUrl;
+
 @property (weak, nonatomic) IBOutlet UIView *adVIew;
+@property (weak, nonatomic) IBOutlet UIButton *replayButton;
 
 @end
