@@ -36,7 +36,10 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) YOUBORAIMAADAPTER_VERSION=' + s.version.to_s }
 
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+
   s.dependency 'YouboraLib', "~> 6.5.0"
   s.ios.dependency 'GoogleAds-IMA-iOS-SDK', '~> 3.12.1'
-  s.tvos.dependency 'GoogleAds-IMA-tvOS-SDK', '~> 4.2'
+  s.tvos.dependency 'GoogleAds-IMA-tvOS-SDK', '~> 4.3'
 end
