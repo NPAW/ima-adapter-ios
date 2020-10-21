@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   # Platforms
   s.ios.deployment_target = "10.0"
-  s.tvos.deployment_target = "9.2"
+  s.tvos.deployment_target = "10.0"
 
   # Swift version
   s.swift_version = "4.0", "4.1", "4.2", "4.3", "5.0", "5.1"
