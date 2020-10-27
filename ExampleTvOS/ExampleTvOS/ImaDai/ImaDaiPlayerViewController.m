@@ -79,10 +79,8 @@ static NSString *const kBackupStreamURLString =
 }
 
 - (void)requestStream {
-    IMAAVPlayerVideoDisplay *videoDisplay =
-    [[IMAAVPlayerVideoDisplay alloc] initWithAVPlayer:self.playerViewController.player];
-    IMAAdDisplayContainer *adDisplayContainer =
-    [[IMAAdDisplayContainer alloc] initWithAdContainer:self.adContainerView];
+    IMAAVPlayerVideoDisplay *videoDisplay = [[IMAAVPlayerVideoDisplay alloc] initWithAVPlayer:self.playerViewController.player];
+    IMAAdDisplayContainer *adDisplayContainer = [[IMAAdDisplayContainer alloc] initWithAdContainer:self.adContainerView viewController:self];
 //    IMALiveStreamRequest *request = [[IMALiveStreamRequest alloc] initWithAssetKey:kAssetKey
 //                                                                adDisplayContainer:adDisplayContainer
 //                                                                      videoDisplay:videoDisplay];

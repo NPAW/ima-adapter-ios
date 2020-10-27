@@ -14,11 +14,11 @@ def common_example_pod
 end
 
 def google_ima_pod_ios
-    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.12.1'
+    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.13'
 end
 
 def google_ima_pod_tvos
-    pod 'GoogleAds-IMA-tvOS-SDK', '~> 4.2'
+    pod 'GoogleAds-IMA-tvOS-SDK', '~> 4.3'
 end
 
 target 'IMAAdapterExample' do
@@ -44,7 +44,7 @@ target 'IMAAdapterExampleDAI' do
 end
 
 target 'ExampleTvOS' do
-    platform :tvos, '9.1'
+    platform :tvos, '10.0'
     project 'ExampleTvOS/ExampleTvOS.xcodeproj'
 
     use_frameworks!
@@ -63,7 +63,7 @@ target 'YouboraIMAAdapter' do
 end
 
 target 'YouboraIMAAdapter tvOS' do
-    platform :tvos, '9.1'
+    platform :tvos, '10.0'
     project 'YouboraIMAAdapter.xcodeproj'
     # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
     use_frameworks!

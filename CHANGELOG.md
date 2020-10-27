@@ -1,3 +1,8 @@
+## [6.5.9] - 2020-10-27
+### Changed
+- Google Ima Ads SDK minimum version to 3.13.x
+- GoogleAds-IMA-iOS-SDK minimum version to 4.3.x
+- Increases the minimum runtime version to tvOS 10 
 ## [6.5.8] - 2020-10-20
 ### Fixed
 - Fix a memory leak in IMA adapter

@@ -72,7 +72,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
     if(indexPath.row == [self.tableView numberOfRowsInSection:0] - 1){
-        UIViewController * vc = [YouboraConfigViewController initFromXIB];
+        UIViewController * vc = [YouboraConfigViewController initFromXIBWithAnimatedNavigation:false];
         [[self navigationController] pushViewController:vc animated:YES];
         return NO;
     }
