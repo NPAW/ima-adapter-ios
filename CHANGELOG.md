@@ -1,3 +1,6 @@
+## [6.5.10] - 2020-11-30
+### Fixed
+- Podspec dependencies
 ## [6.5.9] - 2020-10-27
 ### Changed
 - Google Ima Ads SDK minimum version to 3.13.x

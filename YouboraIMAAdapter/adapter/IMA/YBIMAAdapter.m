@@ -142,6 +142,12 @@ BOOL adServed;
         case kIMAAdEvent_AD_PERIOD_ENDED:
         case kIMAAdEvent_AD_PERIOD_STARTED:
             break;
+        case kIMAAdEvent_AD_BREAK_FETCH_ERROR:
+            break;
+        case kIMAAdEvent_ICON_FALLBACK_IMAGE_CLOSED:
+            break;
+        case kIMAAdEvent_ICON_TAPPED:
+            break;
     }
 }
 

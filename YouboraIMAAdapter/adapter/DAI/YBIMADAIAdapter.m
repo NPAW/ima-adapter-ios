@@ -246,6 +246,12 @@
         case kIMAAdEvent_AD_PERIOD_STARTED:
             //[self fireAdBreakStart];
             break;
+        case kIMAAdEvent_AD_BREAK_FETCH_ERROR:
+            break;
+        case kIMAAdEvent_ICON_FALLBACK_IMAGE_CLOSED:
+            break;
+        case kIMAAdEvent_ICON_TAPPED:
+            break;
     }
     
     for (int k = 0; k < [self.delegates count]; k++) {
