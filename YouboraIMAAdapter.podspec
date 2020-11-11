@@ -32,6 +32,25 @@ Pod::Spec.new do |s|
    # Public header files
   s.public_header_files = "YouboraIMAAdapter/**/*.h"
 
+  s.ios.pod_target_xcconfig = {
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
+    'EXCLUDED_ARCHS[sdk=appletvsimulator*]' => 'arm64',
+  }
+  s.ios.user_target_xcconfig = {
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
+    'EXCLUDED_ARCHS[sdk=appletvsimulator*]' => 'arm64',
+  }
+
+  s.tvos.pod_target_xcconfig = {
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
+    'EXCLUDED_ARCHS[sdk=appletvsimulator*]' => 'arm64',
+  }
+  
+  s.tvos.user_target_xcconfig = {
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
+    'EXCLUDED_ARCHS[sdk=appletvsimulator*]' => 'arm64',
+  }
+
   # Project settings
   s.requires_arc = true
   s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) YOUBORAIMAADAPTER_VERSION=' + s.version.to_s }
