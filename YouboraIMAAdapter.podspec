@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YouboraIMAAdapter"
-  s.version      = "6.5.10"
+  s.version      = "6.5.10-arm64"
 
   # Metadata
   s.summary      = "Library required to track IMA Ads on Youbora"
@@ -24,7 +24,11 @@ Pod::Spec.new do |s|
   s.swift_version = "4.0", "4.1", "4.2", "4.3", "5.0", "5.1"
 
   # Source Location
-  s.source       = { :git => 'https://bitbucket.org/npaw/ima-adapter-ios.git', :tag => s.version}
+  s.source       = { 
+    :git => 'https://bitbucket.org/npaw/ima-adapter-ios.git', 
+    :branch => 'test-arm64', 
+    :tag => s.version
+  }
 
   # Source files
   s.source_files  = 'YouboraIMAAdapter/**/*.{h,m,swift}'
