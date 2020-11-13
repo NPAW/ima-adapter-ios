@@ -1,4 +1,7 @@
-## [6.5.10] - 2020-11-30
+## [6.5.11] - 2020-11-13
+### Removed
+- Arm64 arch from simulators 
+## [6.5.10] - 2020-10-30
 ### Fixed
 - Podspec dependencies
 ## [6.5.9] - 2020-10-27
