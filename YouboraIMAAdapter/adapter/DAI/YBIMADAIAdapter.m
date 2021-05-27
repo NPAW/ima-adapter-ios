@@ -58,19 +58,19 @@
 
 #pragma mark Get methods
 
-- (NSNumber *)getPlayhead{
+- (NSNumber *)getPlayhead {
     return @(self.adProgress);
 }
 
-- (NSNumber *)getDuration{
+- (NSNumber *)getDuration {
     return self.currentAd == nil ? [super getDuration] : @(self.currentAd.duration);
 }
 
-- (NSString *)getTitle{
+- (NSString *)getTitle {
     return self.currentAd == nil ? [super getTitle] : self.currentAd.adTitle;
 }
 
-- (YBAdPosition) getPosition{
+- (YBAdPosition) getPosition {
     if(self.currentAd == nil || [self getDuration] == nil){
         return YBAdPositionUnknown;
     }
@@ -116,6 +116,10 @@
         }
     }
     return cuePoints;
+}
+
+- (NSString *)getAdInsertionType {
+    return YBConstantsAdInsertionType.serverSide;
 }
 
 - (NSNumber *) getGivenAds {

@@ -202,15 +202,15 @@ BOOL adServed;
 }
 
 #pragma mark - Overridden get methods
-- (NSNumber *)getPlayhead{
+- (NSNumber *)getPlayhead {
     return @([self getAdPlayer].adPlaybackInfo.currentMediaTime);
 }
 
-- (NSNumber *)getDuration{
+- (NSNumber *)getDuration {
     return [NSNumber numberWithDouble: [self getAdPlayer].adPlaybackInfo.totalMediaTime];
 }
 
-- (NSString*)getTitle{
+- (NSString*)getTitle {
     if (!self.lastAd) { return [super getTitle]; }
     return self.lastAd.adTitle;
 }
@@ -219,7 +219,7 @@ BOOL adServed;
     return self.lastPosition;
 }
 
-- (IMAAdsManager *) getAdPlayer{
+- (IMAAdsManager *) getAdPlayer {
     return (IMAAdsManager *)self.player;
 }
 
@@ -239,6 +239,10 @@ BOOL adServed;
         }
     }
     return cuePoints;
+}
+
+- (NSString *)getAdInsertionType {
+    return YBConstantsAdInsertionType.clientSide;
 }
 
 - (NSNumber *) getGivenAds {
@@ -269,7 +273,7 @@ BOOL adServed;
     return PLUGIN_VERSION;
 }
 
-- (void) sendStop{
+- (void) sendStop {
     self.lastPosition = self.lastPosition == YBAdPositionPost ? YBAdPositionPost : [self getPosition];
     
     if(!adServed){
