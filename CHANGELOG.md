@@ -1,3 +1,7 @@
+## [6.5.12] - 2021-05-27
+### Added
+- Ad insertion type
+
 ## [6.5.11] - 2020-11-13
 ### Removed
 - Arm64 arch from simulators 
