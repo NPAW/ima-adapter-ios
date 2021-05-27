@@ -1,44 +1,61 @@
+## [6.5.12] - 2021-05-27
+### Added
+- Ad insertion type
+
 ## [6.5.11] - 2020-11-13
 ### Removed
 - Arm64 arch from simulators 
+
 ## [6.5.10] - 2020-10-30
 ### Fixed
 - Podspec dependencies
+
 ## [6.5.9] - 2020-10-27
 ### Changed
 - Google Ima Ads SDK minimum version to 3.13.x
 - GoogleAds-IMA-iOS-SDK minimum version to 4.3.x
 - Increases the minimum runtime version to tvOS 10 
+
 ## [6.5.8] - 2020-10-20
 ### Fixed
 - Fix a memory leak in IMA adapter
+
 ## [6.5.7] - 2020-09-28
 ### Fixed
 - Don't trigger new views when post-roll starts on IMA
+
 ## [6.5.6] - 2020-09-14
 ### Changed
 - Google Ima Ads SDK minimum version to 3.12.1
+
 ## [6.5.5] - 2020-06-09
 ### Changed
 - Google Ima Ads SDK minimum version to 3.11.4
+
 ### Removed
 - IOS_RUNTIME_TOO_OLD error code that's no longer supported by google ima
+
 ## [6.5.4] - 2020-05-06
 ### Added
 - Send start and pause events when ad break start and stop
+
 ## [6.5.3] - 2020-02-24
 ### Added
 - Dai and Ima Dai support to tvOS
 - README.md
+
 ### Deprecated
 - YBIMADAIAdapterSwiftWrapper
 - YBIMAAdapterSwiftWrapper
+
 ## [6.5.2] - 2020-02-06
 ### Updated
 - Add tranformers to make adapter compatible with Swift
+
 ## [6.5.1] - 2020-02-05
 ### Fixed
 - Youbora lib imports
+
 ## [6.3.1] - 2019-02-01
 ### Fixed
 - Wrong display version number
@@ -47,6 +64,7 @@
 ### Updated
 - Update all dependencies to last YouboraLib 6.3
 - Minimum version required now is iOS 9.0
+
 ### Fixed
 - Remove allAdsCompleted from DAI too
 
