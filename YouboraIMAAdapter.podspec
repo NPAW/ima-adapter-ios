@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'YouboraIMAAdapter'
-  s.version      = '6.5.12'
+  s.version      = '6.5.13'
 
   # Metadata
   s.summary      = 'Library required to track IMA Ads on Youbora'
