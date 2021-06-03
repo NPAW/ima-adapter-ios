@@ -1,3 +1,7 @@
+## [6.5.13] - 2021-06-02
+### Added
+- Ad join for post-roll ads
+
 ## [6.5.12] - 2021-05-27
 ### Added
 - Ad insertion type

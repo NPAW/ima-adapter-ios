@@ -85,9 +85,7 @@ BOOL adServed;
             break;
         }
         case kIMAAdEvent_STARTED:
-            if (self.lastPosition != YBAdPositionPost) {
-                [self fireJoin];
-            }
+            [self fireJoin];
             //The position is available here, not on kIMAAdEvent_COMPLETE event
             self.lastPlayhead = [self getDuration];
             break;
