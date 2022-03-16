@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'YouboraIMAAdapter'
-  s.version      = '6.5.13'
+  s.version      = '6.6.0'
 
   # Metadata
   s.summary      = 'Library required to track IMA Ads on Youbora'
@@ -24,11 +24,7 @@ Pod::Spec.new do |s|
   s.swift_version = '4.0', '4.1', '4.2', '4.3', '5.0', '5.1'
 
   # Source Location
-  s.source       = { 
-    :git => 'https://bitbucket.org/npaw/ima-adapter-ios.git', 
-    :branch => 'test-arm64', 
-    :tag => s.version
-  }
+  s.source       = { :git => 'https://bitbucket.org/npaw/ima-adapter-ios.git', :tag => s.version}
 
   # Source files
   s.source_files  = 'YouboraIMAAdapter/**/*.{h,m,swift}'
@@ -40,17 +36,8 @@ Pod::Spec.new do |s|
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
     'EXCLUDED_ARCHS[sdk=appletvsimulator*]' => 'arm64',
   }
-  s.ios.user_target_xcconfig = {
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
-    'EXCLUDED_ARCHS[sdk=appletvsimulator*]' => 'arm64',
-  }
 
   s.tvos.pod_target_xcconfig = {
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
-    'EXCLUDED_ARCHS[sdk=appletvsimulator*]' => 'arm64',
-  }
-  
-  s.tvos.user_target_xcconfig = {
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
     'EXCLUDED_ARCHS[sdk=appletvsimulator*]' => 'arm64',
   }

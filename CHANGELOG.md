@@ -1,3 +1,7 @@
+## [6.6.0] - 2022-03-16
+### Added
+- Compatibility with YouboraLib 6.x
+
 ## [6.5.13] - 2021-06-02
 ### Added
 - Ad join for post-roll ads
