@@ -11,7 +11,7 @@ import UIKit
 @objcMembers
 open class YBIMAAdapterHelper: NSObject, IMAAdsLoaderDelegate {
     
-    fileprivate var delegates: [IMAAdsLoaderDelegate] = []
+    fileprivate var delegates: [IMAAdsLoaderDelegate?] = []
     
     fileprivate var adsLoader: IMAAdsLoader?
     fileprivate var plugin: YBPlugin?
@@ -29,7 +29,7 @@ open class YBIMAAdapterHelper: NSObject, IMAAdsLoaderDelegate {
     
     @objc public func adsLoader(_ loader: IMAAdsLoader!, adsLoadedWith adsLoadedData: IMAAdsLoadedData!) {
         delegates.forEach { delegate in
-            delegate.adsLoader(loader, adsLoadedWith: adsLoadedData)
+            delegate?.adsLoader(loader, adsLoadedWith: adsLoadedData)
         }
         
         guard let _ = self.plugin else {
@@ -48,7 +48,7 @@ open class YBIMAAdapterHelper: NSObject, IMAAdsLoaderDelegate {
     
     @objc public func adsLoader(_ loader: IMAAdsLoader!, failedWith adErrorData: IMAAdLoadingErrorData!) {
         delegates.forEach { delegate in
-            delegate.adsLoader(loader, failedWith: adErrorData)
+            delegate?.adsLoader(loader, failedWith: adErrorData)
             var errorType = YBAdManifestError.errorNoResponse
             
             switch adErrorData.adError.code {
