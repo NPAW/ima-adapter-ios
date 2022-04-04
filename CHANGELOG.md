@@ -1,3 +1,7 @@
+## [6.6.1] - 2022-04-04
+### Added
+- Compatibility with GoogleAds-IMA-iOS-SDK 3.15.x
+
 ## [6.6.0] - 2022-03-16
 ### Added
 - Compatibility with YouboraLib 6.x
