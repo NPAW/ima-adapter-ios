@@ -1,3 +1,7 @@
+## [6.6.2] - 2022-04-04
+### Fixed
+- `fireError` not called when an ad is not initialized
+
 ## [6.6.1] - 2022-04-04
 ### Added
 - Compatibility with GoogleAds-IMA-iOS-SDK 3.15.x
