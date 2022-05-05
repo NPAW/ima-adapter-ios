@@ -274,7 +274,7 @@ BOOL adServed;
 - (void) sendStop {
     self.lastPosition = self.lastPosition == YBAdPositionPost ? YBAdPositionPost : [self getPosition];
     
-    if(!adServed){
+    if (!adServed && self.plugin.adsAdapter.flags.adInitiated) {
         NSDictionary *notServedErrorParams = @{
                                                @"errorCode" : @"AD_NOT_SERVED",
                                                @"errorMsg" : @"Ad not served",
