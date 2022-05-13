@@ -1,6 +1,9 @@
-## [6.6.3] - 2022-05-11
+## [6.6.3] - 2022-05-16
 ### Updated
 - Compatibility with GoogleAds-IMA-iOS-SDK 3.16.3 and GoogleAds-IMA-tvOS-SDK 4.6.1
+
+### Fixed
+- Buffer end event
 
 ## [6.6.2] - 2022-04-04
 ### Fixed
