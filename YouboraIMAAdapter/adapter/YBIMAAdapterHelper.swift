@@ -26,16 +26,15 @@ open class YBIMAAdapterHelper: NSObject, IMAAdsLoaderDelegate {
             adsLoader.delegate = self
         }
     }
-    
-    @objc public func adsLoader(_ loader: IMAAdsLoader!, adsLoadedWith adsLoadedData: IMAAdsLoadedData!) {
+    @objc public func adsLoader(_ loader: IMAAdsLoader, adsLoadedWith adsLoadedData: IMAAdsLoadedData) {
         delegates.forEach { delegate in
             delegate?.adsLoader(loader, adsLoadedWith: adsLoadedData)
         }
-        
+
         guard let _ = self.plugin else {
             return
         }
-        
+
         if let adsManager = adsLoadedData.adsManager {
             self.plugin?.adsAdapter = YBIMAAdapterSwiftTransformer.tranformImaAdapter(YBIMAAdapter(player: adsManager))
             self.plugin?.adsAdapter?.fireAdManifest([:])
@@ -46,11 +45,11 @@ open class YBIMAAdapterHelper: NSObject, IMAAdsLoaderDelegate {
         }
     }
     
-    @objc public func adsLoader(_ loader: IMAAdsLoader!, failedWith adErrorData: IMAAdLoadingErrorData!) {
+    @objc public func adsLoader(_ loader: IMAAdsLoader, failedWith adErrorData: IMAAdLoadingErrorData) {
         delegates.forEach { delegate in
             delegate?.adsLoader(loader, failedWith: adErrorData)
             var errorType = YBAdManifestError.errorNoResponse
-            
+
             switch adErrorData.adError.code {
                 //case .API_ERROR, .FAILED_TO_REQUEST_ADS, .PLAYLIST_MALFORMED_RESPONSE, .UNKNOWN_ERROR, .VAST_ASSET_NOT_FOUND
             case .VAST_EMPTY_RESPONSE:
@@ -75,10 +74,10 @@ open class YBIMAAdapterHelper: NSObject, IMAAdsLoaderDelegate {
                  .CONTENT_PLAYHEAD_MISSING,
                  .STREAM_INITIALIZATION_FAILED:
                 errorType = YBAdManifestError.errorNoResponse
-            @unknown default:
+            default:
                 errorType = YBAdManifestError.errorNoResponse
             }
-            
+
             self.plugin?.adsAdapter?.fireAdManifestWithError(errorType, andMessage: adErrorData.adError.message)
         }
     }

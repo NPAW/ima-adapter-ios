@@ -311,6 +311,7 @@ BOOL adServed;
     if(self.mainDelegate && [self.mainDelegate respondsToSelector:@selector(adsManagerAdPlaybackReady:)]){
         [self.mainDelegate performSelector:@selector(adsManagerAdPlaybackReady:) withObject:adsManager];
     }
+    [self fireBufferEnd];
 }
 
 - (void)adsManagerAdDidStartBuffering:(IMAAdsManager *)adsManager{
@@ -336,7 +337,6 @@ BOOL adServed;
         [invo invoke];
     }
     
-    [self fireBufferEnd];
 }
 
 @end
