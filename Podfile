@@ -1,20 +1,20 @@
 # Uncomment the next line to define a global platform for your project
 workspace 'YouboraIMAAdapter.xcworkspace'
 
-platform :ios, '10.0'
+platform :ios, '12.0'
 
 def common_pod
-    pod 'YouboraLib', '~> 6.5.0'
+    pod 'YouboraLib', '~> 6.6'
 end
 
 def common_example_pod
     common_pod
-    pod 'YouboraAVPlayerAdapter'
     pod 'YouboraConfigUtils', '~>1.1.0'
+    pod 'YouboraAVPlayerAdapter', '~> 6.6'
 end
 
 def google_ima_pod_ios
-    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.13'
+    pod 'GoogleAds-IMA-iOS-SDK', '~> 3.16'
 end
 
 def google_ima_pod_tvos
