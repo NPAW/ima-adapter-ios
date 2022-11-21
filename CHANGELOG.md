@@ -1,3 +1,7 @@
+## [6.6.4] - 2022-11-22
+### Removed
+- arm64 restriction for GoogleAds-IMA-iOS-SDK 
+
 ## [6.6.3] - 2022-05-16
 ### Updated
 - Compatibility with GoogleAds-IMA-iOS-SDK 3.16.3 and GoogleAds-IMA-tvOS-SDK 4.6.1
