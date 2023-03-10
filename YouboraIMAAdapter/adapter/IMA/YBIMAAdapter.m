@@ -26,13 +26,15 @@
 
 
 @interface YBIMAAdapter()
-    @property (weak) NSObject<IMAAdsManagerDelegate>* mainDelegate;
-    @property YBAdPosition lastPosition;
-    @property NSNumber* lastPlayhead;
-    @property (nonatomic, strong) NSNumber * adsOnCurrentBreak;
-    @property (nonatomic, assign) BOOL isAdSkippable;
-    @property (nonatomic, strong) NSString * creativeId;
+
+@property (weak) NSObject<IMAAdsManagerDelegate>* mainDelegate;
+@property YBAdPosition lastPosition;
+@property NSNumber* lastPlayhead;
+@property (nonatomic, strong) NSNumber * adsOnCurrentBreak;
+@property (nonatomic, assign) BOOL isAdSkippable;
+@property (nonatomic, strong) NSString * creativeId;
 @property (nonatomic, strong) IMAAd* lastAd;
+
 @end
 
 @implementation YBIMAAdapter
@@ -72,6 +74,9 @@ BOOL adServed;
             self.adsOnCurrentBreak = @(event.ad.adPodInfo.totalAds);
             self.isAdSkippable = event.ad.skippable;
             self.creativeId = event.ad.creativeAdID;
+            if (self.creativeId == nil || [self.creativeId isEqualToString:@""]) {
+                self.creativeId = event.ad.creativeID;
+            }
             if(pos == 0){
                 self.lastPosition = YBAdPositionPre;
             }

@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:YouboraIMAAdapter.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Example/IMAAdapterExample.xcodeproj">
    </FileRef>
    <FileRef
@@ -12,6 +9,9 @@
    </FileRef>
    <FileRef
       location = "group:ExampleTvOS/ExampleTvOS.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:YouboraIMAAdapter.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
