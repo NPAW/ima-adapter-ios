@@ -1,3 +1,13 @@
+## [6.7.0] - 2023-03-10
+### Updated
+- Compatibility with `GoogleAds-IMA-tvOS-SDK` v4.8.2
+
+### Fixed
+- `getAdCreativeId` method to use `creativeID` when `creativeAdID` is empty
+
+### Removed
+- `arm64` restriction for `GoogleAds-IMA-tvOS-SDK`
+
 ## [6.6.4] - 2022-11-22
 ### Removed
 - arm64 restriction for GoogleAds-IMA-iOS-SDK 
